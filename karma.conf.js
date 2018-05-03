@@ -16,6 +16,8 @@ module.exports = function(config) {
       'spec/*.js': [ 'webpack' ]
     },
 
+    reporters: ['mocha'],
+
     webpack: {
       module: {
           loaders: [
@@ -55,12 +57,16 @@ module.exports = function(config) {
   webpackServer: {
       noInfo: true
   },
+  mochaReporter: {
+    output: 'minimal'
+  },
 
 
     plugins: [
       require('karma-webpack'),
       require('karma-chrome-launcher'),
-      require('karma-mocha')
+      require('karma-mocha'),
+      require('karma-mocha-reporter'),
     ]
   });
 };
