@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import './App.scss';
@@ -11,10 +11,12 @@ class App extends Component {
       <div className="base-container">
         <Header />
         <div className="main">
+        <BrowserRouter>
           <Switch>
             <Route exact path="/" component={CompanyIndexPage} />
             <Route exact path="/companies" component={CompanyIndexPage} />
           </Switch>
+        </BrowserRouter>
         </div>
         <Footer />
       </div>
