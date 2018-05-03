@@ -1,0 +1,23 @@
+#bgp-gvt-logo-container {
+  padding: 15px 50px 0 0;
+  display: block;
+  float: right;
+}
+
+.lion-link {
+  text-align: right;
+  margin-top: -5px;
+
+  a {
+    margin-left: 10px;
+    color: $color-grey-3;
+    font-size: $smaller;
+    font-weight: $text-normal;
+    border-bottom: 1px solid $color-grey-3;
+
+    &:hover {
+      color: $color-btn-primary;
+      border-bottom: 1px solid $color-btn-primary;
+    }
+  }
+}

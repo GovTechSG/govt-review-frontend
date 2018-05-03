@@ -1,0 +1,457 @@
+// = = = topnav styling
+@mixin navlogo {
+  background: $bgp-brand-color;
+  width: 290px;
+}
+
+//this is the mixin for styling top navi links
+@mixin bottomborder($bg, $bordercolor, $textcolor, $size) {
+  a {
+    padding: 16px 15px 14px 15px;
+    font-size: $regular-plus;
+    font-weight: $text-semibold;
+    color: $textcolor;
+    background: $bg;
+    box-shadow: inset 0 $size*-1 0 $bordercolor;
+  }
+}
+
+.navbar-default {
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  background: #fff;
+
+  .icon-bar {
+    // Override Bootstrap background color
+    background-color: #fff !important;
+    height: 3px;
+    border-radius: 0;
+  }
+}
+
+.bgp-masthead {
+  height: 125px;
+  margin: 0;
+  background: #fff;
+  min-height: 50px;
+}
+
+.bgp-header-logo-container {
+  @include navlogo;
+  height: 175px;
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.govt-logo {
+  text-align: right;
+}
+
+.header {
+  height: 125px;
+  z-index: 200;
+  width: 100%;
+  max-width: 1080px;
+
+  &.sticky {
+    position: fixed;
+    height: 50px;
+
+    > .bgp-masthead {
+      display: none;
+    }
+  }
+}
+
+.bgp-nav-logo {
+  @include navlogo;
+  line-height: 0;
+  float: left;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bgp-mobile-auth-details {
+  display: none;
+}
+
+.nav.navbar-nav.bgp-topnavi {
+  float: none;
+  li {
+    margin-left: 16px;
+    display: block;
+    @include bottomborder(#fff, #fff, rgba(#000, 0.4), 3px);
+
+    &:hover {
+      @include bottomborder(#fff, rgba(#000, 0.3), rgba(#000, 0.45), 3px);
+    }
+  }
+
+  .active {
+    @include bottomborder(#fff, $bgp-brand-color, $bgp-brand-color, 3px);
+
+    &:hover {
+      @include bottomborder(#fff, $bgp-brand-color, $bgp-brand-color, 3px);
+    }
+  }
+
+  li.log-button {
+    user-select: none;
+    position: absolute;
+    right: 50px;
+    margin-top: 8px;
+    transition: top 0.1s ease;
+
+    a {
+      background-color: $color-btn-primary;
+      border: 1px solid $color-btn-primary;
+      color: #fff;
+      font-size: 15px;
+      font-weight: $text-normal;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border-radius: 3px;
+      box-shadow: none;
+      padding: 6px 12px;
+
+      &:hover {
+        background-color: darken($color-btn-primary, 5%);
+      }
+
+      &:active {
+        background-color: darken($color-btn-primary, 10%);
+      }
+
+      &.logout {
+        border: 1px solid $color-btn-primary;
+        background-color: transparent;
+        color: $color-btn-primary;
+
+        &:hover {
+          background-color: $color-btn-primary;
+          color: #fff;
+        }
+
+        &:active {
+          background-color: darken($color-btn-primary, 5%);
+        }
+      }
+    }
+  }
+
+  li.gsearch {
+    width: 190px;
+    margin-top: 8px;
+    position: absolute;
+    right: 145px;
+    transition: top 0.1s ease;
+
+    .input-group {
+      > span {
+        background-color: $color-grey-3;
+        border: 1px solid $color-grey-3;
+
+        span.glyphicon {
+          background-color: transparent;
+          border: 0 solid transparent;
+        }
+      }
+
+      input {
+        font-size: 16px;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        height: 34px;
+
+        &.active {
+          border: 1px solid $color-grey-3;
+          background-color: $color-form-focus-background;
+
+          ~ span {
+            background-color: $color-btn-save;
+            border: 1px solid $color-btn-save;
+
+            &:hover {
+              background-color: darken($color-btn-save, 10%);
+            }
+          }
+        }
+      }
+
+      input:focus, input:active {
+        border: 1px solid $color-grey-3;
+
+        ~ span {
+          background-color: $color-btn-save;
+          border: 1px solid $color-btn-save;
+
+          &:hover {
+            background-color: darken($color-btn-save, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-default .navbar-toggle {
+  background: transparent;
+
+  &:hover,
+  &:visited,
+  &:active,
+  &:focus {
+    background: transparent;
+  }
+
+  .icon-bar {
+    background: #fff;
+  }
+}
+
+.navbar-collapse {
+  padding: 0; // Overwrite Bootstrap
+}
+
+// government logo
+#bgp-gvt-logo-container {
+  padding: 15px 50px 0 0;
+  display: block;
+  float: right;
+}
+
+.lion-link {
+  text-align: right;
+  margin-top: -5px;
+
+  a {
+    margin-left: 10px;
+    color: $color-grey-3;
+    font-size: $smaller;
+    font-weight: $text-normal;
+    border-bottom: 1px solid $color-grey-3;
+
+    &:hover {
+      color: $color-btn-primary;
+      border-bottom: 1px solid $color-btn-primary;
+    }
+  }
+}
+
+.username-tag {
+  text-align: right;
+
+  .username-message {
+    color: $color-grey-4;
+    display: inline-block;
+    font-weight: $text-semibold;
+    padding-top: 15px;
+    text-align: right;
+  }
+
+  span {
+    font-size: $small;
+  }
+
+  .role-info {
+    a {
+      color: #fff;
+      font-weight: $text-normal;
+      font-size: $smaller;
+      padding: 3px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+
+      &::before {
+        display: inline-block;
+        content: image-url('header-user-icon.svg');
+        height: 10px;
+        width: 10px;
+        position: relative;
+        margin-right: 6px;
+      }
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  .role-info.role-viewer {
+    a {
+      background: #4ab8e1;
+    }
+  }
+  .role-info.role-preparer {
+    a {
+      background: #6771b6;
+    }
+  }
+  .role-info.role-acceptor {
+    a {
+      background: #a67cb8;
+    }
+  }
+
+  .company-name {
+    font-size: $small;
+    display: block;
+    color: lighten($color-grey-4, 15%);
+    font-weight: $text-normal;
+    margin: 0 0 0 auto;
+  }
+}
+
+.header.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+@media (max-width: $narrow-breakpoint - 1) {
+  .navbar-default {
+    background: $bgp-brand-color;
+    color: #fff;
+  }
+
+  .header {
+    position: fixed;
+    height: 50px;
+  }
+
+  #nav {
+    .bgp-masthead {
+      display: none;
+    }
+
+    // Override Bootstrap nav setting to hide navbar items
+    // Required because we changed the breakpoint
+    // Ideally we should generate a custom Bootstrap with the new breakpoint,
+    // or use the .less version and change the variable there.
+    .collapse {
+      display: none !important;
+    }
+
+    .navbar-collapse.collapse.in {
+      display: block !important;
+    }
+
+    .navbar-header .collapse,
+    .navbar-toggle {
+      display: block !important;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    // Move navbar icons into menu
+    .navbar-collapse.collapse.in,
+    .navbar-collapse.collapsing {
+      border-top: hidden;
+      width: 100%;
+      background: transparent;
+      box-shadow: inset 0 4px 4px -3px rgba(0, 0, 0, 0.3);
+
+      .nav.navbar-nav.bgp-topnavi {
+        width: 100%;
+        margin: 0 0;
+
+        li {
+          width: 100%;
+          margin-left: 0;
+          display: block;
+          @include bottomborder(darken($bgp-brand-color, 5%), rgba(#fff, 0.05), rgba(#fff, 0.5), -2px);
+          a:active,
+          a:hover {
+            color: rgba(255, 255, 255, 1);
+            background: darken($bgp-brand-color, 6%);
+          }
+        }
+
+        .active {
+          @include bottomborder(darken($bgp-brand-color, 15%), rgba(#fff, 0.05), #fff, -2px);
+          a:hover {
+            background: darken($bgp-brand-color, 15%);
+          }
+        }
+
+        li.gsearch {
+          position: static;
+          margin: 0;
+          padding: 8px 8px;
+          background: darken($bgp-brand-color, 5%);
+          box-shadow: inset 0 2px 0 rgba(#fff, 0.05);
+        }
+
+        li.log-button {
+          position: static;
+          margin: 0;
+
+          a {
+            border-radius: 0;
+            border: none;
+          }
+        }
+      }
+    }
+
+    .bgp-mobile-auth-details {
+      background-color: #565656;
+      padding: 15px; // Bootstrap has 15px padding for mobile menu
+      box-shadow: inset 0 4px 4px -3px rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      width: 100%;
+
+      .username-tag {
+        text-align: left;
+        padding: 0;
+      }
+
+      .username-message {
+        padding-top: 0;
+        color: rgba(#fff, 0.5);
+      }
+
+      .company-name {
+        color: rgba(#fff, 0.4);
+      }
+    }
+  }
+}
+
+a.navbar-toggle {
+  color: #fff;
+  padding-bottom: 10px;
+  line-height: 1;
+  font-size: $smaller;
+}
+
+.navbar-toggle {
+  border: none;
+  position: absolute;
+  right: 0;
+  padding: 8px 0;
+  margin-right: 15px;
+}
+
+.no-transition {
+  transition: height 0.01s;
+}
+
+.mygrants-icon {
+  &::before {
+    margin: 2px 8px 0 0;
+    display: inline-block;
+    vertical-align: top;
+    content: ' ';
+    background-image: image-url('my-grants.svg');
+    background-size: 17px 17px;
+    height: 17px;
+    width: 17px;
+  }
+}

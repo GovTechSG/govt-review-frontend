@@ -1,0 +1,53 @@
+@import '_variables.scss';
+
+//$footer-color: #105593;
+//$primary-font-color: #fff;
+.footer {
+  background-color: $bgp-brand-color;
+  background-size: 90px;
+  background-position: 10% 60%;
+  background-repeat: repeat;
+  padding: 20px;
+  color: $color-brand-friendly;
+  border-top: 5px solid $color-brand-friendly;
+  z-index: 12;
+
+  a {
+    font-size: $regular;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: $text-normal;
+
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.browserSupport,
+.version,
+.copyright {
+  font-size: $small;
+  color: #7cb7dc;
+}
+
+.copyright,
+.version {
+  padding-right: 20px;
+}
+
+.footerInfo,
+.version {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.version {
+  float: right;
+}
+
+.copyright {
+  text-align: right;
+  padding-top: 20px;
+  margin: 0;
+}

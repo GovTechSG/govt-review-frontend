@@ -1,0 +1,22 @@
+# node_modules ignored by default
+
+tmp/
+config/
+scripts/
+coverage/
+vendor/
+scripts/wogaa/*
+public/**/*
+app/frontend/loaders/
+make-webpack-config.js
+make-webpack-test-config.js
+karma.conf.js
+
+# external libraries
+app/frontend/helpers/growl.js
+app/frontend/helpers/jquery-number.js
+
+# Generator templates
+lib/generators/grant/templates/**/*
+
+doc

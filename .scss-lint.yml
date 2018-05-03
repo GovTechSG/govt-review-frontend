@@ -1,0 +1,275 @@
+severity: error
+
+exclude:
+  - 'vendor/**/*.scss'
+  - 'node_modules/**/*.scss'
+  # Excluded as scss-lint does not handle PostCSS @mixin syntax
+  - 'app/frontend/components/home/about_us/aboutUs.scss'
+  - 'app/frontend/components/home/coming_soon/coming_soon.scss'
+  - 'app/frontend/components/home/faq/faq.scss'
+  - 'app/frontend/components/home/feedback/feedback.scss'
+  - 'app/frontend/components/home/landing/Carousel/carousel.scss'
+  - 'app/frontend/components/home/landing/landing.scss'
+  - 'app/frontend/components/home/logged_out/loggedout.scss'
+  - 'app/frontend/components/home/news/news.scss'
+  - 'app/frontend/components/home/news/NewsBox/newsBox.scss'
+  - 'app/frontend/components/home/news/NewsRow/newsrow.scss'
+  - 'app/frontend/components/home/unauthorized/unauthorized.scss'
+  - 'app/frontend/components/home/faq/FaqList/faqList.scss'
+  # Vendor CSS
+  - 'app/assets/stylesheets/animations/animatelib.scss'
+
+linters:
+
+  # Important rules that might break code
+
+  QualifyingElement:
+    enabled: false
+    allow_element_with_attribute: false
+    allow_element_with_class: false
+    allow_element_with_id: false
+
+  SelectorDepth:
+    enabled: false
+    max_depth: 3
+
+  NestingDepth:
+    enabled: false
+    max_depth: 3
+    ignore_parent_selectors: false
+
+  # Important rules that might not break code
+
+  ColorKeyword:
+    enabled: true
+
+  DuplicateProperty:
+    enabled: true
+
+  HexValidation:
+    enabled: true
+
+  MergeableSelector:
+    enabled: true
+    force_nesting: false
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
+    disabled_properties: []
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: false
+
+  # We want these rules:
+
+  Comment:
+    exclude:
+      - 'app/frontend/components/home/**'
+    enabled: true
+    style: silent
+
+  VendorPrefix:
+    enabled: false
+    identifier_list: base
+    additional_identifiers: []
+    excluded_identifiers: []
+
+  DisableLinterReason:
+    enabled: true
+
+  EmptyRule:
+    enabled: true
+
+  IdSelector:
+    enabled: false
+
+  ImportantRule:
+    enabled: false
+
+  ImportPath:
+    enabled: false
+    leading_underscore: false
+    filename_extension: false
+
+  NameFormat:
+    enabled: false
+    allow_leading_underscore: false
+    convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
+
+  PropertyUnits:
+    enabled: false
+    global: [
+      'ch', 'em', 'ex', 'rem',                 # Font-relative lengths
+      'cm', 'in', 'mm', 'pc', 'pt', 'px', 'q', # Absolute lengths
+      'vh', 'vw', 'vmin', 'vmax',              # Viewport-percentage lengths
+      'deg', 'grad', 'rad', 'turn',            # Angle
+      'ms', 's',                               # Duration
+      'Hz', 'kHz',                             # Frequency
+      'dpi', 'dpcm', 'dppx',                   # Resolution
+      '%']                                     # Other
+    properties: {}
+
+  SelectorFormat:
+    enabled: false
+    convention: hyphenated_lowercase # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+
+  Shorthand:
+    enabled: false
+    allowed_shorthands: [1, 2, 3]
+
+  TransitionAll:
+    enabled: false
+
+  UnnecessaryMantissa:
+    enabled: true
+
+  UnnecessaryParentReference:
+    enabled: true
+
+  UrlFormat:
+    enabled: true
+
+  UrlQuotes:
+    enabled: true
+
+  DebugStatement:
+    enabled: true
+
+  BorderZero:
+    enabled: false
+    convention: zero # or `none`
+
+  # We want to automatically implement these rules:
+
+  BangFormat:
+    enabled: false
+    space_before_bang: false
+    space_after_bang: false
+
+  DeclarationOrder:
+    enabled: false
+
+  ElsePlacement:
+    enabled: true
+    style: same_line # or 'new_line'
+
+  EmptyLineBetweenBlocks:
+    enabled: false
+    ignore_single_line_blocks: false
+
+  FinalNewline:
+    enabled: false
+    present: false
+
+  HexLength:
+    enabled: true
+    style: short # or 'long'
+
+  HexNotation:
+    enabled: true
+    style: lowercase # or 'uppercase'
+
+  Indentation:
+    enabled: true
+    allow_non_nested_indentation: false
+    character: space # or 'tab'
+    width: 2
+
+  LeadingZero:
+    enabled: true
+    style: include_zero # or 'exclude_zero'
+
+  PropertySortOrder:
+    enabled: false
+    ignore_unspecified: false
+    min_properties: 2
+    separate_groups: false
+
+  PseudoElement:
+    enabled: true
+
+  SpaceAfterComma:
+    enabled: true
+    style: one_space # or 'no_space', or 'at_least_one_space'
+
+  SpaceAfterPropertyColon:
+    enabled: true
+    style: one_space # or 'no_space', or 'at_least_one_space', or 'aligned'
+
+  SpaceAfterPropertyName:
+    enabled: true
+
+  SpaceAfterVariableColon:
+    enabled: true
+    style: one_space # or 'no_space', 'at_least_one_space' or 'one_space_or_newline'
+
+  SpaceAfterVariableName:
+    enabled: true
+
+  SpaceAroundOperator:
+    enabled: false
+    style: one_space # or 'at_least_one_space', or 'no_space'
+
+  SpaceBeforeBrace:
+    enabled: true
+    style: space # or 'new_line'
+    allow_single_line_padding: false
+
+  SpaceBetweenParens:
+    enabled: true
+    spaces: 0
+
+  StringQuotes:
+    enabled: false
+    style: single_quotes # or double_quotes
+
+  TrailingSemicolon:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true
+
+  TrailingZero:
+    enabled: true
+
+  ZeroUnit:
+    enabled: true
+
+  # We don't want these rules:
+
+  BemDepth:
+    enabled: false
+    max_elements: 1
+
+  ChainedClasses:
+    enabled: false
+
+  ColorVariable:
+    enabled: false
+
+  Compass::*:
+    enabled: false
+
+  ExtendDirective:
+    enabled: false
+
+  PlaceholderInExtend:
+    enabled: false
+
+  PrivateNamingConvention:
+    enabled: false
+    prefix: _
+
+  PropertyCount:
+    enabled: false
+    include_nested: false
+    max_properties: 10
+
+  SingleLinePerSelector:
+    enabled: false
+
+  VariableForProperty:
+    enabled: false
+    properties: []

@@ -1,0 +1,71 @@
+
+$background-color: #fff;
+$landing-sidepadding: 35px;
+
+// colors
+$bgp-brand-color: #1e6ba0;
+$color-form-focus-background: #fffeee;
+$color-brand-primary: $bgp-brand-color;
+$color-background: #f5f5f5;
+$color-background-form: #fbfbfb;
+$color-link: #3498db;
+$color-link-hover: shade($color-link, 30%);
+$color-default: #ddd;
+$color-success: #dff0d8;
+$color-danger: #ff5961;
+$color-danger-light: #ffebeb;
+$color-warning: #e88921;
+$color-info: #3c719b;
+$color-remind: #d5eeff;
+$color-brand-friendly: desaturate(lighten($color-brand-primary, 20%), 40%);
+$color-helptext-bg-blue: #ebf3f4;
+$color-helptext-text-blue: #6c969e;
+$color-helptext-bg-green: #dff0d8;
+$color-grey-1: #f5f5f5;
+$color-grey-2: #e0e0e0;
+$color-grey-3: #9e9e9e;
+$color-grey-4: #757575;
+$color-grey-5: #616161;
+$color-grey-6: #424242;
+$color-grey-7: #aaa;
+$color-btn-back: #9a9a9a;
+$color-btn-primary: #509ed3;
+$color-btn-save: #faaa43;
+$color-btn-warning: #f0ad4e;
+$color-btn-danger: #d9534f;
+$color-btn-text: #fff;
+$color-btn-action: #16b79a;
+$color-btn-addnested: #bddff7;
+$color-btn-addnested-text: #307cae;
+$color-popover-background: #444;
+
+// Sizes
+$container-max-width: 1080px;
+$container-min-width: 320px;
+$narrow-breakpoint: 992px;
+
+// default bootstrap typography
+$font-family-source-sans: 'Source Sans Pro', sans-serif;
+$font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-serif: Georgia, 'Times New Roman', Times, serif;
+$font-family-monospace: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$font-family-base: $font-family-source-sans;
+$font-family-quicksand: 'Quicksand', sans-serif;
+$regular: 16px;
+$small: 14px;
+$smaller: 12px;
+$regular-plus: 18px;
+$regular-big: 20px;
+$regular-bigger: 24px;
+$regular-biggest: 26px;
+
+// Typography weights
+$text-light: 300;
+$text-semibold: 600;
+$text-heavy: 700;
+$text-normal: 400;
+
+// Sidebar
+$sidebar-width: 290px;
+$sidebar-color: lighten(desaturate($color-btn-primary, 35%), 33%);
+$sidebar-link: #8e9ead;

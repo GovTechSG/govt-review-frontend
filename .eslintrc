@@ -1,0 +1,49 @@
+// Based off of:
+// https://github.com/airbnb/javascript
+// https://github.com/airbnb/javascript/tree/master/react
+// https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", ".eslintrc-todo"],
+  "plugins": [
+    "react",
+    "mocha",
+    "babel"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "jquery": true
+  },
+  "globals": {
+    "sinon": true,
+    "expect": true,
+    "SD": true,
+    "_": true
+  },
+  "rules": {
+    "generator-star-spacing": 0, // https://github.com/eslint/eslint/issues/6274
+    "arrow-body-style": 0,
+    "comma-dangle": 0,
+    "complexity": [2, 6],
+    "max-len": [2, 120, 2],
+    "new-cap": 0, // libraries violate this
+    "no-underscore-dangle": 0,
+    "no-unused-expressions": 0, // mocha assertions blatantly violate this
+    "one-var": 0,
+    "consistent-return": 0, // turned off to depend on implicit return (undefined)
+    "import/extensions": [
+      2,
+      "never",
+      { "yml": "always" }
+    ],
+    "import/no-dynamic-require": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/require-default-props": 0,
+  }
+}

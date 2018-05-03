@@ -1,0 +1,256 @@
+@import '_variables.scss';
+@import 'footer.scss';
+@import 'govlogo.scss';
+@import 'mediaSpecific.scss';
+@import 'header.scss';
+@import 'footer.scss';
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 15px $landing-sidepadding 25px $landing-sidepadding;
+  background-color: $background-color;
+  overflow-x: hidden;
+  flex: 1;
+  width: 100%;
+}
+
+// reset unnecessary bootstrap paddings/margins.
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1 0 auto;
+}
+.base-container {
+  margin: 0 auto;
+  text-align: left;
+  max-width: $container-max-width;
+  min-width: $container-min-width;
+  width: inherit;
+  height: 100%;
+  box-shadow: 0 0 30px #b9b9b9;
+}
+
+hr {
+  border-top: 1px solid #000;
+}
+
+// Main content
+.main {
+  width: 100%;
+  padding: 50px 5px 25px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: $color-background-form;
+  flex: 1 0 auto;
+}
+
+// Responsive Margins
+@media only screen and (min-width: $narrow-breakpoint) {
+  .main {
+    padding: 10px 50px;
+  }
+}
+
+.common-main {
+  width: 100%;
+  padding: 0 5px 25px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  flex: 1 0 auto;
+}
+
+// Responsive Margins
+@media only screen and (min-width: $narrow-breakpoint) {
+  .common-main {
+    padding: 10px 0;
+  }
+}
+
+@media only screen and (max-width: $narrow-breakpoint - 1) {
+  .main {
+    padding-right: 3%;
+    padding-left: 3%;
+  }
+
+  .dashboard-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .card {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.main .page-header {
+  margin-top: 0;
+}
+
+.form-horizontal .control-label {
+  padding-top: 7px;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+// This one pull the content up for the grant header..
+.bgp-contentpullup {
+  background: $sidebar-color;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+// No padding class to align some doubly-indented divs
+.bgp-no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+//sets the styling for printing
+@media only print {
+
+  .table-responsive {
+    overflow-x: visible;
+  }
+
+  button.bgp-btn-print {
+    display: none;
+  }
+
+  div.summary-card {
+    padding: 0;
+    width: 50%;
+  }
+
+  .card {
+    margin-top: -70px;
+  }
+
+  .summary-section {
+    margin-bottom: 20px;
+  }
+
+  .bgp-questions-grp {
+    margin-bottom: 0;
+  }
+
+  //adjust the header to not wrap in its bootstrap column parent
+  .summary-header {
+    position: relative;
+    width: 800px;
+    margin-top: -40px;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10,
+  .col-sm-11, .col-sm-12 {
+    float: left;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+  .col-sm-11 {
+    width: 91.66666666666666%;
+  }
+  .col-sm-10 {
+    width: 83.33333333333334%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+  .col-sm-8 {
+    width: 66.66666666666666%;
+  }
+  .col-sm-7 {
+    width: 58.333333333333336%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-5 {
+    width: 41.66666666666667%;
+  }
+  .col-sm-4 {
+    width: 33.33333333333333%;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-2 {
+    width: 16.666666666666664%;
+  }
+  .col-sm-1 {
+    width: 8.333333333333332%;
+  }
+
+  // Fix Firefox cutting page off in print, see layoutStyles.scss as well
+  html,
+  body,
+  .base-container,
+  #js-app,
+  #js-app > div,
+  .main {
+    display: block !important;
+    height: auto !important;
+    width: auto !important;
+  }
+}
+
+//no script
+.main-noscript {
+  display: block;
+  min-height: 400px;
+  padding: 20px;
+  background: #fff;
+  color: $color-brand-friendly;
+  text-align: center;
+  font-size: $regular-plus;
+
+  &::before {
+    content: '';
+    background-image: image_url('nojs.gif');
+    background-repeat: no-repeat;
+    background-size: 200px 147px;
+    width: 200px;
+    height: 147px;
+    text-align: center;
+    display: block;
+    margin: 50px auto;
+  }
+}
+
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.col-sm-new {
+  width: 100%;
+  position: relative;
+  min-width: 280px;
+}
+
+.items-container {
+  float: left;
+  position: relative;
+  padding-right: 15px;
+
+  .col-sm-12 {
+    padding: 0;
+  }
+}
+
+.align-check-box {
+  padding-top: 45px;
+}
+
+.sectorGrid {
+  margin-left: 15px;
+}
