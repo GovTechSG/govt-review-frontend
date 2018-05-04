@@ -38,6 +38,7 @@ $color-btn-action: #16b79a;
 $color-btn-addnested: #bddff7;
 $color-btn-addnested-text: #307cae;
 $color-popover-background: #444;
+$color-landing-secnavi: color($color-brand-friendly tint(80%));
 
 // Sizes
 $container-max-width: 1080px;
@@ -61,6 +62,7 @@ $regular-biggest: 26px;
 
 // Typography weights
 $text-light: 300;
+$text-lighter: 100;
 $text-semibold: 600;
 $text-heavy: 700;
 $text-normal: 400;

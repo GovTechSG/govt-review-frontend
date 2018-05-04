@@ -30,7 +30,7 @@
     "arrow-body-style": 0,
     "comma-dangle": 0,
     "complexity": [2, 6],
-    "max-len": [2, 120, 2],
+    "max-len": [2, 175, 2],
     "new-cap": 0, // libraries violate this
     "no-underscore-dangle": 0,
     "no-unused-expressions": 0, // mocha assertions blatantly violate this

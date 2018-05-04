@@ -3,14 +3,14 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import './App.scss';
-import CompanyIndexPage from '../../company/index/CompanyIndexPage';
+import CompanyIndexPage from '../../company/CompanyIndexPage';
 
 class App extends Component {
   render() {
     return (
       <div className="base-container">
         <Header />
-        <div className="main">
+        <div className="common-main">
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={CompanyIndexPage} />
