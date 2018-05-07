@@ -8,7 +8,7 @@ export default class VendorSorter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedView: 'bestRatings'
+      selectedView: 'best_ratings'
     };
   }
 
@@ -25,10 +25,10 @@ export default class VendorSorter extends Component {
         <Row>
           <Col sm={12}>
             <Nav className="nav-sorter" bsStyle="tabs" activeKey={this.state.selectedView} onSelect={(k, event) => this.handleSelect(k, event)}>
-              <NavItem eventKey="bestRatings">
+              <NavItem eventKey="best_ratings">
                 Best Ratings
               </NavItem>
-              <NavItem eventKey="newlyAdded">
+              <NavItem eventKey="newly_added">
                 Newly Added
               </NavItem>
             </Nav>
