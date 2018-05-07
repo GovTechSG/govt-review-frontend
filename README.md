@@ -34,16 +34,16 @@ Welcome! This document details the setting up of a development environment. The 
 
 	In the project root directory of the backend.. (View https://github.com/GovTechSG/product-review-platform if not set up yet)
 
-	Test if the project is setup properly:
+	- Test if the project is setup properly:
 		
-		rails s
+			rails s
 
-    open http://localhost:3000/ on your browser. you should see a landing page.
+	- open http://localhost:3000/ on your browser. you should see a landing page.
 
 	In the project root directory of the backend..
 
-	Test if the project is setup properly:
+	- Test if the project is setup properly:
 		
-		npm start -p 3001
+			npm start -p 3001
 
-    open http://localhost:3001/ on your browser. you should see a landing page.
+	- open http://localhost:3001/ on your browser. you should see a landing page.
