@@ -32,7 +32,7 @@ Welcome! This document details the setting up of a development environment. The 
 
 1. Test run
 
-	In the project root directory of the backend.. (View https://github.com/GovTechSG/product-review-platform if not set up yet)
+	In the project root directory of the [**backend**](https://github.com/GovTechSG/product-review-platform).. (View https://github.com/GovTechSG/product-review-platform if not set up yet)
 
 	- Test if the project is setup properly:
 		
@@ -40,7 +40,7 @@ Welcome! This document details the setting up of a development environment. The 
 
 	- open http://localhost:3000/ on your browser. you should see a landing page.
 
-	In the project root directory of the backend..
+	In the project root directory of the [**frontend**](https://github.com/GovTechSG/govt-review-frontend)..
 
 	- Test if the project is setup properly:
 		
