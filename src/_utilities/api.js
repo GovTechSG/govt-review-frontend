@@ -1,10 +1,12 @@
 import '../jquery';
+import authToken from '../../config/secrets';
 
 function ajaxCall(args) {
   return $.ajax({
     beforeSend(xhr) {
       !args.hasOwnProperty('skipHeader') &&
-      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) &&
+      xhr.setRequestHeader('Authorization', authToken);
     },
     ...args
   }).fail(result => {
