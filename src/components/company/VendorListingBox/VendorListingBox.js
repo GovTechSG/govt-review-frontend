@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { resolve } from 'react-resolver';
 import API from '../../../_utilities/api';
-// import API from '../../_utility/Api';
 import './VendorListingBox.scss';
 import { API_URL_PREFIX } from '../../../_utilities/api_url_prefix';
 
-export class VendorBox extends Component {
+export class VendorListingBox extends Component {
   getIndustryString(industriesArray) {
     const len = industriesArray.length;
 
@@ -42,7 +41,7 @@ export class VendorBox extends Component {
   }
 
   aggregateScoreByPercent(aggregateScore, reviewsCount) {
-    return ((aggregateScore / reviewsCount) * 100);
+    return reviewsCount === 0 ? 100 : ((aggregateScore / reviewsCount) * 100);
   }
 
   renderChild(data, index) {
@@ -90,11 +89,11 @@ export class VendorBox extends Component {
 }
 
 export default resolve('vendorData', (props) => {
-  const url = `${API_URL_PREFIX}/api/v1/vendor_listings`;
+  const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
   return API.get({
     url,
     data: {
       sort_by: props.selectedView
     }
   });
-})(VendorBox);
+})(VendorListingBox);

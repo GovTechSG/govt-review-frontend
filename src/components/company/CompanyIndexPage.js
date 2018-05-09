@@ -5,6 +5,15 @@ import SideBarFilter from './SideBarFilter/SideBarFilter';
 import VendorSorter from './VendorSorter/VendorSorter';
 
 export default class CompanyIndexPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { title: 'Government Review Platform' };
+  }
+
+  componentWillMount() {
+    document.title = this.state.title;
+  }
+
   render() {
     return (
       <Row className="company-index">

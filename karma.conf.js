@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 process.env.CHROME_BIN = require('puppeteer').executablePath()
 
 module.exports = function(config) {
@@ -5,15 +7,15 @@ module.exports = function(config) {
     basePath : __dirname + '/',
     browsers: ['ChromeHeadless'],
     
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'jquery-3.2.1'],
 
     files: [
-      { pattern: 'spec/*.js', watched: false }
+      { pattern: './spec/test.entry.js', watched: false, included: true, served: true }
     ],
 
     preprocessors: {
       // add webpack as preprocessor
-      'spec/*.js': [ 'webpack' ]
+      './spec/test.entry.js': ['webpack']
     },
 
     reporters: ['mocha'],
@@ -52,6 +54,7 @@ module.exports = function(config) {
               }
           ]
       },
+      plugins: [new webpack.ProvidePlugin({ $: "jquery" })],
       watch: true
   },
   webpackServer: {
@@ -61,9 +64,9 @@ module.exports = function(config) {
     output: 'minimal'
   },
 
-
     plugins: [
       require('karma-webpack'),
+      require('karma-jquery'),
       require('karma-chrome-launcher'),
       require('karma-mocha'),
       require('karma-mocha-reporter'),
