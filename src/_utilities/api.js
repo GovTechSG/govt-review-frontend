@@ -1,4 +1,4 @@
-import '../jquery';
+import 'jquery';
 
 function ajaxCall(args) {
   return $.ajax({

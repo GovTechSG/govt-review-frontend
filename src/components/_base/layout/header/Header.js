@@ -6,6 +6,7 @@ import '../../../../jquery';
 import grpLogoMain from './grp-logo.svg';
 import govtLogo from './govt-logo.svg';
 import grpLogoAffix from './grp-affix.svg';
+import './header.scss';
 
 export default class Header extends Component {
   static HOME_SECTIONS = [
