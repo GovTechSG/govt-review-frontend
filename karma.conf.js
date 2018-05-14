@@ -5,7 +5,13 @@ process.env.CHROME_BIN = require('puppeteer').executablePath()
 module.exports = function(config) {
   config.set({
     basePath : __dirname + '/',
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
     
     frameworks: ['mocha', 'jquery-3.2.1'],
 
@@ -34,10 +40,10 @@ module.exports = function(config) {
               },
               {
                   test: /\.scss$/,
-                  exclude: /[\/\\](node_modules|bower_components|public\/)[\/\\]/,
+                  exclude: /node_modules/,
                   loaders: [
                       'style-loader?sourceMap',
-                      'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]&sourceMap',
+                      'css-loader?importLoaders=1',
                       'postcss-loader',
                       'sass-loader'
                   ]
