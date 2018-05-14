@@ -1,7 +1,7 @@
 # Modified from https://medium.com/ai2-blog/dockerizing-a-react-application-3563688a2378
 FROM node:8
 
-LABEL maintainer="shaun.thium@gmail.com"
+LABEL maintainer="wynn987@gmail.com"
 
 # From: https://github.com/GoogleChrome/puppeteer/issues/1345#issuecomment-343554457
 # Install necessary apt packages for puppeteer bundled chromium work

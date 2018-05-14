@@ -66,4 +66,4 @@ Welcome! This document details the setting up of a development environment. The 
 		
 			npm start
 
-	- open http://localhost:3001/ on your browser. you should see a landing page.
+	- open http://localhost:5000/ on your browser. you should see a landing page.
