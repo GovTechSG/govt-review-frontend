@@ -48,13 +48,15 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   lsb-release \
   unzip \
   wget \
-  xdg-utils
+  xdg-utils \
+  xsel
 
 RUN npm install -g serve
 EXPOSE 5000
 
 COPY package*.json ./
 RUN npm install
+RUN npm i -g eslint
 
 COPY . .
 
