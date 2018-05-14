@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../../../../assets/scss/footer.scss';
+import styles from './footer.scss';
 
 export default class Footer extends Component {
   render() {
@@ -16,7 +16,9 @@ export default class Footer extends Component {
           &#169; {new Date().getFullYear()} Copyright Government of Singapore
         </p>
         <div className={styles.footerInfo}>
-          <span className={styles.browserSupport}>Government Review Platform is best viewed with Chrome, Firefox, Safari and Internet Explorer 10 and above</span>
+          <span className={styles.browserSupport}>
+            Government Review Platform is best viewed with Chrome, Firefox, Safari and Internet Explorer 10 and above
+          </span>
         </div>
       </div>
     );

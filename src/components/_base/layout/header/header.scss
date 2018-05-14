@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/baseStyles.scss';
+
 // = = = topnav styling
 @mixin navlogo {
   background: $bgp-brand-color;
@@ -19,7 +21,7 @@
 .navbar-default {
   border: none;
   border-radius: 0;
-  box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 7px 7px -3px rgba(0, 0, 0, 0.3);
   z-index: 99;
   background: #fff;
 
@@ -217,7 +219,7 @@
 }
 
 .navbar-collapse {
-  padding: 0; // Overwrite Bootstrap
+  padding: 0;
 }
 
 // government logo

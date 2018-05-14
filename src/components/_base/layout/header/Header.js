@@ -1,11 +1,12 @@
 /* eslint complexity: [2,7] */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import $ from 'jquery';
 import classNames from 'classnames';
+import '../../../../jquery';
 import grpLogoMain from './grp-logo.svg';
 import govtLogo from './govt-logo.svg';
 import grpLogoAffix from './grp-affix.svg';
+import './header.scss';
 
 export default class Header extends Component {
   static HOME_SECTIONS = [
@@ -21,15 +22,6 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { sticky: false };
-  }
-
-  componentDidMount() {
-    $('.nav a').click(() => {
-      this.closeNav();
-    });
-  }
-  closeNav() {
-    $('.navbar-collapse').collapse('hide');
   }
 
   render() {

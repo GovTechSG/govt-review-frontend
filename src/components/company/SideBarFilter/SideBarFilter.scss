@@ -1,0 +1,14 @@
+@import '../../../assets/scss/baseStyles.scss';
+
+@media only screen and (min-width: $narrow-breakpoint) {
+  .sidebar {
+    width: 290px;
+    background: $sidebar-color;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    height: 100%;
+    display: block;
+    padding-top: 25px;
+    padding-left: 1px;
+  }
+}

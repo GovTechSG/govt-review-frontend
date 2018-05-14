@@ -1,19 +1,27 @@
+const webpack = require('webpack');
+
 process.env.CHROME_BIN = require('puppeteer').executablePath()
 
 module.exports = function(config) {
   config.set({
     basePath : __dirname + '/',
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
     
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'jquery-3.2.1'],
 
     files: [
-      { pattern: 'spec/*.js', watched: false }
+      { pattern: './spec/test.entry.js', watched: false, included: true, served: true }
     ],
 
     preprocessors: {
       // add webpack as preprocessor
-      'spec/*.js': [ 'webpack' ]
+      './spec/test.entry.js': ['webpack']
     },
 
     reporters: ['mocha'],
@@ -32,10 +40,10 @@ module.exports = function(config) {
               },
               {
                   test: /\.scss$/,
-                  exclude: /[\/\\](node_modules|bower_components|public\/)[\/\\]/,
+                  exclude: /node_modules/,
                   loaders: [
                       'style-loader?sourceMap',
-                      'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]&sourceMap',
+                      'css-loader?importLoaders=1',
                       'postcss-loader',
                       'sass-loader'
                   ]
@@ -52,6 +60,7 @@ module.exports = function(config) {
               }
           ]
       },
+      plugins: [new webpack.ProvidePlugin({ $: "jquery" })],
       watch: true
   },
   webpackServer: {
@@ -61,9 +70,9 @@ module.exports = function(config) {
     output: 'minimal'
   },
 
-
     plugins: [
       require('karma-webpack'),
+      require('karma-jquery'),
       require('karma-chrome-launcher'),
       require('karma-mocha'),
       require('karma-mocha-reporter'),

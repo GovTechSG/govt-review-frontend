@@ -1,0 +1,129 @@
+@import '../../../assets/scss/baseStyles.scss';
+
+$borderStyle: 2px dotted color($color-landing-secnavi shade(5%));
+
+.vendor-item {
+  padding: 20px 0;
+}
+
+
+.vendor-header {
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+$outline-blue: color($color-brand-friendly tint(20%));
+
+.vendor-header + .show-all-link {
+  display: inline-block;
+  position: absolute;
+  margin-left: 20px;
+  font-size: $smaller;
+  font-weight: $text-normal;
+  color: $outline-blue;
+  background: #fff;
+  border: 1px solid $outline-blue;
+  padding: 4px 8px;
+  border-radius: 4px;
+  right: 10px;
+
+  &:hover {
+    background: $outline-blue;
+    color: #fff;
+  }
+
+  &:active {
+    top: 1px;
+  }
+}
+
+.vendor-name {
+  color: $color-grey-5;
+  display: block;
+  font-size: $regular-biggest;
+  font-weight: $text-semibold;
+  padding-bottom: 6px;
+  line-height: 1.2;
+}
+
+.vendor-industry {
+  color: $color-grey-3;
+  font-size: $regular;
+  display: block;
+  font-weight: $text-lighter;
+}
+
+.vendor-has-done {
+  color: $color-grey-3;
+  font-size: $regular;
+  display: block;
+  font-weight: $text-lighter;
+}
+
+.vendor-has-done-title {
+  color: $color-grey-5;
+  font-size: $regular;
+  display: block;
+  font-weight: $text-normal;
+}
+
+.positivity {
+  color: $color-grey-5;
+  font-size: $regular;
+  display: block;
+  font-weight: $text-normal;
+}
+
+.aggregate-count {
+  color: $color-grey-3;
+  font-size: $regular;
+  display: block;
+  font-weight: $text-lighter;
+}
+
+.rating-box {
+  hr {
+    border-top: 3px solid #008000;
+  }
+}
+
+.logo-box {
+  img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 500px) {
+  .vendor-header + .show-all-link {
+    width: 60px;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.1;
+  }
+
+  .logo-box {
+    width: 60px;
+  }
+}
+
+@media (min-width: 501px) and (max-width:768px) {
+  .logo-box {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 756px) and (max-width:800px) {
+  .logo-box {
+    width: 60px;
+    margin-left: -20px;
+  }
+}
+
+@media (min-width: 801px) {
+  .logo-box {
+    margin-left: auto;
+  }
+}

@@ -1,9 +1,6 @@
 @import '_variables.scss';
-@import 'footer.scss';
 @import 'govlogo.scss';
 @import 'mediaSpecific.scss';
-@import 'header.scss';
-@import 'footer.scss';
 
 .container {
   display: flex;
@@ -30,7 +27,6 @@
   min-width: $container-min-width;
   width: inherit;
   height: 100%;
-  box-shadow: 0 0 30px #b9b9b9;
 }
 
 hr {
@@ -43,7 +39,7 @@ hr {
   padding: 50px 5px 25px;
   overflow-x: hidden;
   overflow-y: hidden;
-  background: $color-background-form;
+  background: $background-color;
   flex: 1 0 auto;
 }
 

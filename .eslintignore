@@ -20,3 +20,6 @@ app/frontend/helpers/jquery-number.js
 lib/generators/grant/templates/**/*
 
 doc
+
+# configs
+src/jquery.js

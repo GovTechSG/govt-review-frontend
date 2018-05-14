@@ -1,0 +1,22 @@
+@import '../../../../assets/scss/baseStyles.scss';
+
+.industry-category {
+  list-style: none;
+}
+
+.industry-group {
+  padding-left: 0;
+  color: $color-grey-4;
+  font-size: $regular;
+  font-weight: $text-semibold;
+  line-height: 1.2;
+}
+
+.industry-group-title {
+  color: $color-grey-5;
+  display: block;
+  font-size: $regular;
+  font-weight: $text-semibold;
+  padding-bottom: 6px;
+  line-height: 1.2;
+}

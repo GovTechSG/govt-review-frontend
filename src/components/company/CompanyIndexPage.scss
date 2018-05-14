@@ -1,0 +1,8 @@
+@import '../../assets/scss/baseStyles.scss';
+
+@media only screen and (min-width: $narrow-breakpoint) {
+  .company-index {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
