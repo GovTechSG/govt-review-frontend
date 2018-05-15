@@ -40,7 +40,7 @@ function registerValidSW(swUrl) {
       };
     })
     .catch(error => {
-      console.error('Error during service worker registration:', error);
+      console.error('Error during service worker registration:', error); // eslint-disable-line no-console
     });
 }
 
@@ -65,7 +65,7 @@ function checkValidServiceWorker(swUrl) {
       }
     })
     .catch(() => {
-      console.log('No internet connection found. App is running in offline mode.');
+      console.log('No internet connection found. App is running in offline mode.'); // eslint-disable-line no-console
     });
 }
 
