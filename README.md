@@ -26,10 +26,17 @@ Welcome! This document details the setting up of a development environment. The 
 
 	cd into the root directory of the project
 
-	run these command on terminal: 
+	run these commands on terminal: 
 
 		npm install
 		echo 'REACT_APP_AUTH_TOKEN=' > .env.local
+		npm i -g eslint-plugin-react
+		npm i -g eslint-plugin-mocha
+		npm i -g eslint-plugin-babel
+		npm i -g eslint-plugin-jsx-a11y
+		npm i -g eslint-plugin-import
+		npm i -g eslint-config-airbnb
+		npm i -g babel-eslint
 
 1. Get API key
 
@@ -56,9 +63,7 @@ Welcome! This document details the setting up of a development environment. The 
 		# Remember to include Bearer infront of the token
 		REACT_APP_AUTH_TOKEN="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwcm9kdWN0X3Jldmlld19wbGF0Zm9ybSIsImlhdCI6MTUyNTc2NDA5MSwianRpIjoiYjE1M2ExOTgtZDI3YS00NDAyLTk1MTktNjA5ZTZkYjNlMjNmIiwiYXBwIjp7ImlkIjoxLCJuYW1lIjoiYmdwIn19._Hv7ER8Kakex2WQYw9X24B4F8Ywc1tSxjJaoqfT663k"
   
-
 1. Test run
-
 
 	In the project root directory of the [**frontend**](https://github.com/GovTechSG/govt-review-frontend)..
 
@@ -67,3 +72,10 @@ Welcome! This document details the setting up of a development environment. The 
 			npm start
 
 	- open http://localhost:5000/ on your browser. you should see a landing page.
+
+1. Sanity Check
+
+	- To run sanity check, run:
+
+			npm test
+			eslint .
