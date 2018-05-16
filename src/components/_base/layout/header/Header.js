@@ -27,15 +27,15 @@ export default class Header extends Component {
   render() {
     return (
       <div className={classNames('header', { sticky: this.props.sticky })}>
-        <div className="bgp-masthead hidden-xs hidden-sm">
-          <div className="bgp-header-logo-container" id="bgp-header-logo">
+        <div className="grp-masthead hidden-xs hidden-sm">
+          <div className="grp-header-logo-container" id="grp-header-logo">
             <a href="/">
-              <img className="bgp-header-logo" src={grpLogoMain} alt="G Review Portal" />
+              <img className="grp-header-logo" src={grpLogoMain} alt="G Review Portal" />
             </a>
           </div>
 
           <div className="pull-right">
-            <div id="bgp-gvt-logo-container">
+            <div id="grp-gvt-logo-container">
               <div className="govt-logo">
                 <a target="_blank" href="https://www.gov.sg">
                   <img src={govtLogo} alt="gov.sg" />
@@ -51,14 +51,14 @@ export default class Header extends Component {
         </div>
 
         <div id="nav" className={classNames({ sticky: this.state.sticky })}>
-          <div className="navbar navbar-default bgp-topnavi-wrapper">
-            <div className="bgp-nav-logo" id="bgp-nav-logo">
+          <div className="navbar navbar-default grp-topnavi-wrapper">
+            <div className="grp-nav-logo" id="grp-nav-logo">
               <a href="/"><img src={grpLogoAffix} alt="Home" /></a>
             </div>
 
             <button
-              className="navbar-toggle bgp-mobile-nav-btn"
-              data-target="#bgp-navbar-collapse"
+              className="navbar-toggle grp-mobile-nav-btn"
+              data-target="#grp-navbar-collapse"
               data-toggle="collapse"
               type="button"
             >
@@ -68,8 +68,8 @@ export default class Header extends Component {
               <span className="icon-bar"></span>
             </button>
 
-            <div id="bgp-navbar-collapse" className="collapse navbar-collapse no-transition">
-              <ul className="nav navbar-nav bgp-topnavi">
+            <div id="grp-navbar-collapse" className="collapse navbar-collapse no-transition">
+              <ul className="nav navbar-nav grp-topnavi">
 
                 <li>
                   <a href="#">News</a>
@@ -99,7 +99,7 @@ export default class Header extends Component {
   }
 
   logout() {
-    window.localStorage.setItem('bgp-logged-out', Date.now());
+    window.localStorage.setItem('grp-logged-out', Date.now());
     window.location = '/saml/slo';
   }
 }

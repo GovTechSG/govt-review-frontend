@@ -2,7 +2,7 @@
 
 // = = = topnav styling
 @mixin navlogo {
-  background: $bgp-brand-color;
+  background: $grp-brand-color;
   width: 290px;
 }
 
@@ -33,14 +33,14 @@
   }
 }
 
-.bgp-masthead {
+.grp-masthead {
   height: 125px;
   margin: 0;
   background: #fff;
   min-height: 50px;
 }
 
-.bgp-header-logo-container {
+.grp-header-logo-container {
   @include navlogo;
   height: 175px;
   position: absolute;
@@ -64,13 +64,13 @@
     position: fixed;
     height: 50px;
 
-    > .bgp-masthead {
+    > .grp-masthead {
       display: none;
     }
   }
 }
 
-.bgp-nav-logo {
+.grp-nav-logo {
   @include navlogo;
   line-height: 0;
   float: left;
@@ -80,11 +80,11 @@
   align-items: center;
 }
 
-.bgp-mobile-auth-details {
+.grp-mobile-auth-details {
   display: none;
 }
 
-.nav.navbar-nav.bgp-topnavi {
+.nav.navbar-nav.grp-topnavi {
   float: none;
   li {
     margin-left: 16px;
@@ -97,10 +97,10 @@
   }
 
   .active {
-    @include bottomborder(#fff, $bgp-brand-color, $bgp-brand-color, 3px);
+    @include bottomborder(#fff, $grp-brand-color, $grp-brand-color, 3px);
 
     &:hover {
-      @include bottomborder(#fff, $bgp-brand-color, $bgp-brand-color, 3px);
+      @include bottomborder(#fff, $grp-brand-color, $grp-brand-color, 3px);
     }
   }
 
@@ -223,7 +223,7 @@
 }
 
 // government logo
-#bgp-gvt-logo-container {
+#grp-gvt-logo-container {
   padding: 15px 50px 0 0;
   display: block;
   float: right;
@@ -317,7 +317,7 @@
 
 @media (max-width: $narrow-breakpoint - 1) {
   .navbar-default {
-    background: $bgp-brand-color;
+    background: $grp-brand-color;
     color: #fff;
   }
 
@@ -327,7 +327,7 @@
   }
 
   #nav {
-    .bgp-masthead {
+    .grp-masthead {
       display: none;
     }
 
@@ -359,7 +359,7 @@
       background: transparent;
       box-shadow: inset 0 4px 4px -3px rgba(0, 0, 0, 0.3);
 
-      .nav.navbar-nav.bgp-topnavi {
+      .nav.navbar-nav.grp-topnavi {
         width: 100%;
         margin: 0 0;
 
@@ -367,18 +367,18 @@
           width: 100%;
           margin-left: 0;
           display: block;
-          @include bottomborder(darken($bgp-brand-color, 5%), rgba(#fff, 0.05), rgba(#fff, 0.5), -2px);
+          @include bottomborder(darken($grp-brand-color, 5%), rgba(#fff, 0.05), rgba(#fff, 0.5), -2px);
           a:active,
           a:hover {
             color: rgba(255, 255, 255, 1);
-            background: darken($bgp-brand-color, 6%);
+            background: darken($grp-brand-color, 6%);
           }
         }
 
         .active {
-          @include bottomborder(darken($bgp-brand-color, 15%), rgba(#fff, 0.05), #fff, -2px);
+          @include bottomborder(darken($grp-brand-color, 15%), rgba(#fff, 0.05), #fff, -2px);
           a:hover {
-            background: darken($bgp-brand-color, 15%);
+            background: darken($grp-brand-color, 15%);
           }
         }
 
@@ -386,7 +386,7 @@
           position: static;
           margin: 0;
           padding: 8px 8px;
-          background: darken($bgp-brand-color, 5%);
+          background: darken($grp-brand-color, 5%);
           box-shadow: inset 0 2px 0 rgba(#fff, 0.05);
         }
 
@@ -402,7 +402,7 @@
       }
     }
 
-    .bgp-mobile-auth-details {
+    .grp-mobile-auth-details {
       background-color: #565656;
       padding: 15px; // Bootstrap has 15px padding for mobile menu
       box-shadow: inset 0 4px 4px -3px rgba(0, 0, 0, 0.3);
