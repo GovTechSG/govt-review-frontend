@@ -93,7 +93,7 @@ hr {
 }
 
 // This one pull the content up for the grant header..
-.bgp-contentpullup {
+.grp-contentpullup {
   background: $sidebar-color;
   display: flex;
   flex-direction: column;
@@ -101,7 +101,7 @@ hr {
 }
 
 // No padding class to align some doubly-indented divs
-.bgp-no-padding {
+.grp-no-padding {
   padding-left: 0;
   padding-right: 0;
 }
@@ -113,7 +113,7 @@ hr {
     overflow-x: visible;
   }
 
-  button.bgp-btn-print {
+  button.grp-btn-print {
     display: none;
   }
 
@@ -130,7 +130,7 @@ hr {
     margin-bottom: 20px;
   }
 
-  .bgp-questions-grp {
+  .grp-questions-grp {
     margin-bottom: 0;
   }
 
