@@ -65,7 +65,7 @@ export class VendorListingBox extends Component {
           </Col>
           <Col xs={3}>
             <div className="rating-box">
-              <div className="positivity">{aggregateScore}% Positive</div>
+              <div className="positivity"><div className="aggregate_score">{aggregateScore}</div>% Positive</div>
               <hr />
               <div className="aggregate-count">{data.reviews_count} reviews</div>
             </div>
