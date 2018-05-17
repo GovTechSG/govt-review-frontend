@@ -1,3 +1,4 @@
+#!/bin/bash
 token=$(curl \
   --header "Content-Type: application/json" \
   --request POST \
