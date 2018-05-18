@@ -12,6 +12,10 @@ $borderStyle: 2px dotted color($color-landing-secnavi shade(5%));
   display: inline-block;
 }
 
+.aggregate_score {
+  display: inline-block;
+}
+
 $outline-blue: color($color-brand-friendly tint(20%));
 
 .vendor-header + .show-all-link {
