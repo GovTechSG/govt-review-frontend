@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 import '../../../../jquery';
 import grpLogoMain from './grp-logo.svg';
 import govtLogo from './govt-logo.svg';
@@ -43,8 +44,12 @@ export default class Header extends Component {
               </div>
 
               <div className="lion-link">
-                <a href="/feedback">Contact Us/Feedback</a>
-                <a href="/about_us">About Us</a>
+                <a href="/feedback">
+                  <FormattedMessage id="header.govt.feedback" />
+                </a>
+                <a href="/about_us">
+                  <FormattedMessage id="header.govt.aboutus" />
+                </a>
               </div>
             </div>
           </div>
@@ -62,7 +67,9 @@ export default class Header extends Component {
               data-toggle="collapse"
               type="button"
             >
-              <span className="sr-only">Toggle navigation</span>
+              <span className="sr-only">
+                <FormattedMessage id="header.nav.toggle" />
+              </span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
@@ -72,19 +79,27 @@ export default class Header extends Component {
               <ul className="nav navbar-nav grp-topnavi">
 
                 <li>
-                  <a href="#">News</a>
+                  <a href="#">
+                    <FormattedMessage id="header.nav.news" />
+                  </a>
                 </li>
 
                 <li>
-                  <a href="#">How it works</a>
+                  <a href="#">
+                    <FormattedMessage id="header.nav.howitworks" />
+                  </a>
                 </li>
 
                 <li>
-                  <a href="#">FAQ</a>
+                  <a href="#">
+                    <FormattedMessage id="header.nav.faq" />
+                  </a>
                 </li>
 
                 <li className="log-button">
-                  <a className="login" id="login-button" onClick={(this.login)}>Log In</a>
+                  <a className="login" id="login-button" onClick={(this.login)}>
+                    <FormattedMessage id="header.nav.login" />
+                  </a>
                 </li>
               </ul>
             </div>

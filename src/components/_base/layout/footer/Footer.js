@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import styles from './footer.scss';
 
 export default class Footer extends Component {
   render() {
     return (
       <div className="footer nocontent" id="footer-content">
-        <span><a href="#"> About Us </a></span> |
-        <span><a href="#"> News </a></span> |
-        <span><a href="#"> How it works </a></span> |
-        <span><a href="#"> FAQ </a></span> |
-        <span><a href="#"> Contact Us/Feedback </a></span> |
-        <span><a href="#"> Privacy Statement </a></span> |
-        <span><a href="#"> Terms of Use </a></span>
+        <span><a href="#"> <FormattedMessage id="footer.aboutus" /> </a></span> |
+        <span><a href="#"> <FormattedMessage id="footer.news" /> </a></span> |
+        <span><a href="#"> <FormattedMessage id="footer.howitworks" /> </a></span> |
+        <span><a href="#"> <FormattedMessage id="footer.faq" /> </a></span> |
+        <span><a href="#"> <FormattedMessage id="footer.feedback" /> </a></span> |
+        <span><a href="#"> <FormattedMessage id="footer.privacy" /> </a></span> |
+        <span><a href="#"> <FormattedMessage id="footer.termsofuse" /> </a></span>
         <p className={styles.copyright} id="copyright-label">
-          &#169; {new Date().getFullYear()} Copyright Government of Singapore
+          <FormattedMessage id="footer.copyright" values={{ year: new Date().getFullYear() }} />
         </p>
         <div className={styles.footerInfo}>
           <span className={styles.browserSupport} id="browser-support">
-            Government Review Platform is best viewed with Chrome, Firefox, Safari and Internet Explorer 10 and above
+            <FormattedMessage id="footer.browsersupport" />
           </span>
         </div>
       </div>

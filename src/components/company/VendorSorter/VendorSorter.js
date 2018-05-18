@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, NavItem, Row, Col } from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
 import VendorListingBox from '../VendorListingBox/VendorListingBox';
 // import API from '../../_utility/Api';
 import './VendorSorter.scss';
@@ -26,10 +27,10 @@ export default class VendorSorter extends Component {
           <Col sm={12}>
             <Nav className="nav-sorter" bsStyle="tabs" activeKey={this.state.selectedView} onSelect={(k, event) => this.handleSelect(k, event)}>
               <NavItem eventKey="best_ratings">
-                Best Ratings
+                <FormattedMessage id="best.ratings" />
               </NavItem>
               <NavItem eventKey="newly_added">
-                Newly Added
+                <FormattedMessage id="newly.added" />
               </NavItem>
             </Nav>
           </Col>

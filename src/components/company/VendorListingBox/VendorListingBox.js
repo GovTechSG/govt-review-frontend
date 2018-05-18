@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { resolve } from 'react-resolver';
+import { FormattedMessage } from 'react-intl';
 import API from '../../../_utilities/api';
 import './VendorListingBox.scss';
 import { API_URL_PREFIX } from '../../../_utilities/api_url_prefix';
@@ -60,14 +61,20 @@ export class VendorListingBox extends Component {
             <div className="vendor-name">{data.name}</div>
             <div className="vendor-industry">{industryString}</div>
             <br />
-            <div className="vendor-has-done-title">Has done project for:</div>
+            <div className="vendor-has-done-title">
+              <FormattedMessage id="vendor.has.done" />
+            </div>
             <div className="vendor-has-done">{projectString}</div>
           </Col>
           <Col xs={3}>
             <div className="rating-box">
-              <div className="positivity">{aggregateScore}% Positive</div>
+              <div className="positivity">
+                {aggregateScore}<FormattedMessage id="percent.positive" />
+              </div>
               <hr />
-              <div className="aggregate-count">{data.reviews_count} reviews</div>
+              <div className="aggregate-count">
+                <FormattedMessage id="aggregate.count" values={{ reviews_count: data.reviews_count }} />
+              </div>
             </div>
           </Col>
         </Row>
