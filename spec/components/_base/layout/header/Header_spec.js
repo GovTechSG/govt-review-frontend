@@ -69,7 +69,7 @@ describe('Header', () => {
       const anchor = logo.find('a').filterWhere((a) => {
         return a.prop('href') === '/about_us';
       });
-      chai.expect(anchor.find('FormattedMessage').text()).to.equal('About Us');
+      chai.expect(anchor.text()).to.equal('About Us');
     });
   });
 
