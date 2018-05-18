@@ -2,6 +2,7 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
+import { mountWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import Header from '../../../../../src/components/_base/layout/header/Header';
 import grpLogoMain from '../../../../../src/components/_base/layout/header/grp-logo.svg';
 import govtLogo from '../../../../../src/components/_base/layout/header/govt-logo.svg';
@@ -13,7 +14,7 @@ describe('Header', () => {
   let render;
 
   before(() => {
-    render = enzyme.shallow(<Header />);
+    render = mountWithIntl(<Header />);
   });
 
   describe('grp logo', () => {
@@ -68,7 +69,7 @@ describe('Header', () => {
       const anchor = logo.find('a').filterWhere((a) => {
         return a.prop('href') === '/about_us';
       });
-      chai.expect(anchor.text()).to.equal('About Us');
+      chai.expect(anchor.find('FormattedMessage').text()).to.equal('About Us');
     });
   });
 

@@ -2,6 +2,7 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
+import { mountWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import Footer from '../../../../../src/components/_base/layout/footer/Footer';
 
 enzyme.configure({ adapter: new Adapter() });
@@ -10,7 +11,7 @@ describe('Header', () => {
   let render;
 
   before(() => {
-    render = enzyme.shallow(<Footer />);
+    render = mountWithIntl(<Footer />);
   });
 
   describe('Footer content', () => {
