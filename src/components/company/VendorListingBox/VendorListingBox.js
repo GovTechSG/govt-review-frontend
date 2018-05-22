@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, ProgressBar } from 'react-bootstrap';
 import { resolve } from 'react-resolver';
 import { FormattedMessage } from 'react-intl';
 import API from '../../../_utilities/api';
 import './VendorListingBox.scss';
 import { API_URL_PREFIX } from '../../../_utilities/api_url_prefix';
+
 
 export class VendorListingBox extends Component {
   getIndustryString(industriesArray) {
@@ -41,44 +42,52 @@ export class VendorListingBox extends Component {
     return projectString;
   }
 
-  aggregateScoreByPercent(aggregateScore, reviewsCount) {
-    return reviewsCount === 0 ? 100 : ((aggregateScore / reviewsCount) * 100);
-  }
-
   renderChild(data, index) {
     const industryString = this.getIndustryString(data.industries);
-    const projectString = this.getProjectsString(data.projects);
-    const aggregateScore = this.aggregateScoreByPercent(data.aggregate_score, data.reviews_count);
+    const projectString = this.getProjectsString(data.project_industries);
     return (
-      <Col sm={12} key={`$vendor-box-${index}`}>
-        <Row className="vendor-item" key={`vendor-box-item-${index}`}>
-          <Col xs={2}>
-            <div className="logo-box">
-              <img src={data.image.thumb.url} alt={data.name} />
-            </div>
-          </Col>
-          <Col xs={7}>
-            <div className="vendor-name">{data.name}</div>
-            <div className="vendor-industry">{industryString}</div>
-            <br />
+      <div className="vendor-card">
+        <Col sm={12} key={`$vendor-box-${index}`}>
+          <Row className="vendor-item" key={`vendor-box-item-${index}`}>
+            <Col xs={2}>
+              <div className="logo-box">
+                <img src={data.image.thumb.url} alt={data.name} />
+              </div>
+            </Col>
+            <Col xs={7}>
+              <div className="vendor-name">{data.name}</div>
+              <div className="vendor-industry">{industryString}</div>
+              <br />
+            </Col>
+            <Col xs={3}>
+              <div className="rating-box">
+                <div className="positivity">
+                  <div className="aggregate_score">{ data.reviews_count !== 0 && Math.round(data.ratings) }</div>
+                    { data.reviews_count === 0 ?
+                      <FormattedMessage id="vendorlisting.no.reviews" /> :
+                      <FormattedMessage id="vendorlisting.percent.positive" />
+                    }
+                </div>
+                <br />
+                <ProgressBar>
+                  <ProgressBar bsStyle="success" max={data.reviews_count} now={data.positive} key={1} />
+                  <ProgressBar bsStyle="warning" max={data.reviews_count} now={data.neutral} key={2} />
+                  <ProgressBar bsStyle="danger" max={data.reviews_count} now={data.negative} key={3} />
+                </ProgressBar>
+                <div className="aggregate-count">
+                  <FormattedMessage id="vendorlisting.aggregate.count" values={{ reviews_count: data.reviews_count }} />
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Row className="vendor-has-done-row">
             <div className="vendor-has-done-title">
-              <FormattedMessage id="vendor.has.done" />
+              <FormattedMessage id="vendorlisting.vendor.has.done" />
             </div>
             <div className="vendor-has-done">{projectString}</div>
-          </Col>
-          <Col xs={3}>
-            <div className="rating-box">
-              <div className="positivity"><div className="aggregate_score">{aggregateScore}</div>
-                <FormattedMessage id="percent.positive" />
-              </div>
-              <hr />
-              <div className="aggregate-count">
-                <FormattedMessage id="aggregate.count" values={{ reviews_count: data.reviews_count }} />
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Col>
+          </Row>
+        </Col>
+      </div>
     );
   }
 
