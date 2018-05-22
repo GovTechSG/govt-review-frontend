@@ -3,7 +3,7 @@
 $borderStyle: 2px dotted color($color-landing-secnavi shade(5%));
 
 .vendor-item {
-  padding: 20px 0;
+  padding: 5px 0;
 }
 
 
@@ -17,6 +17,14 @@ $borderStyle: 2px dotted color($color-landing-secnavi shade(5%));
 }
 
 $outline-blue: color($color-brand-friendly tint(20%));
+
+.vendor-card{
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 1px 2px #aaa;
+  margin: 10px 20px;
+}
 
 .vendor-header + .show-all-link {
   display: inline-block;
@@ -55,6 +63,10 @@ $outline-blue: color($color-brand-friendly tint(20%));
   font-size: $regular;
   display: block;
   font-weight: $text-lighter;
+}
+
+.vendor-has-done-row.row {
+  margin: 0px 0px;
 }
 
 .vendor-has-done {
@@ -96,8 +108,27 @@ $outline-blue: color($color-brand-friendly tint(20%));
     width: 100%;
     height: 100%;
     border: 1px solid #ddd;
-    border-radius: 4px;
   }
+}
+.progress{
+  height: 5px;
+  border-radius: 1px;  
+}
+
+.progress-bar{
+  box-shadow: none;
+}
+
+.progress-bar-warning {
+  background-color: #f4f3f4;
+}
+
+.progress-bar-success {
+  background-color: #37b296;
+}
+
+.progress-bar-danger {
+  background-color: #fc5b65;
 }
 
 @media (max-width: 500px) {
