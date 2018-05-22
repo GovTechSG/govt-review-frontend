@@ -27,10 +27,10 @@ export default class VendorSorter extends Component {
           <Col sm={12}>
             <Nav className="nav-sorter" bsStyle="tabs" activeKey={this.state.selectedView} onSelect={(k, event) => this.handleSelect(k, event)}>
               <NavItem eventKey="best_ratings">
-                <FormattedMessage id="best.ratings" />
+                <FormattedMessage id="vendorsorter.best.ratings" />
               </NavItem>
               <NavItem eventKey="newly_added">
-                <FormattedMessage id="newly.added" />
+                <FormattedMessage id="vendorsorter.newly.added" />
               </NavItem>
             </Nav>
           </Col>

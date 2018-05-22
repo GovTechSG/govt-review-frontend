@@ -13,12 +13,12 @@ export default class SideBarFilter extends Component {
       <Row className="sidebar">
         <Col sm={12}>
           <div className="industry-group-title">
-            <FormattedMessage id="filter.industry" />
+            <FormattedMessage id="sidebarfilter.industry" />
           </div>
           <IndustryFilter />
           <br />
           <div className="grant-group-title">
-            <FormattedMessage id="filter.grant" />
+            <FormattedMessage id="sidebarfilter.grant" />
           </div>
           <GrantFilter />
         </Col>
