@@ -4,7 +4,6 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import localeEn from 'react-intl/locale-data/en';
 import './index.scss';
 import App from './components/_base/layout/App';
-import registerServiceWorker from './registerServiceWorker';
 import messagesEn from './translations/en';
 
 addLocaleData([...localeEn]);
@@ -26,4 +25,3 @@ ReactDOM.render(
     </IntlProvider>
   ), document.getElementById('root')
 );
-registerServiceWorker();
