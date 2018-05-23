@@ -46,8 +46,8 @@ export class VendorListingBox extends Component {
     const industryString = this.getIndustryString(data.industries);
     const projectString = this.getProjectsString(data.project_industries);
     return (
-      <div className="vendor-card">
-        <Col sm={12} key={`$vendor-box-${index}`}>
+      <div className="vendor-card" key={`$vendor-box-${index}`}>
+        <Col sm={12}>
           <Row className="vendor-item" key={`vendor-box-item-${index}`}>
             <Col xs={2}>
               <div className="logo-box">
