@@ -7,7 +7,7 @@ import Footer from '../../../../../src/components/_base/layout/footer/Footer';
 
 enzyme.configure({ adapter: new Adapter() });
 
-describe('Header', () => {
+describe('Footer', () => {
   let render;
 
   before(() => {
