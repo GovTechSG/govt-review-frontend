@@ -105,7 +105,7 @@ describe('VendorListingBox', () => {
       const vendorIndustry = render.find('.vendor-item').last().find('.positivity').text();
       chai.expect(vendorIndustry).to.eql('No Reviews');
     });
-    describe('review bar', () => {      
+    describe('review bar', () => {
       it('renders review bar', () => {
         const reviewBar = render.find('.vendor-item').first().find('.progress');
         chai.expect(reviewBar).to.have.length(1);
@@ -114,17 +114,17 @@ describe('VendorListingBox', () => {
       it('renders positive reviews bar', () => {
         const positive = render.find('.vendor-item').first().find('.progress-bar.progress-bar-success');
         chai.expect(positive.prop('aria-valuenow')).to.eql(25);
-      }); 
-      
+      });
+
       it('renders neutral reviews bar', () => {
         const neutral = render.find('.vendor-item').first().find('.progress-bar.progress-bar-warning');
         chai.expect(neutral.prop('aria-valuenow')).to.eql(20);
-      }); 
+      });
 
       it('renders negative reviews bar', () => {
         const negative = render.find('.vendor-item').first().find('.progress-bar.progress-bar-danger');
         chai.expect(negative.prop('aria-valuenow')).to.eql(5);
-      }); 
+      });
     });
   });
 });
