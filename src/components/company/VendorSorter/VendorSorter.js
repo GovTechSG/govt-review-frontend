@@ -29,7 +29,7 @@ export default class VendorSorter extends Component {
               <NavItem eventKey="best_ratings">
                 <FormattedMessage id="vendorsorter.best.ratings" />
               </NavItem>
-              <NavItem eventKey="newly_added">
+              <NavItem eventKey="newly_added" id="newly_added">
                 <FormattedMessage id="vendorsorter.newly.added" />
               </NavItem>
             </Nav>
