@@ -91,6 +91,16 @@ export class VendorListingBox extends Component {
     );
   }
 
+  componentDidMount() {
+    const { vendorCount } = this.props;
+    this.props.updatePagination(vendorCount);
+  }
+
+  componentDidUpdate() {
+    const { vendorCount } = this.props;
+    this.props.updatePagination(vendorCount);
+  }
+
   render() {
     const { vendorData } = this.props;
 
@@ -104,12 +114,24 @@ export class VendorListingBox extends Component {
   }
 }
 
-export default resolve('vendorData', (props) => {
-  const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
-  return API.get({
-    url,
-    data: {
-      sort_by: props.selectedView
-    }
-  });
+export default resolve({
+  vendorData: (props) => {
+    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
+    return API.get({
+      url,
+      data: {
+        sort_by: props.selectedView,
+        page: props.activePage,
+        per_page: props.itemsCountPerPage
+      }
+    });
+  },
+  vendorCount: () => {
+    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings_count`;
+    return API.get({
+      url,
+      data: {}
+    });
+  }
 })(VendorListingBox);
+

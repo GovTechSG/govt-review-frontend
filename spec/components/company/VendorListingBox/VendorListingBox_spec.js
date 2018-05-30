@@ -77,7 +77,11 @@ describe('VendorListingBox', () => {
   ];
 
   before(() => {
-    render = mountWithIntl(<VendorListingBox selectedView={selectedView} vendorData={vendorMockData} />);
+    render = mountWithIntl(<VendorListingBox 
+      selectedView={selectedView} 
+      vendorData={vendorMockData}
+      updatePagination = {()=>{}}
+    />);
   });
 
   describe('renders', () => {
