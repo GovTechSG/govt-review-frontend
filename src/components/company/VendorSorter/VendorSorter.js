@@ -69,6 +69,7 @@ export default class VendorSorter extends Component {
         </Row>
         <ReactPaginate
           pageCount={Math.ceil(this.state.totalItemsCount / this.state.itemsCountPerPage)}
+          forcePage={this.state.activePage - 1}
           pageRangeDisplayed={3}
           marginPagesDisplayed={1}
           previousLabel="PREV"
