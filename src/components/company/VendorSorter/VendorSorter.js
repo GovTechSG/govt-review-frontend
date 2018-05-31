@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, NavItem, Row, Col } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import Pagination from 'react-js-pagination';
+import ReactPaginate from 'react-paginate';
 import VendorListingBox from '../VendorListingBox/VendorListingBox';
 // import API from '../../../_utilities/api';
 import './VendorSorter.scss';
@@ -13,7 +13,7 @@ export default class VendorSorter extends Component {
       selectedView: 'best_ratings',
       activePage: 1,
       itemsCountPerPage: 5,
-      totalItemsCount: 100
+      totalItemsCount: 1
     };
     this.handlePageChange = this.handlePageChange.bind(this);
     this.updatePagination = this.updatePagination.bind(this);
@@ -29,7 +29,7 @@ export default class VendorSorter extends Component {
 
   handlePageChange(pageNumber) {
     this.setState({
-      activePage: pageNumber
+      activePage: pageNumber.selected + 1
     });
   }
 
@@ -67,14 +67,21 @@ export default class VendorSorter extends Component {
             />
           </Col>
         </Row>
-        <Pagination
-          className="pagination"
-          activePage={this.state.activePage}
-          itemsCountPerPage={this.state.itemsCountPerPage}
-          totalItemsCount={this.state.totalItemsCount}
-          onChange={this.handlePageChange}
+        <ReactPaginate
+          pageCount={Math.ceil(this.state.totalItemsCount / this.state.itemsCountPerPage)}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={1}
+          previousLabel="PREV"
+          nextLabel="NEXT"
+          breakLabel={<a className="btn btn-break">...</a>}
+          onPageChange={this.handlePageChange}
+          containerClassName="pagination"
+          pageLinkClassName="btn btn-default"
+          previousLinkClassName="prev-next prev"
+          nextLinkClassName="prev-next next"
         />
       </div>
     );
   }
 }
+

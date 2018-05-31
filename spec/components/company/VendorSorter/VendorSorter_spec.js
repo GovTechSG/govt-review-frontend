@@ -3,6 +3,7 @@ import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import VendorSorter from '../../../../src/components/company/VendorSorter/VendorSorter';
+import { mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -10,7 +11,7 @@ describe('VendorSorter', () => {
   let render;
 
   before(() => {
-    render = enzyme.shallow(<VendorSorter />);
+    render = mountWithIntl(<VendorSorter />);
   });
 
   describe('renders', () => {
