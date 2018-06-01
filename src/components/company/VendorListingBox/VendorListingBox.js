@@ -115,28 +115,14 @@ export class VendorListingBox extends Component {
   }
 }
 
-export default resolve({
-  vendorData: (props) => {
-    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
-    console.log(props);
-    return API.get({
-      url,
-      data: {
-        sort_by: props.selectedView,
-        page: props.activePage,
-        per_page: props.itemsCountPerPage,
-        search_text: props.searchText
-      }
-    });
-  },
-  vendorCount: (props) => {
-    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings_count`;
-    return API.get({
-      url,
-      data: {
-        search_text: props.searchText
-      }
-    });
-  }
+export default resolve('vendorData', (props) => {
+  const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
+  return API.get({
+    url,
+    data: {
+      sort_by: props.selectedView,
+      page: props.activePage,
+      per_page: props.itemsCountPerPage
+    }
+  });
 })(VendorListingBox);
-
