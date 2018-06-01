@@ -92,46 +92,37 @@ export class VendorListingBox extends Component {
   }
 
   componentDidMount() {
-    const { vendorCount } = this.props;
-    this.props.updatePagination(vendorCount);
+    const { vendorData } = this.props;
+    this.props.updatePagination(vendorData.count);
   }
 
   componentDidUpdate() {
-    const { vendorCount } = this.props;
-    this.props.updatePagination(vendorCount);
+    const { vendorData } = this.props;
+    this.props.updatePagination(vendorData.count);
   }
 
   render() {
     const { vendorData } = this.props;
+    console.log(vendorData);
 
     return (
       <Row>
         <Col sm={12} className="vendor-container">
-          {vendorData.map((data, index) => this.renderChild(data, index))}
+          {vendorData.companies.map((data, index) => this.renderChild(data, index))}
         </Col>
       </Row>
     );
   }
 }
 
-export default resolve({
-  vendorData: (props) => {
-    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
-    return API.get({
-      url,
-      data: {
-        sort_by: props.selectedView,
-        page: props.activePage,
-        per_page: props.itemsCountPerPage
-      }
-    });
-  },
-  vendorCount: () => {
-    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings_count`;
-    return API.get({
-      url,
-      data: {}
-    });
-  }
+export default resolve('vendorData', (props) => {
+  const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
+  return API.get({
+    url,
+    data: {
+      sort_by: props.selectedView,
+      page: props.activePage,
+      per_page: props.itemsCountPerPage
+    }
+  });
 })(VendorListingBox);
-
