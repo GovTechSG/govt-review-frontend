@@ -67,18 +67,17 @@ $outline-blue: color($color-brand-friendly tint(20%));
 
 .vendor-has-done-row.row {
   margin: 0px 0px;
+  font-size: 14px;
 }
 
 .vendor-has-done {
   color: $color-grey-3;
-  font-size: $regular;
   display: block;
   font-weight: $text-lighter;
 }
 
 .vendor-has-done-title {
   color: $color-grey-5;
-  font-size: $regular;
   display: block;
   font-weight: $text-normal;
 }

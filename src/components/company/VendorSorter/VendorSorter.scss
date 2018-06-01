@@ -1,7 +1,7 @@
 @import '../../../assets/scss/baseStyles.scss';
 
-.form-control{
-  margin: 10px 0px;
+.form-group{
+  margin: 10px 5px;
 }
 
 .control-label{
@@ -13,6 +13,7 @@
 
 .nav-sorter {
   margin-left: 20px;
+  margin-right: 19px;
   background-color: transparent;
 }
 
@@ -20,15 +21,27 @@
   background-color: transparent;
   border: 0px solid transparent;
   padding-left: 0px;
+  padding-right: 1px;
+  margin-right: 30px;
   color: #666666;
+}
+
+.nav-sorter>li>a:hover{
+  background-color: transparent;
+  border: 0px solid transparent;
+  border-bottom: 2px solid #2d89c9;
 }
 
 .nav-sorter>li.active>a{
   background-color: transparent;
   border: 0px solid transparent;
-  padding-left: 0px;
-  padding-right: 1px;
-  margin-right: 20px;
+  color: #2d89c9;
+  border-bottom: 2px solid #2d89c9;
+}
+
+.nav-sorter>li.active>a:focus{
+  background-color: transparent;
+  border: 0px solid transparent;
   color: #2d89c9;
   border-bottom: 2px solid #2d89c9;
 }
@@ -38,7 +51,6 @@
   border: 0px solid transparent;
   padding-left: 0px;
   padding-right: 1px;
-  margin-right: 20px;
   color: #2d89c9;
   border-bottom: 2px solid #2d89c9;
 }
