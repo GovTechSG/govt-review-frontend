@@ -62,12 +62,17 @@ export default class VendorSorter extends Component {
                 <ControlLabel>
                   <FormattedMessage id="vendorsorter.find.consultants" />
                 </ControlLabel>
-                <FormControl
-                  id="company-search-bar"
-                  type="text"
-                  placeholder="Search for a company's name"
-                  inputRef={ref => { this.input = ref; }}
-                />
+                <FormattedMessage id="vendorsorter.search.company">
+                  { message => (
+                    <FormControl
+                      id="company-search-bar"
+                      type="text"
+                      placeholder={message}
+                      inputRef={ref => { this.input = ref; }}
+                    />
+                    )
+                  }
+                </FormattedMessage>
               </FormGroup>
             </form>
           </div>

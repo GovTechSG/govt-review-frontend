@@ -103,8 +103,6 @@ export class VendorListingBox extends Component {
 
   render() {
     const { vendorData } = this.props;
-    console.log(vendorData);
-    console.log(this.props);
     return (
       <Row>
         <Col xs={12} className="vendor-container">

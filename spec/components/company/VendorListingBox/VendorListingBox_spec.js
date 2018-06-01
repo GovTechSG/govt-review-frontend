@@ -89,8 +89,8 @@ describe('VendorListingBox', () => {
 
   describe('renders', () => {
     it('renders a row for each item', () => {
-      const rows = render.find('.vendor-item');
-      chai.expect(rows).to.have.length(4);
+      const rows = render.find('.vendor-item').hostNodes();
+      chai.expect(rows).to.have.length(2);
     });
 
     it('renders industry string', () => {
