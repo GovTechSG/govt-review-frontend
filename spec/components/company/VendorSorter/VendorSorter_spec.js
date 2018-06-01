@@ -15,6 +15,18 @@ describe('VendorSorter', () => {
   });
 
   describe('renders', () => {
+    it('renders search label', () => {
+      const label = render.find('.control-label').text();
+
+      chai.expect(label).to.eq("FIND CONSULTANTS AND VENDORS");
+    });
+
+    it('renders search bar', () => {
+      const searchBar = render.find('#company-search-bar');
+
+      chai.expect(searchBar).to.have.length(2);
+    });
+
     it('renders VendorListingBox', () => {
       const vendorListingBox = render.find('.vendor-listing-box');
 

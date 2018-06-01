@@ -1,10 +1,14 @@
 {
   "sidebarfilter.industry": "Filter by Your Industry",
   "sidebarfilter.grant": "Filter by Your Grant",
+
   "vendorlisting.vendor.has.done": "Has done project for:",
   "vendorlisting.percent.positive": "% Positive",
   "vendorlisting.no.reviews": "No Reviews",
   "vendorlisting.aggregate.count": "{reviews_count} reviews",
+
+  "vendorsorter.find.consultants": "FIND CONSULTANTS AND VENDORS",
+  "vendorsorter.search.company": "Search for a company's nane",
   "vendorsorter.best.ratings": "Best Ratings",
   "vendorsorter.newly.added": "Newly Added",
 

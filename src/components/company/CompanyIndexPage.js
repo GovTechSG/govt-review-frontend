@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+// import { IntlProvider } from 'react-intl';
 import './CompanyIndexPage.scss';
 import SideBarFilter from './SideBarFilter/SideBarFilter';
 import VendorSorter from './VendorSorter/VendorSorter';

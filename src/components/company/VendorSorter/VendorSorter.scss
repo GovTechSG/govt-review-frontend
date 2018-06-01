@@ -1,8 +1,46 @@
 @import '../../../assets/scss/baseStyles.scss';
 
+.form-control{
+  margin: 10px 0px;
+}
+
+.control-label{
+  color: #2d89c9;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px 0px 5px 0px;
+}
 
 .nav-sorter {
-  padding-left: 5px;
+  margin-left: 20px;
+  background-color: transparent;
+}
+
+.nav-sorter>li>a{
+  background-color: transparent;
+  border: 0px solid transparent;
+  padding-left: 0px;
+  color: #666666;
+}
+
+.nav-sorter>li.active>a{
+  background-color: transparent;
+  border: 0px solid transparent;
+  padding-left: 0px;
+  padding-right: 1px;
+  margin-right: 20px;
+  color: #2d89c9;
+  border-bottom: 2px solid #2d89c9;
+}
+
+.nav-sorter>li.active>a:hover{
+  background-color: transparent;
+  border: 0px solid transparent;
+  padding-left: 0px;
+  padding-right: 1px;
+  margin-right: 20px;
+  color: #2d89c9;
+  border-bottom: 2px solid #2d89c9;
 }
 
 .pagination .btn {
