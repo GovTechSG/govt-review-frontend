@@ -22,9 +22,9 @@ describe('VendorSorter', () => {
     });
 
     it('renders search bar', () => {
-      const searchBar = render.find('#company-search-bar');
+      const searchBar = render.find('#company-search-bar').hostNodes();
 
-      chai.expect(searchBar).to.have.length(2);
+      chai.expect(searchBar).to.have.length(1);
     });
 
     it('renders text in search bar', () => {
