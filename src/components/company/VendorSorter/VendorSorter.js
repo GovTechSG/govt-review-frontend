@@ -94,6 +94,7 @@ export default class VendorSorter extends Component {
               itemsCountPerPage={this.state.itemsCountPerPage}
               updatePagination={this.updatePagination}
               searchText={this.state.searchText}
+              industryFilter={this.props.industryFilter}
               className="vendor-listing-box"
             />
           </Col>

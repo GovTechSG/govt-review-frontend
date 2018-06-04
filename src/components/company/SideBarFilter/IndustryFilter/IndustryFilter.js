@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Checkbox } from 'react-bootstrap';
+import { Checkbox, FormGroup } from 'react-bootstrap';
 import { resolve } from 'react-resolver';
-// import API from '../../_utility/Api';
 import './IndustryFIlter.scss';
+import API from '../../../../_utilities/api';
+import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
 
-export class SideBarFilter extends Component {
+export class IndustryFilter extends Component {
   renderChild(data, index) {
     return (
       <li className="industry-category" key={`$industry-box-${index}`}>
-        <Checkbox>
+        <Checkbox onChange={() => this.props.handleFilterChange(data.id)}>
           {data.name}
         </Checkbox>
       </li>
@@ -20,30 +21,17 @@ export class SideBarFilter extends Component {
 
     return (
       <ul className="industry-group">
-        {industryData.map((data, index) => this.renderChild(data, index))}
+        <FormGroup validationState={null}>
+          {industryData.map((data, index) => this.renderChild(data, index))}
+        </FormGroup>
       </ul>
     );
   }
 }
 
 export default resolve('industryData', () => {
-  // const url = '/api/v1/vendor';
-  return [
-    {
-      id: 'AbC123',
-      name: 'Agriculture'
-    },
-    {
-      id: 'AbC123',
-      name: 'Bgriculture'
-    },
-    {
-      id: 'AbC123',
-      name: 'Cgriculture'
-    },
-    {
-      id: 'AbC123',
-      name: 'Dgriculture'
-    }
-  ];
-})(SideBarFilter);
+  const url = `${API_URL_PREFIX}/api/v1/industries`;
+  return API.get({
+    url
+  });
+})(IndustryFilter);
