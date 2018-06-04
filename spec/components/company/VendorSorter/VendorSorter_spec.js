@@ -15,6 +15,24 @@ describe('VendorSorter', () => {
   });
 
   describe('renders', () => {
+    it('renders search label', () => {
+      const label = render.find('.control-label').text();
+
+      chai.expect(label).to.eq('FIND CONSULTANTS AND VENDORS');
+    });
+
+    it('renders search bar', () => {
+      const searchBar = render.find('#company-search-bar').hostNodes();
+
+      chai.expect(searchBar).to.have.length(1);
+    });
+
+    it('renders text in search bar', () => {
+      const searchBar = render.find('#company-search-bar').hostNodes();
+
+      chai.expect(searchBar.prop('placeholder')).to.equal('Search for a company\'s name');
+    });
+
     it('renders VendorListingBox', () => {
       const vendorListingBox = render.find('.vendor-listing-box');
 

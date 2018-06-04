@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, NavItem, Row, Col } from 'react-bootstrap';
+import { Nav, NavItem, Row, Col, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import ReactPaginate from 'react-paginate';
 import VendorListingBox from '../VendorListingBox/VendorListingBox';
@@ -13,10 +13,13 @@ export default class VendorSorter extends Component {
       selectedView: 'best_ratings',
       activePage: 1,
       itemsCountPerPage: 5,
-      totalItemsCount: 1
+      totalItemsCount: 1,
+      searchText: ''
     };
+    this.searchText = React.createRef();
     this.handlePageChange = this.handlePageChange.bind(this);
     this.updatePagination = this.updatePagination.bind(this);
+    this.searchCompany = this.searchCompany.bind(this);
   }
 
   handleSelect(eventKey, event) {
@@ -41,11 +44,38 @@ export default class VendorSorter extends Component {
     }
   }
 
+  searchCompany(e) {
+    e.preventDefault();
+    this.setState({
+      searchText: this.input.value
+    });
+  }
+
   render() {
     return (
       <div>
         <Row>
           <Col sm={12}>
+          <div className="col-xs-12">
+            <form onSubmit={this.searchCompany}>
+              <FormGroup validationState={null}>
+                <ControlLabel>
+                  <FormattedMessage id="vendorsorter.find.consultants" />
+                </ControlLabel>
+                <FormattedMessage id="vendorsorter.search.company">
+                  { message => (
+                    <FormControl
+                      id="company-search-bar"
+                      type="text"
+                      placeholder={message}
+                      inputRef={ref => { this.input = ref; }}
+                    />
+                    )
+                  }
+                </FormattedMessage>
+              </FormGroup>
+            </form>
+          </div>
             <Nav className="nav-sorter" bsStyle="tabs" activeKey={this.state.selectedView} onSelect={(k, event) => this.handleSelect(k, event)}>
               <NavItem eventKey="best_ratings">
                 <FormattedMessage id="vendorsorter.best.ratings" />
@@ -63,6 +93,7 @@ export default class VendorSorter extends Component {
               activePage={this.state.activePage}
               itemsCountPerPage={this.state.itemsCountPerPage}
               updatePagination={this.updatePagination}
+              searchText={this.state.searchText}
               className="vendor-listing-box"
             />
           </Col>
@@ -85,4 +116,3 @@ export default class VendorSorter extends Component {
     );
   }
 }
-
