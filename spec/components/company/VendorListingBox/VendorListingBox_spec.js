@@ -10,74 +10,81 @@ enzyme.configure({ adapter: new Adapter() });
 describe('VendorListingBox', () => {
   let render;
   const selectedView = 'best_ratings';
-  const vendorMockData = [
-    {
-      id: 'AbC123',
-      name: 'Pivotal Software',
-      aggregate_score: 0.5,
-      ratings: 50,
-      reviews_count: 50,
-      positive: 25,
-      neutral: 20,
-      negative: 5,
-      image: {
-        url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
-        thumb: {
-          url: 'http://dogtowndogtraining.com/wp-content/uploads/2012/06/300x300-02.jpg'
-        }
-      },
-      industries: [
-        {
-          id: 'AbC123',
-          name: 'Agriculture'
+  const vendorMockData = {
+    companies: [
+      {
+        id: 'AbC123',
+        name: 'Pivotal Software',
+        aggregate_score: 0.5,
+        ratings: 50,
+        reviews_count: 50,
+        positive: 25,
+        neutral: 20,
+        negative: 5,
+        image: {
+          url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
+          thumb: {
+            url: 'http://dogtowndogtraining.com/wp-content/uploads/2012/06/300x300-02.jpg'
+          }
         },
-        {
-          id: 'DeF123',
-          name: 'Dogiculture'
-        }
-      ],
-      project_industries: [
-        {
-          id: 'AbC123',
-          name: 'Agriculture'
-        },
-        {
-          id: 'AbC123',
-          name: 'Dgriculture'
-        }
-      ]
-    },
-    {
-      id: 'AbC123',
-      name: 'Software Divotal',
-      aggregate_score: 0,
-      reviews_count: 0,
-      positive: 0,
-      neutral: 0,
-      negative: 0,
-      image: {
-        url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
-        thumb: {
-          url: 'http://dogtowndogtraining.com/wp-content/uploads/2012/06/300x300-07.jpg'
-        }
+        industries: [
+          {
+            id: 'AbC123',
+            name: 'Agriculture'
+          },
+          {
+            id: 'DeF123',
+            name: 'Dogiculture'
+          }
+        ],
+        project_industries: [
+          {
+            id: 'AbC123',
+            name: 'Agriculture'
+          },
+          {
+            id: 'AbC123',
+            name: 'Dgriculture'
+          }
+        ]
       },
-      industries: [
-        {
-          id: 'AbC123',
-          name: 'Agriculture'
-        }
-      ],
-      project_industries: [
-        {
-          id: 'AbC123',
-          name: 'Agriculture'
-        }
-      ]
-    }
-  ];
+      {
+        id: 'AbC123',
+        name: 'Software Divotal',
+        aggregate_score: 0,
+        reviews_count: 0,
+        positive: 0,
+        neutral: 0,
+        negative: 0,
+        image: {
+          url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
+          thumb: {
+            url: 'http://dogtowndogtraining.com/wp-content/uploads/2012/06/300x300-07.jpg'
+          }
+        },
+        industries: [
+          {
+            id: 'AbC123',
+            name: 'Agriculture'
+          }
+        ],
+        project_industries: [
+          {
+            id: 'AbC123',
+            name: 'Agriculture'
+          }
+        ]
+      }
+    ],
+    count: 2
+  };
 
   before(() => {
-    render = mountWithIntl(<VendorListingBox selectedView={selectedView} vendorData={vendorMockData} />);
+    render = mountWithIntl(<VendorListingBox
+      selectedView={selectedView}
+      vendorData={vendorMockData}
+      updatePagination={() => {}}
+    />);
   });
 
   describe('renders', () => {

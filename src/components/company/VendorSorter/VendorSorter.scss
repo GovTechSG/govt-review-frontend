@@ -1,5 +1,79 @@
 @import '../../../assets/scss/baseStyles.scss';
 
+
 .nav-sorter {
   padding-left: 5px;
+}
+
+.pagination .btn {
+  color: #5e5e5f;
+  font-weight: 900;
+  font-size: 16px;
+  background-color: transparent;
+  border: 0px solid transparent;
+  text-align: center;
+  margin: 2px;
+  height: 40px;
+  width: 40px;
+  padding: 9px;
+  border-radius: 50%;
+}
+
+.pagination .btn:hover {
+  color: #5e5e5f;
+  background-color: #cccccc;
+}
+
+.pagination {
+  padding-left: 20px;
+}
+
+.pagination .selected .btn{
+  color: #fefefe;
+  background-color: #9a9a9a;
+  display: inline-block;
+}
+
+.pagination .selected .btn:focus{
+  outline:0;
+}
+
+.pagination .btn-break {
+  cursor: default;
+}
+
+.pagination .prev-next {
+  color: #5e5e5f;
+  font-weight: 900;
+  font-size: 16px;
+  margin: 5px 0px 0px 0px;
+  background-color: #f8f8f8;
+  border: 0px solid transparent;
+}
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+  background-color: transparent;
+}
+
+.pagination .prev-next:hover {
+  color: #5e5e5f;
+  background-color: #cccccc;
+  border-radius: 10px;
+}
+
+.pagination .prev-next:focus{
+  color: #5e5e5f;
+  background-color: transparent;
+  outline:0;
+}
+
+.pagination .prev-next.prev::before{
+  content: "〈";
+  font-size: 13.6px;
+  padding-right: 10px;
+}
+
+.pagination .prev-next.next::after{
+  content: "〉";
+  font-size: 13.6px;
+  padding-left: 10px;
 }

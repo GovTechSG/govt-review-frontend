@@ -91,13 +91,23 @@ export class VendorListingBox extends Component {
     );
   }
 
+  componentDidMount() {
+    const { vendorData } = this.props;
+    this.props.updatePagination(vendorData.count);
+  }
+
+  componentDidUpdate() {
+    const { vendorData } = this.props;
+    this.props.updatePagination(vendorData.count);
+  }
+
   render() {
     const { vendorData } = this.props;
 
     return (
       <Row>
         <Col sm={12} className="vendor-container">
-          {vendorData.map((data, index) => this.renderChild(data, index))}
+          {vendorData.companies.map((data, index) => this.renderChild(data, index))}
         </Col>
       </Row>
     );
@@ -109,7 +119,9 @@ export default resolve('vendorData', (props) => {
   return API.get({
     url,
     data: {
-      sort_by: props.selectedView
+      sort_by: props.selectedView,
+      page: props.activePage,
+      per_page: props.itemsCountPerPage
     }
   });
 })(VendorListingBox);
