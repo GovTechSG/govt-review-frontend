@@ -120,7 +120,8 @@ export default resolve('vendorData', (props) => {
     data: {
       sort_by: props.selectedView,
       page: props.activePage,
-      per_page: props.itemsCountPerPage
+      per_page: props.itemsCountPerPage,
+      search_text: props.searchText
     }
   });
 })(VendorListingBox);
