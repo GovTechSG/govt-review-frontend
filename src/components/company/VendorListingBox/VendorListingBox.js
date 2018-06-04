@@ -47,7 +47,7 @@ export class VendorListingBox extends Component {
     const projectString = this.getProjectsString(data.project_industries);
     return (
       <div className="vendor-card" key={`$vendor-box-${index}`}>
-        <Col sm={12}>
+        <Col xs={12}>
           <Row className="vendor-item" key={`vendor-box-item-${index}`}>
             <Col xs={2}>
               <div className="logo-box">
@@ -121,7 +121,11 @@ export default resolve('vendorData', (props) => {
       sort_by: props.selectedView,
       page: props.activePage,
       per_page: props.itemsCountPerPage,
-      search_text: props.searchText
+      search: {
+        search_text: props.searchText,
+        search_object: 'Company',
+        search_attribute: 'name'
+      }
     }
   });
 })(VendorListingBox);
