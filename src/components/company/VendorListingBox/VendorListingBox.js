@@ -115,14 +115,13 @@ export class VendorListingBox extends Component {
 
 export default resolve('vendorData', (props) => {
   const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
-  const searchObject = encodeURI(`{ search_text: ${props.searchText}, search_object: "Company", search_attribute: "name" }`);
   return API.get({
     url,
     data: {
       sort_by: props.selectedView,
       page: props.activePage,
       per_page: props.itemsCountPerPage,
-      search: searchObject
+      search: props.searchText
     }
   });
 })(VendorListingBox);
