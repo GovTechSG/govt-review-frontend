@@ -115,13 +115,6 @@ export class VendorListingBox extends Component {
 
 export default resolve('vendorData', (props) => {
   const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
-
-  let filterUrl = '';
-  props.industryFilter.forEach((id) => {
-    filterUrl += `industry:${id},`;
-  });
-  filterUrl = filterUrl.substr(0, filterUrl.length - 1);
-
   return API.get({
     url,
     data: {
@@ -129,7 +122,7 @@ export default resolve('vendorData', (props) => {
       page: props.activePage,
       per_page: props.itemsCountPerPage,
       search: props.searchText,
-      filter: filterUrl
+      filter: props.filter
     }
   });
 })(VendorListingBox);

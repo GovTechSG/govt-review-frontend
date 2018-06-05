@@ -20,6 +20,7 @@ export default class VendorSorter extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.updatePagination = this.updatePagination.bind(this);
     this.searchCompany = this.searchCompany.bind(this);
+    this.generateFilterString = this.generateFilterString.bind(this);
   }
 
   handleSelect(eventKey, event) {
@@ -51,7 +52,14 @@ export default class VendorSorter extends Component {
     });
   }
 
+  generateFilterString() {
+    let filterUrl = '';
+    for (const id of this.props.industryFilter) filterUrl += `industries:${id},`;
+    return filterUrl.substr(0, filterUrl.length - 1);
+  }
+
   render() {
+    const filter = this.generateFilterString();
     return (
       <div>
         <Row>
@@ -94,7 +102,7 @@ export default class VendorSorter extends Component {
               itemsCountPerPage={this.state.itemsCountPerPage}
               updatePagination={this.updatePagination}
               searchText={this.state.searchText}
-              industryFilter={this.props.industryFilter}
+              filter={filter}
               className="vendor-listing-box"
             />
           </Col>

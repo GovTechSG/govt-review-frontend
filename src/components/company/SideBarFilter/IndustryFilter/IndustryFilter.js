@@ -18,7 +18,6 @@ export class IndustryFilter extends Component {
 
   render() {
     const { industryData } = this.props;
-
     return (
       <ul className="industry-group">
         <FormGroup validationState={null}>
