@@ -13,7 +13,7 @@ export default class VendorSorter extends Component {
       selectedView: 'best_ratings',
       activePage: 1,
       itemsCountPerPage: 5,
-      totalItemsCount: 1,
+      totalItemsCount: 0,
       searchText: ''
     };
     this.searchText = React.createRef();
@@ -21,6 +21,7 @@ export default class VendorSorter extends Component {
     this.updatePagination = this.updatePagination.bind(this);
     this.searchCompany = this.searchCompany.bind(this);
     this.generateFilterString = this.generateFilterString.bind(this);
+    this.getEndCount = this.getEndCount.bind(this);
   }
 
   handleSelect(eventKey, event) {
@@ -35,6 +36,7 @@ export default class VendorSorter extends Component {
     this.setState({
       activePage: pageNumber.selected + 1
     });
+    window.scrollTo(0, 0);
   }
 
   updatePagination(itemsCount) {
@@ -56,6 +58,10 @@ export default class VendorSorter extends Component {
     let filterUrl = '';
     for (const id of this.props.industryFilter) filterUrl += `industries:${id},`;
     return filterUrl.substr(0, filterUrl.length - 1);
+  }
+
+  getEndCount() {
+    return Math.min(this.state.itemsCountPerPage * this.state.activePage, this.state.totalItemsCount);
   }
 
   render() {
@@ -91,6 +97,18 @@ export default class VendorSorter extends Component {
               <NavItem eventKey="newly_added" id="newly_added">
                 <FormattedMessage id="vendorsorter.newly.added" />
               </NavItem>
+              <div className="total-items">
+                {this.state.totalItemsCount !== 0 &&
+                <FormattedMessage id="vendorsorter.total.items"
+                  values={
+                    {
+                      startCount: (this.state.itemsCountPerPage * (this.state.activePage - 1) + 1),
+                      endCount: (this.getEndCount()),
+                      totalItemsCount: this.state.totalItemsCount
+                    }
+                  }
+                />}
+              </div>
             </Nav>
           </Col>
         </Row>
