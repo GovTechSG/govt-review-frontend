@@ -11,6 +11,7 @@
   "vendorsorter.search.company": "Search for a company's name",
   "vendorsorter.best.ratings": "Best Ratings",
   "vendorsorter.newly.added": "Newly Added",
+  "vendorsorter.total.items": "{startCount} - {endCount} of {totalItemsCount} results",
 
   "header.govt.feedback": "Contact Us/Feedback",
   "header.govt.aboutus": "About Us",

@@ -44,6 +44,10 @@ describe('VendorSorter', () => {
       chai.expect(render.state(['selectedView'])).to.equal('best_ratings');
     });
 
+    it('renders page info', () => {
+      chai.expect(render.find('.total-items').text()).to.equal('')
+    });
+
     it('renders Pagination', () => {
       const pagination = render.find('.pagination');
 
