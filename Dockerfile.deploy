@@ -20,8 +20,6 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
     rm -f /tmp/jq-linux64.asc && \
     rm -f /tmp/jq-linux64
 
-EXPOSE 5000
-
 COPY package*.json ./
 RUN npm install
 

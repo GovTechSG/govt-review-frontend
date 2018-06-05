@@ -82,7 +82,9 @@ export class VendorListingBox extends Component {
           </Row>
           <Row className="vendor-has-done-row">
             <div className="vendor-has-done-title">
-              <FormattedMessage id="vendorlisting.vendor.has.done" />
+              { data.project_industries.length !== 0 &&
+                <FormattedMessage id="vendorlisting.vendor.has.done" />
+              }
             </div>
             <div className="vendor-has-done">{projectString}</div>
           </Row>

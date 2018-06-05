@@ -13,8 +13,8 @@ class App extends Component {
         <div className="common-main">
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={CompanyIndexPage} />
-            <Route exact path="/companies" component={CompanyIndexPage} />
+            <Route exact path="/portal" component={CompanyIndexPage} />
+            <Route exact path="/portal/companies" component={CompanyIndexPage} />
           </Switch>
         </BrowserRouter>
         </div>

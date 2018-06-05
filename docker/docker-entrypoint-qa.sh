@@ -10,4 +10,4 @@ echo "REACT_APP_BACKEND_ENV=qa" > .env.production
 echo "HOST=qa-review-api.gds-gov.tech" >> .env.production
 
 npm run build --production
-serve -s build
+serve -l 5000 -s build
