@@ -84,6 +84,7 @@ describe('VendorListingBox', () => {
       selectedView={selectedView}
       vendorData={vendorMockData}
       updatePagination={() => {}}
+      filter=""
     />);
   });
 

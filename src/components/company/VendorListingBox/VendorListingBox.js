@@ -123,7 +123,8 @@ export default resolve('vendorData', (props) => {
       sort_by: props.selectedView,
       page: props.activePage,
       per_page: props.itemsCountPerPage,
-      search: props.searchText
+      search: props.searchText,
+      filter: props.filter
     }
   });
 })(VendorListingBox);

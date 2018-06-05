@@ -8,6 +8,15 @@ import GrantFilter from './GrantFilter/GrantFilter';
 
 
 export default class SideBarFilter extends Component {
+  constructor(props) {
+    super(props);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+  }
+
+  handleFilterChange(industryId) {
+    this.props.handleFilterChange(industryId);
+  }
+
   render() {
     return (
       <Row className="sidebar">
@@ -15,7 +24,7 @@ export default class SideBarFilter extends Component {
           <div className="industry-group-title">
             <FormattedMessage id="sidebarfilter.industry" />
           </div>
-          <IndustryFilter />
+          <IndustryFilter handleFilterChange={this.handleFilterChange} />
           <br />
           <div className="grant-group-title">
             <FormattedMessage id="sidebarfilter.grant" />
