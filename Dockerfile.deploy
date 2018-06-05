@@ -4,7 +4,7 @@ FROM node:8
 LABEL maintainer="wynn987@gmail.com"
 
 RUN npm install -g serve
-EXPOSE 5000
+EXPOSE 3000
 
 # For JQ
 ENV JQ_VERSION='1.5'
@@ -19,8 +19,6 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
     rm -f /tmp/jq-release.key && \
     rm -f /tmp/jq-linux64.asc && \
     rm -f /tmp/jq-linux64
-
-EXPOSE 5000
 
 COPY package*.json ./
 RUN npm install
