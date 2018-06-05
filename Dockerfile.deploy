@@ -4,7 +4,7 @@ FROM node:8
 LABEL maintainer="wynn987@gmail.com"
 
 RUN npm install -g serve
-EXPOSE 3000
+EXPOSE 5000
 
 # For JQ
 ENV JQ_VERSION='1.5'

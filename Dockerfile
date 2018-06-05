@@ -67,7 +67,7 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
 
 # For Serve
 RUN npm install -g serve
-EXPOSE 3000
+EXPOSE 5000
 
 COPY package*.json ./
 RUN npm install
