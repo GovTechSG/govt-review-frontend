@@ -6,6 +6,7 @@
   "vendorlisting.percent.positive": "% Positive",
   "vendorlisting.no.reviews": "No Reviews",
   "vendorlisting.aggregate.count": "{reviews_count} reviews",
+  "vendorlisting.no.results.found": "No results found",
 
   "vendorsorter.find.consultants": "FIND CONSULTANTS AND VENDORS",
   "vendorsorter.search.company": "Search for a company's name",

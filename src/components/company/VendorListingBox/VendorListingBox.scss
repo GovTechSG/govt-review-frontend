@@ -18,12 +18,16 @@ $borderStyle: 2px dotted color($color-landing-secnavi shade(5%));
 
 $outline-blue: color($color-brand-friendly tint(20%));
 
-.vendor-card{
+.vendor-card {
   overflow: hidden;
   background: #fff;
   padding: 10px;
   box-shadow: 0 1px 2px #aaa;
   margin: 10px 20px;
+}
+
+.no-results-found {
+  padding: 20px 0 0 20px;
 }
 
 .vendor-name {
@@ -43,7 +47,7 @@ $outline-blue: color($color-brand-friendly tint(20%));
 }
 
 .vendor-has-done-row.row {
-  margin: 0px 0px;
+  margin: 0 0;
   font-size: 14px;
 }
 
@@ -86,12 +90,12 @@ $outline-blue: color($color-brand-friendly tint(20%));
     border: 1px solid #ddd;
   }
 }
-.progress{
+.progress {
   height: 5px;
-  border-radius: 1px;  
+  border-radius: 1px;
 }
 
-.progress-bar{
+.progress-bar {
   box-shadow: none;
 }
 
@@ -112,7 +116,7 @@ $outline-blue: color($color-brand-friendly tint(20%));
   .logo-box {
     max-width: 40px;
     min-width: 30px;
-  } 
+  }
 }
 
 @media (max-width: 480px) {
@@ -126,17 +130,17 @@ $outline-blue: color($color-brand-friendly tint(20%));
   }
 
   .positivity {
-    font-size:13px;
+    font-size: 13px;
   }
 
   .aggregate-count {
-    font-size:13px;
+    font-size: 13px;
   }
 
   .logo-box {
     max-width: 40px;
     min-width: 30px;
-  } 
+  }
 }
 
 @media (min-width: 481px) and (max-width:768px) {
