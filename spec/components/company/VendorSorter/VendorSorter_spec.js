@@ -45,7 +45,7 @@ describe('VendorSorter', () => {
     });
 
     it('renders page info', () => {
-      chai.expect(render.find('.total-items').text()).to.equal('')
+      chai.expect(render.find('.total-items').text()).to.equal('');
     });
 
     it('renders Pagination', () => {

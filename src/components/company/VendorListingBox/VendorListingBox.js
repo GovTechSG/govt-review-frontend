@@ -105,6 +105,18 @@ export class VendorListingBox extends Component {
 
   render() {
     const { vendorData } = this.props;
+    if (vendorData.companies === undefined ||
+        vendorData.companies.length === 0) {
+      return (
+        <Row>
+          <Col xs={12} className="vendor-container">
+            <p className="no-results-found" id="no-results-found">
+              <FormattedMessage id="vendorlisting.no.results.found" />
+            </p>
+          </Col>
+        </Row>
+      );
+    }
     return (
       <Row>
         <Col xs={12} className="vendor-container">
