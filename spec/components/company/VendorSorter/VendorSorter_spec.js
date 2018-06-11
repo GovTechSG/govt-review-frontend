@@ -49,7 +49,7 @@ describe('VendorSorter', () => {
     });
 
     it('renders Pagination', () => {
-      const pagination = render.find('.pagination');
+      const pagination = render.find('#pagination');
 
       chai.expect(pagination).to.have.length(1);
     });

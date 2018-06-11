@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Nav, NavItem, Row, Col, FormControl, FormGroup, ControlLabel, InputGroup, Glyphicon } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import ReactPaginate from 'react-paginate';
 import VendorListingBox from '../VendorListingBox/VendorListingBox';
 // import API from '../../../_utilities/api';
 import './VendorSorter.scss';
+
+let currentItemsCount = 0;
 
 export default class VendorSorter extends Component {
   constructor(props) {
@@ -13,10 +16,10 @@ export default class VendorSorter extends Component {
       selectedView: 'best_ratings',
       activePage: 1,
       itemsCountPerPage: 5,
-      totalItemsCount: 0,
       searchText: ''
     };
     this.searchText = React.createRef();
+    this.renderPagination = this.renderPagination.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.updatePagination = this.updatePagination.bind(this);
     this.searchCompany = this.searchCompany.bind(this);
@@ -26,33 +29,67 @@ export default class VendorSorter extends Component {
 
   handleSelect(eventKey, event) {
     event.preventDefault();
-    this.setState({
-      selectedView: eventKey,
-      activePage: 1
-    });
+    this.setState(
+      {
+        selectedView: eventKey,
+        activePage: 1
+      },
+      this.renderPagination
+    );
   }
 
   handlePageChange(pageNumber) {
-    this.setState({
-      activePage: pageNumber.selected + 1
-    });
+    this.setState(
+      {
+        activePage: pageNumber.selected + 1
+      },
+      this.renderPagination
+    );
     window.scrollTo(0, 0);
   }
 
   updatePagination(itemsCount) {
-    if (itemsCount !== this.state.totalItemsCount) {
-      this.setState({
-        totalItemsCount: itemsCount
-      });
+    if (itemsCount !== currentItemsCount) {
+      currentItemsCount = itemsCount;
+      this.renderPagination();
+    }
+  }
+
+  renderPagination() {
+    if (currentItemsCount === 0) {
+      ReactDOM.render(<div />, document.getElementById('pagination'));
+      ReactDOM.render(<div />, document.getElementById('total-items'));
+    } else {
+      const element = (<ReactPaginate
+        pageCount={Math.ceil(currentItemsCount / this.state.itemsCountPerPage)}
+        forcePage={this.state.activePage - 1}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        previousLabel="PREV"
+        nextLabel="NEXT"
+        breakLabel={<a className="btn btn-break">...</a>}
+        onPageChange={this.handlePageChange}
+        containerClassName="pagination"
+        pageLinkClassName="btn btn-default"
+        previousLinkClassName="prev-next prev"
+        nextLinkClassName="prev-next next"
+      />);
+      ReactDOM.render(element, document.getElementById('pagination'));
+
+      const text = <div>{this.getStartCount()} - {this.getEndCount()} of {currentItemsCount} results</div>;
+      ReactDOM.render(text, document.getElementById('total-items'));
     }
   }
 
   searchCompany(e) {
     e.preventDefault();
-    this.setState({
-      searchText: this.input.value,
-      activePage: 1
-    });
+    this.setState(
+      {
+        searchText: this.input.value,
+        activePage: 1
+      },
+      this.renderPagination
+    );
   }
 
   generateFilterString() {
@@ -61,13 +98,16 @@ export default class VendorSorter extends Component {
     return filterUrl.substr(0, filterUrl.length - 1);
   }
 
+  getStartCount() {
+    return this.state.itemsCountPerPage * (this.state.activePage - 1) + 1;
+  }
+
   getEndCount() {
-    return Math.min(this.state.itemsCountPerPage * this.state.activePage, this.state.totalItemsCount);
+    return Math.min(this.state.itemsCountPerPage * this.state.activePage, currentItemsCount);
   }
 
   render() {
     const filter = this.generateFilterString();
-    console.log('vendorsorter render');
     return (
       <div>
         <Row>
@@ -97,28 +137,18 @@ export default class VendorSorter extends Component {
               </FormGroup>
             </form>
           </div>
-            <Nav className="nav-sorter" bsStyle="tabs" activeKey={this.state.selectedView} onSelect={(k, event) => this.handleSelect(k, event)}>
+            <Nav className="nav-sorter" pullLeft bsStyle="tabs" activeKey={this.state.selectedView} onSelect={(k, event) => this.handleSelect(k, event)}>
               <NavItem eventKey="best_ratings">
                 <FormattedMessage id="vendorsorter.best.ratings" />
               </NavItem>
               <NavItem eventKey="newly_added" id="newly_added">
                 <FormattedMessage id="vendorsorter.newly.added" />
               </NavItem>
-              <div className="total-items">
-                {this.state.totalItemsCount !== 0 &&
-                <FormattedMessage id="vendorsorter.total.items"
-                  values={
-                    {
-                      startCount: (this.state.itemsCountPerPage * (this.state.activePage - 1) + 1),
-                      endCount: (this.getEndCount()),
-                      totalItemsCount: this.state.totalItemsCount
-                    }
-                  }
-                />}
-              </div>
             </Nav>
+            <div className="total-items" id="total-items"></div>
           </Col>
         </Row>
+        <div className="border"></div>
         <Row>
           <Col sm={12}>
             <VendorListingBox
@@ -132,23 +162,7 @@ export default class VendorSorter extends Component {
             />
           </Col>
         </Row>
-        {
-          this.state.totalItemsCount !== 0 &&
-          <ReactPaginate
-            pageCount={Math.ceil(this.state.totalItemsCount / this.state.itemsCountPerPage)}
-            forcePage={this.state.activePage - 1}
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={1}
-            previousLabel="PREV"
-            nextLabel="NEXT"
-            breakLabel={<a className="btn btn-break">...</a>}
-            onPageChange={this.handlePageChange}
-            containerClassName="pagination"
-            pageLinkClassName="btn btn-default"
-            previousLinkClassName="prev-next prev"
-            nextLinkClassName="prev-next next"
-          />
-        }
+        <div id="pagination"></div>
       </div>
     );
   }

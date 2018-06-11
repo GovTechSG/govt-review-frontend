@@ -1,22 +1,27 @@
 @import '../../../assets/scss/baseStyles.scss';
 
-.form-group{
+.border {
+  border-bottom: 1px solid #dddddd;
+  margin: 0px 20px;
+}
+
+.form-group {
   margin: 10px 5px;
 }
 
-.form-control{
+.form-control {
   border-right: 0;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
 
-.input-group-addon{
+.input-group-addon {
   color: #bababa;
   background-color: #ffffff;
   border-left: 0;
 }
 
-.control-label{
+.control-label {
   color: #2d89c9;
   font-size: 25px;
   font-weight: bold;
@@ -27,9 +32,10 @@
   margin-left: 20px;
   margin-right: 19px;
   background-color: transparent;
+  border-bottom: none;
 }
 
-.nav-sorter>li>a{
+.nav-sorter>li>a {
   background-color: transparent;
   border: 0px solid transparent;
   padding-left: 0px;
@@ -38,27 +44,27 @@
   color: #666666;
 }
 
-.nav-sorter>li>a:hover{
+.nav-sorter>li>a:hover {
   background-color: transparent;
   border: 0px solid transparent;
   border-bottom: 2px solid #2d89c9;
 }
 
-.nav-sorter>li.active>a{
-  background-color: transparent;
-  border: 0px solid transparent;
-  color: #2d89c9;
-  border-bottom: 2px solid #2d89c9;
-}
-
-.nav-sorter>li.active>a:focus{
+.nav-sorter>li.active>a {
   background-color: transparent;
   border: 0px solid transparent;
   color: #2d89c9;
   border-bottom: 2px solid #2d89c9;
 }
 
-.nav-sorter>li.active>a:hover{
+.nav-sorter>li.active>a:focus {
+  background-color: transparent;
+  border: 0px solid transparent;
+  color: #2d89c9;
+  border-bottom: 2px solid #2d89c9;
+}
+
+.nav-sorter>li.active>a:hover {
   background-color: transparent;
   border: 0px solid transparent;
   padding-left: 0px;
@@ -67,10 +73,11 @@
   border-bottom: 2px solid #2d89c9;
 }
 
-.total-items{
+.total-items {
   float: right;
   padding: 10px 15px;
   color: #666666;
+  margin-right: 5px;
 }
 
 .pagination .btn {
@@ -96,13 +103,13 @@
   padding-left: 20px;
 }
 
-.pagination .selected .btn{
+.pagination .selected .btn {
   color: #fefefe;
   background-color: #9a9a9a;
   display: inline-block;
 }
 
-.pagination .selected .btn:focus{
+.pagination .selected .btn:focus {
   outline:0;
 }
 
@@ -128,19 +135,19 @@
   border-radius: 10px;
 }
 
-.pagination .prev-next:focus{
+.pagination .prev-next:focus {
   color: #5e5e5f;
   background-color: transparent;
   outline:0;
 }
 
-.pagination .prev-next.prev::before{
+.pagination .prev-next.prev::before {
   content: "〈";
   font-size: 13.6px;
   padding-right: 10px;
 }
 
-.pagination .prev-next.next::after{
+.pagination .prev-next.next::after {
   content: "〉";
   font-size: 13.6px;
   padding-left: 10px;

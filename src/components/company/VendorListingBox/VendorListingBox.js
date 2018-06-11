@@ -128,7 +128,7 @@ export class VendorListingBox extends Component {
 }
 
 export default resolve('vendorData', (props) => {
-  const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`; 
+  const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
   return API.get({
     url,
     data: {
