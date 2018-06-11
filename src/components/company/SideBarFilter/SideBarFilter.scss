@@ -1,5 +1,9 @@
 @import '../../../assets/scss/baseStyles.scss';
 
+.sidebar.row {
+  height: 100vmax;
+}
+
 @media only screen and (min-width: $narrow-breakpoint) {
   .sidebar {
     width: 290px;

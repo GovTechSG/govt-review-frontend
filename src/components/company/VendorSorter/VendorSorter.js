@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, NavItem, Row, Col, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Nav, NavItem, Row, Col, FormControl, FormGroup, ControlLabel, InputGroup, Glyphicon } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import ReactPaginate from 'react-paginate';
 import VendorListingBox from '../VendorListingBox/VendorListingBox';
@@ -50,7 +50,8 @@ export default class VendorSorter extends Component {
   searchCompany(e) {
     e.preventDefault();
     this.setState({
-      searchText: this.input.value
+      searchText: this.input.value,
+      activePage: 1
     });
   }
 
@@ -66,6 +67,7 @@ export default class VendorSorter extends Component {
 
   render() {
     const filter = this.generateFilterString();
+    console.log('vendorsorter render');
     return (
       <div>
         <Row>
@@ -76,17 +78,22 @@ export default class VendorSorter extends Component {
                 <ControlLabel>
                   <FormattedMessage id="vendorsorter.find.consultants" />
                 </ControlLabel>
-                <FormattedMessage id="vendorsorter.search.company">
-                  { message => (
-                    <FormControl
-                      id="company-search-bar"
-                      type="text"
-                      placeholder={message}
-                      inputRef={ref => { this.input = ref; }}
-                    />
-                    )
-                  }
-                </FormattedMessage>
+                <InputGroup>
+                  <FormattedMessage id="vendorsorter.search.company">
+                    { message => (
+                      <FormControl
+                        id="company-search-bar"
+                        type="text"
+                        placeholder={message}
+                        inputRef={ref => { this.input = ref; }}
+                      />
+                      )
+                    }
+                  </FormattedMessage>
+                  <InputGroup.Addon>
+                    <Glyphicon glyph="search" />
+                  </InputGroup.Addon>
+                </InputGroup>
               </FormGroup>
             </form>
           </div>
@@ -125,20 +132,23 @@ export default class VendorSorter extends Component {
             />
           </Col>
         </Row>
-        <ReactPaginate
-          pageCount={Math.ceil(this.state.totalItemsCount / this.state.itemsCountPerPage)}
-          forcePage={this.state.activePage - 1}
-          pageRangeDisplayed={3}
-          marginPagesDisplayed={1}
-          previousLabel="PREV"
-          nextLabel="NEXT"
-          breakLabel={<a className="btn btn-break">...</a>}
-          onPageChange={this.handlePageChange}
-          containerClassName="pagination"
-          pageLinkClassName="btn btn-default"
-          previousLinkClassName="prev-next prev"
-          nextLinkClassName="prev-next next"
-        />
+        {
+          this.state.totalItemsCount !== 0 &&
+          <ReactPaginate
+            pageCount={Math.ceil(this.state.totalItemsCount / this.state.itemsCountPerPage)}
+            forcePage={this.state.activePage - 1}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={1}
+            previousLabel="PREV"
+            nextLabel="NEXT"
+            breakLabel={<a className="btn btn-break">...</a>}
+            onPageChange={this.handlePageChange}
+            containerClassName="pagination"
+            pageLinkClassName="btn btn-default"
+            previousLinkClassName="prev-next prev"
+            nextLinkClassName="prev-next next"
+          />
+        }
       </div>
     );
   }
