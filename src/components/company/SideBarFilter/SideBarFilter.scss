@@ -1,14 +1,13 @@
 @import '../../../assets/scss/baseStyles.scss';
 
-@media (min-width: 801px){
-  .sidebar.row {
-    height: 100vmax;
-  }
+.sidebar.row {
+  height: 100vmax;
 }
 
 @media (max-width: 990px){
   .sidebar.row{
     padding-top: 60px;
+    height: 100%;
   }
 }
 
