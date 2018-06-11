@@ -9,7 +9,7 @@ export class IndustryFilter extends Component {
   renderChild(data, index) {
     return (
       <li className="industry-category" key={`$industry-box-${index}`}>
-        <Checkbox onChange={() => this.props.handleFilterChange(data.id)}>
+        <Checkbox title={(data.name)} onChange={() => this.props.handleFilterChange(data.id)}>
           {data.name}
         </Checkbox>
       </li>
