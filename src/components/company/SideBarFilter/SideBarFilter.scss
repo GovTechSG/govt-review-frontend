@@ -1,7 +1,15 @@
 @import '../../../assets/scss/baseStyles.scss';
 
-.sidebar.row {
-  height: 100vmax;
+@media (min-width: 801px){
+  .sidebar.row {
+    height: 100vmax;
+  }
+}
+
+@media (max-width: 990px){
+  .sidebar.row{
+    padding-top: 60px;
+  }
 }
 
 @media only screen and (min-width: $narrow-breakpoint) {
