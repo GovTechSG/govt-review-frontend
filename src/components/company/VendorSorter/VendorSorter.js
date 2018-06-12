@@ -95,6 +95,7 @@ export default class VendorSorter extends Component {
   generateFilterString() {
     let filterUrl = '';
     for (const id of this.props.industryFilter) filterUrl += `industries:${id},`;
+    for (const id of this.props.grantFilter) filterUrl += `grants:${id},`;
     return filterUrl.substr(0, filterUrl.length - 1);
   }
 

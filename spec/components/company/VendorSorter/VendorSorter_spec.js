@@ -10,9 +10,10 @@ enzyme.configure({ adapter: new Adapter() });
 describe('VendorSorter', () => {
   let render;
   const industryFilter = new Set();
+  const grantFilter = new Set();
 
   before(() => {
-    render = mountWithIntl(<VendorSorter industryFilter={industryFilter} />);
+    render = mountWithIntl(<VendorSorter industryFilter={industryFilter} grantFilter={grantFilter} />);
   });
 
   describe('renders', () => {
