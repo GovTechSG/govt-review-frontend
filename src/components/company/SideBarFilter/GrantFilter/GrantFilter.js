@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Checkbox } from 'react-bootstrap';
+import { Checkbox, FormGroup } from 'react-bootstrap';
 import { resolve } from 'react-resolver';
-// import API from '../../_utility/Api';
 import './GrantFIlter.scss';
+import API from '../../../../_utilities/api';
+import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
 
-export class SideBarFilter extends Component {
+export class GrantFilter extends Component {
   renderChild(data, index) {
     return (
       <li className="grant-category" key={`$grant-box-${index}`}>
-        <Checkbox>
+        <Checkbox title={(data.name)} onChange={() => this.props.handleFilterChange(data.id)}>
           {data.name}
         </Checkbox>
       </li>
@@ -20,30 +21,17 @@ export class SideBarFilter extends Component {
 
     return (
       <ul className="grant-group">
-        {grantData.map((data, index) => this.renderChild(data, index))}
+        <FormGroup validationState={null}>
+          {grantData.map((data, index) => this.renderChild(data, index))}
+        </FormGroup>
       </ul>
     );
   }
 }
 
 export default resolve('grantData', () => {
-  // const url = '/api/v1/vendor';
-  return [
-    {
-      id: 'AbC123',
-      name: 'Agriculture'
-    },
-    {
-      id: 'AbC123',
-      name: 'Bgriculture'
-    },
-    {
-      id: 'AbC123',
-      name: 'Cgriculture'
-    },
-    {
-      id: 'AbC123',
-      name: 'Dgriculture'
-    }
-  ];
-})(SideBarFilter);
+  const url = `${API_URL_PREFIX}/api/v1/grants`;
+  return API.get({
+    url
+  });
+})(GrantFilter);

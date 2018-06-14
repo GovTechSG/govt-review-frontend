@@ -4,7 +4,6 @@ import { Nav, NavItem, Row, Col, FormControl, FormGroup, ControlLabel, InputGrou
 import { FormattedMessage } from 'react-intl';
 import ReactPaginate from 'react-paginate';
 import VendorListingBox from '../VendorListingBox/VendorListingBox';
-// import API from '../../../_utilities/api';
 import './VendorSorter.scss';
 
 let currentItemsCount = 0;
@@ -16,35 +15,29 @@ export default class VendorSorter extends Component {
       selectedView: 'best_ratings',
       activePage: 1,
       itemsCountPerPage: 5,
-      searchText: ''
+      searchText: '',
+      filterUrl: this.props.filterUrl
     };
     this.searchText = React.createRef();
     this.renderPagination = this.renderPagination.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.updatePagination = this.updatePagination.bind(this);
     this.searchCompany = this.searchCompany.bind(this);
-    this.generateFilterString = this.generateFilterString.bind(this);
     this.getEndCount = this.getEndCount.bind(this);
   }
 
   handleSelect(eventKey, event) {
     event.preventDefault();
-    this.setState(
-      {
-        selectedView: eventKey,
-        activePage: 1
-      },
-      this.renderPagination
-    );
+    this.setState({
+      selectedView: eventKey,
+      activePage: 1
+    });
   }
 
   handlePageChange(pageNumber) {
-    this.setState(
-      {
-        activePage: pageNumber.selected + 1
-      },
-      this.renderPagination
-    );
+    this.setState({
+      activePage: pageNumber.selected + 1
+    });
     window.scrollTo(0, 0);
   }
 
@@ -83,19 +76,14 @@ export default class VendorSorter extends Component {
 
   searchCompany(e) {
     e.preventDefault();
-    this.setState(
-      {
-        searchText: this.input.value,
-        activePage: 1
-      },
-      this.renderPagination
-    );
+    this.setState({
+      searchText: this.input.value,
+      activePage: 1
+    });
   }
 
-  generateFilterString() {
-    let filterUrl = '';
-    for (const id of this.props.industryFilter) filterUrl += `industries:${id},`;
-    return filterUrl.substr(0, filterUrl.length - 1);
+  componentDidUpdate() {
+    this.renderPagination();
   }
 
   getStartCount() {
@@ -106,8 +94,19 @@ export default class VendorSorter extends Component {
     return Math.min(this.state.itemsCountPerPage * this.state.activePage, currentItemsCount);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.filterUrl !== state.filterUrl) {
+      return {
+        filterUrl: props.filterUrl,
+        activePage: 1
+      };
+    }
+
+    // No state update necessary
+    return null;
+  }
+
   render() {
-    const filter = this.generateFilterString();
     return (
       <div>
         <Row>
@@ -157,7 +156,7 @@ export default class VendorSorter extends Component {
               itemsCountPerPage={this.state.itemsCountPerPage}
               updatePagination={this.updatePagination}
               searchText={this.state.searchText}
-              filter={filter}
+              filter={this.state.filterUrl}
               className="vendor-listing-box"
             />
           </Col>
