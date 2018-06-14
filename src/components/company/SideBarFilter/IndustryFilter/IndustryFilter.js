@@ -31,6 +31,9 @@ export class IndustryFilter extends Component {
 export default resolve('industryData', () => {
   const url = `${API_URL_PREFIX}/api/v1/industries`;
   return API.get({
-    url
+    url,
+    data: {
+      page: 'all'
+    }
   });
 })(IndustryFilter);

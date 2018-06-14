@@ -2,10 +2,14 @@
 
 $borderStyle: 2px dotted color($color-landing-secnavi shade(5%));
 
+.page-load-spinner {
+  text-align: center;
+  padding-top: 20px;
+}
+
 .vendor-item {
   padding: 5px 0;
 }
-
 
 .vendor-header {
   margin-bottom: 30px;

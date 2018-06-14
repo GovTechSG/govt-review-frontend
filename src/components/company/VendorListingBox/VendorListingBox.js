@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import { Row, Col, ProgressBar } from 'react-bootstrap';
-import { resolve } from 'react-resolver';
+// import { resolve } from 'react-resolver';
 import { FormattedMessage } from 'react-intl';
 import API from '../../../_utilities/api';
 import './VendorListingBox.scss';
 import { API_URL_PREFIX } from '../../../_utilities/api_url_prefix';
+import PageLoadSpinner from '../../animation/PageLoadSpinner';
 
 
-export class VendorListingBox extends Component {
+export default class VendorListingBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      vendorData: null,
+      selectedView: this.props.selectedView,
+      activePage: this.props.activePage,
+      itemsCountPerPage: this.props.itemsCountPerPage,
+      searchText: this.props.searchText,
+      filter: this.props.filter
+    };
+  }
+
   getIndustryString(industriesArray) {
     const len = industriesArray.length;
 
@@ -40,6 +53,67 @@ export class VendorListingBox extends Component {
       }
     }
     return projectString;
+  }
+
+  componentDidMount() {
+    this._asyncRequest = this._loadAsyncData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.selectedView !== prevProps.selectedView ||
+      this.props.activePage !== prevProps.activePage ||
+      this.props.itemsCountPerPage !== prevProps.itemsCountPerPage ||
+      this.props.searchText !== prevProps.searchText ||
+      this.props.filter !== prevProps.filter
+    ) {
+      this._asyncRequest = this._loadAsyncData();
+    }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (
+      props.selectedView === state.selectedView &&
+      props.activePage === state.activePage &&
+      props.itemsCountPerPage === state.itemsCountPerPage &&
+      props.searchText === state.searchText &&
+      props.filter === state.filter
+    ) {
+      return null;
+    }
+    return {
+      vendorData: null,
+      selectedView: props.selectedView,
+      activePage: props.activePage,
+      itemsCountPerPage: props.itemsCountPerPage,
+      searchText: props.searchText,
+      filter: props.filter
+    };
+  }
+
+  componentWillUnmount() {
+    if (this._asyncRequest) {
+      this._asyncRequest.cancel();
+    }
+  }
+
+  _loadAsyncData() {
+    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
+    return API.get({
+      url,
+      data: {
+        sort_by: this.state.selectedView,
+        page: this.state.activePage,
+        per_page: this.state.itemsCountPerPage,
+        search: this.state.searchText,
+        filter: this.state.filter
+      }
+    })
+      .then(vendorData => {
+        this._asyncRequest = null;
+        this.setState({ vendorData });
+        this.props.updatePagination(vendorData.count);
+      });
   }
 
   renderChild(data, index) {
@@ -93,20 +167,16 @@ export class VendorListingBox extends Component {
     );
   }
 
-  componentDidMount() {
-    const { vendorData } = this.props;
-    this.props.updatePagination(vendorData.count);
-  }
-
-  componentDidUpdate() {
-    const { vendorData } = this.props;
-    this.props.updatePagination(vendorData.count);
-  }
-
   render() {
-    const { vendorData } = this.props;
-    if (vendorData.companies === undefined ||
-        vendorData.companies.length === 0) {
+    const { vendorData } = this.state;
+    if (vendorData === null) {
+      return (
+        <div className="page-load-spinner">
+          <PageLoadSpinner />
+        </div>
+      );
+    }
+    if (vendorData.companies.length === 0) {
       return (
         <Row>
           <Col xs={12} className="vendor-container">
@@ -126,17 +196,3 @@ export class VendorListingBox extends Component {
     );
   }
 }
-
-export default resolve('vendorData', (props) => {
-  const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
-  return API.get({
-    url,
-    data: {
-      sort_by: props.selectedView,
-      page: props.activePage,
-      per_page: props.itemsCountPerPage,
-      search: props.searchText,
-      filter: props.filter
-    }
-  });
-})(VendorListingBox);

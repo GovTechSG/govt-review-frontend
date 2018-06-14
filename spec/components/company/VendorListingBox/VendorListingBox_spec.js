@@ -3,13 +3,12 @@ import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import { mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
-import { VendorListingBox } from '../../../../src/components/company/VendorListingBox/VendorListingBox';
+import VendorListingBox from '../../../../src/components/company/VendorListingBox/VendorListingBox';
 
 enzyme.configure({ adapter: new Adapter() });
 
 describe('VendorListingBox', () => {
   let render;
-  const selectedView = 'best_ratings';
   const vendorMockData = {
     companies: [
       {
@@ -81,11 +80,11 @@ describe('VendorListingBox', () => {
 
   before(() => {
     render = mountWithIntl(<VendorListingBox
-      selectedView={selectedView}
       vendorData={vendorMockData}
       updatePagination={() => {}}
       filter=""
     />);
+    render.setState({ vendorData: vendorMockData });
   });
 
   describe('renders', () => {
