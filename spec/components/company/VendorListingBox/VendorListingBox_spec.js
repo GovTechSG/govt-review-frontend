@@ -80,9 +80,7 @@ describe('VendorListingBox', () => {
 
   before(() => {
     render = mountWithIntl(<VendorListingBox
-      vendorData={vendorMockData}
       updatePagination={() => {}}
-      filter=""
     />);
     render.setState({ vendorData: vendorMockData });
   });
