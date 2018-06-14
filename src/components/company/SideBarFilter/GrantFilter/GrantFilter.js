@@ -32,6 +32,9 @@ export class GrantFilter extends Component {
 export default resolve('grantData', () => {
   const url = `${API_URL_PREFIX}/api/v1/grants`;
   return API.get({
-    url
+    url,
+    data: {
+      page: 'all'
+    }
   });
 })(GrantFilter);
