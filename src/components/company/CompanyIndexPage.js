@@ -45,6 +45,13 @@ export default class CompanyIndexPage extends Component {
     });
   }
 
+  generateFilterString() {
+    let filterUrl = '';
+    for (const id of this.state.industryFilter) filterUrl += `industries:${id},`;
+    for (const id of this.state.grantFilter) filterUrl += `grants:${id},`;
+    return filterUrl.substr(0, filterUrl.length - 1);
+  }
+
   render() {
     return (
       <Row className="company-index">
@@ -52,7 +59,7 @@ export default class CompanyIndexPage extends Component {
           <SideBarFilter handleIndustryFilterChange={this.handleIndustryFilterChange} handleGrantFilterChange={this.handleGrantFilterChange} />
         </Col>
         <Col lg={9} md={9} sm={12} xs={12}>
-          <VendorSorter industryFilter={this.state.industryFilter} grantFilter={this.state.grantFilter} />
+          <VendorSorter filterUrl={this.generateFilterString()} />
         </Col>
       </Row>
     );

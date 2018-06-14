@@ -16,14 +16,14 @@ export default class VendorSorter extends Component {
       selectedView: 'best_ratings',
       activePage: 1,
       itemsCountPerPage: 5,
-      searchText: ''
+      searchText: '',
+      filterUrl: this.props.filterUrl
     };
     this.searchText = React.createRef();
     this.renderPagination = this.renderPagination.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.updatePagination = this.updatePagination.bind(this);
     this.searchCompany = this.searchCompany.bind(this);
-    this.generateFilterString = this.generateFilterString.bind(this);
     this.getEndCount = this.getEndCount.bind(this);
   }
 
@@ -92,13 +92,6 @@ export default class VendorSorter extends Component {
     );
   }
 
-  generateFilterString() {
-    let filterUrl = '';
-    for (const id of this.props.industryFilter) filterUrl += `industries:${id},`;
-    for (const id of this.props.grantFilter) filterUrl += `grants:${id},`;
-    return filterUrl.substr(0, filterUrl.length - 1);
-  }
-
   getStartCount() {
     return this.state.itemsCountPerPage * (this.state.activePage - 1) + 1;
   }
@@ -107,8 +100,19 @@ export default class VendorSorter extends Component {
     return Math.min(this.state.itemsCountPerPage * this.state.activePage, currentItemsCount);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.filterUrl !== state.filterUrl) {
+      return {
+        filterUrl: props.filterUrl,
+        activePage: 1
+      };
+    }
+
+    // No state update necessary
+    return null;
+  }
+
   render() {
-    const filter = this.generateFilterString();
     return (
       <div>
         <Row>
@@ -158,7 +162,7 @@ export default class VendorSorter extends Component {
               itemsCountPerPage={this.state.itemsCountPerPage}
               updatePagination={this.updatePagination}
               searchText={this.state.searchText}
-              filter={filter}
+              filter={this.state.filterUrl}
               className="vendor-listing-box"
             />
           </Col>
