@@ -4,7 +4,6 @@ import { Nav, NavItem, Row, Col, FormControl, FormGroup, ControlLabel, InputGrou
 import { FormattedMessage } from 'react-intl';
 import ReactPaginate from 'react-paginate';
 import VendorListingBox from '../VendorListingBox/VendorListingBox';
-// import API from '../../../_utilities/api';
 import './VendorSorter.scss';
 
 let currentItemsCount = 0;
@@ -29,22 +28,16 @@ export default class VendorSorter extends Component {
 
   handleSelect(eventKey, event) {
     event.preventDefault();
-    this.setState(
-      {
-        selectedView: eventKey,
-        activePage: 1
-      },
-      this.renderPagination
-    );
+    this.setState({
+      selectedView: eventKey,
+      activePage: 1
+    });
   }
 
   handlePageChange(pageNumber) {
-    this.setState(
-      {
-        activePage: pageNumber.selected + 1
-      },
-      this.renderPagination
-    );
+    this.setState({
+      activePage: pageNumber.selected + 1
+    });
     window.scrollTo(0, 0);
   }
 
@@ -83,13 +76,14 @@ export default class VendorSorter extends Component {
 
   searchCompany(e) {
     e.preventDefault();
-    this.setState(
-      {
-        searchText: this.input.value,
-        activePage: 1
-      },
-      this.renderPagination
-    );
+    this.setState({
+      searchText: this.input.value,
+      activePage: 1
+    });
+  }
+
+  componentDidUpdate() {
+    this.renderPagination();
   }
 
   getStartCount() {
