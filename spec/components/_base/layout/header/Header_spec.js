@@ -7,6 +7,7 @@ import Header from '../../../../../src/components/_base/layout/header/Header';
 import grpLogoMain from '../../../../../src/components/_base/layout/header/grp-logo.svg';
 import govtLogo from '../../../../../src/components/_base/layout/header/govt-logo.svg';
 import grpLogoAffix from '../../../../../src/components/_base/layout/header/grp-affix.svg';
+import { API_URL_PREFIX } from '../../../../../src/_utilities/api_url_prefix';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -93,7 +94,7 @@ describe('Header', () => {
     });
   });
 
-  describe('News, How it works, FAQ, login links', () => {
+  describe('API, Contact Us, login links', () => {
     let listItems;
 
     before(() => {
@@ -103,14 +104,14 @@ describe('Header', () => {
         .find('li');
     });
 
-    it('renders news, How it works, faq, log out', () => {
+    it('renders api, contact us, log out', () => {
       const map = listItems.map(li => {
         if (li.getElement().props.children.type === 'a') {
           return li.find('a').text();
         }
         return undefined;
       });
-      chai.expect(map).to.deep.equal(['News', 'How it works', 'FAQ', 'Log In']);
+      chai.expect(map).to.deep.equal(['API', 'Contact Us', 'LOG OUT']);
     });
 
     it('links news, How it works, faq, login', () => {
@@ -120,8 +121,7 @@ describe('Header', () => {
         }
         return undefined;
       });
-      chai.expect(map).to.deep.equal(['#', '#', '#', undefined]);
-      // chai.expect(map).to.deep.equal(['/news', '/how_it_works', '/faq', undefined]);
+      chai.expect(map).to.deep.equal([`${API_URL_PREFIX}/api/docs`, '#', undefined]);
     });
   });
 });

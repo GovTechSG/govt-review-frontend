@@ -8,18 +8,9 @@ import grpLogoMain from './grp-logo.svg';
 import govtLogo from './govt-logo.svg';
 import grpLogoAffix from './grp-affix.svg';
 import './header.scss';
+import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
 
 export default class Header extends Component {
-  static HOME_SECTIONS = [
-    '',
-    'my_grants',
-    'news',
-    'feedback',
-    'how_it_works',
-    'faq',
-    'logged_out'
-  ];
-
   constructor(props) {
     super(props);
     this.state = { sticky: false };
@@ -79,26 +70,20 @@ export default class Header extends Component {
               <ul className="nav navbar-nav grp-topnavi">
 
                 <li>
-                  <a href="#">
-                    <FormattedMessage id="header.nav.news" />
+                  <a href={`${API_URL_PREFIX}/api/docs`}>
+                    <FormattedMessage id="header.nav.api" />
                   </a>
                 </li>
 
                 <li>
                   <a href="#">
-                    <FormattedMessage id="header.nav.howitworks" />
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#">
-                    <FormattedMessage id="header.nav.faq" />
+                    <FormattedMessage id="header.nav.contactus" />
                   </a>
                 </li>
 
                 <li className="log-button">
-                  <a className="login" id="login-button" onClick={(this.login)}>
-                    <FormattedMessage id="header.nav.login" />
+                  <a className="login" id="login-button" onClick={(this.logout)}>
+                    <FormattedMessage id="header.nav.logout" />
                   </a>
                 </li>
               </ul>
@@ -115,7 +100,7 @@ export default class Header extends Component {
 
   logout() {
     window.localStorage.setItem('grp-logged-out', Date.now());
-    window.location = '/saml/slo';
+    window.location = API_URL_PREFIX;
   }
 }
 
