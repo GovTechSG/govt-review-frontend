@@ -97,7 +97,7 @@ describe('VendorListingBox', () => {
     });
 
     it('renders project string', () => {
-      const vendorIndustry = render.find('.vendor-has-done-row').first().find('.vendor-has-done').text();
+      const vendorIndustry = render.find('.vendor-has-done').first().find('.vendor-has-done-text').text();
       chai.expect(vendorIndustry).to.eql('Agriculture, Dgriculture');
     });
 

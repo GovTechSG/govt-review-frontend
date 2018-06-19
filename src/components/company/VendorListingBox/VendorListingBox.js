@@ -162,7 +162,7 @@ export default class VendorListingBox extends Component {
               <FormattedMessage id="vendorlisting.vendor.has.done" />
               }
             </div>
-            <div className="vendor-has-done">{projectString}</div>
+            <div className="vendor-has-done-text">{projectString}</div>
           </Row>
         </Col>
       </div>
