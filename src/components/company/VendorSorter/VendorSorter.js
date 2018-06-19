@@ -147,7 +147,7 @@ export default class VendorSorter extends Component {
             <div className="total-items" id="total-items"></div>
           </Col>
         </Row>
-        <div className="border"></div>
+        <div className="vendorsorter-border"></div>
         <Row>
           <Col sm={12}>
             <VendorListingBox

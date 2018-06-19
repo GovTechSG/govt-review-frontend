@@ -13,6 +13,12 @@
   "vendorsorter.best.ratings": "Best Ratings",
   "vendorsorter.newly.added": "Newly Added",
 
+  "companypage.back": "Back to Consultants and Vendors List",
+  "companyinfo.uen": "UEN No: ",
+  "companyinfo-previous-clients": "Previous clients",
+  "companyinfo-grants-experience": "Has prior experience with these grants:",
+  "companyinfo-has-done": "Deals with projects in:",
+
   "header.govt.feedback": "Contact Us/Feedback",
   "header.govt.aboutus": "About Us",
   "header.nav.toggle": "Toggle navigation",

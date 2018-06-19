@@ -129,7 +129,9 @@ export default class VendorListingBox extends Component {
               </div>
             </Col>
             <Col xs={7}>
-              <div className="vendor-name">{data.name}</div>
+              <div className="vendor-name">
+                <a href={`/portal/company/${data.id}`}>{data.name} </a>
+              </div>
               <div className="vendor-industry">{industryString}</div>
               <br />
             </Col>
@@ -154,10 +156,10 @@ export default class VendorListingBox extends Component {
               </div>
             </Col>
           </Row>
-          <Row className="vendor-has-done-row">
+          <Row className="vendor-has-done">
             <div className="vendor-has-done-title">
               { data.project_industries.length !== 0 &&
-                <FormattedMessage id="vendorlisting.vendor.has.done" />
+              <FormattedMessage id="vendorlisting.vendor.has.done" />
               }
             </div>
             <div className="vendor-has-done">{projectString}</div>
