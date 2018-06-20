@@ -67,6 +67,7 @@ export default class VendorListingBox extends Component {
       this.props.searchText !== prevProps.searchText ||
       this.props.filter !== prevProps.filter
     ) {
+      this.props.updatePagination(0);
       this._asyncRequest = this._loadAsyncData();
     }
   }
@@ -98,7 +99,7 @@ export default class VendorListingBox extends Component {
   }
 
   _loadAsyncData() {
-    const url = `${API_URL_PREFIX}/api/v1/companies/vendor_listings`;
+    const url = `${API_URL_PREFIX}/api/v1/companies`;
     return API.get({
       url,
       data: {
@@ -109,10 +110,10 @@ export default class VendorListingBox extends Component {
         filter: this.state.filter
       }
     })
-      .then(vendorData => {
+      .then((vendorData, textStatus, response) => { //eslint-disable-line
         this._asyncRequest = null;
         this.setState({ vendorData });
-        this.props.updatePagination(vendorData.count);
+        this.props.updatePagination(response.getResponseHeader('total'));
       });
   }
 
@@ -169,14 +170,14 @@ export default class VendorListingBox extends Component {
 
   render() {
     const { vendorData } = this.state;
-    if (vendorData === null) {
+    if (!vendorData) {
       return (
         <div className="page-load-spinner">
           <PageLoadSpinner />
         </div>
       );
     }
-    if (vendorData.companies.length === 0) {
+    if (vendorData.length === 0) {
       return (
         <Row>
           <Col xs={12} className="vendor-container">
@@ -190,7 +191,7 @@ export default class VendorListingBox extends Component {
     return (
       <Row>
         <Col xs={12} className="vendor-container">
-          {vendorData.companies.map((data, index) => this.renderChild(data, index))}
+          {vendorData.map((data, index) => this.renderChild(data, index))}
         </Col>
       </Row>
     );
