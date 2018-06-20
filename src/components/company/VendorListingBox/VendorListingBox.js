@@ -131,7 +131,7 @@ export default class VendorListingBox extends Component {
             </Col>
             <Col xs={7}>
               <div className="vendor-name">
-                <a href={`/portal/company/${data.id}`}>{data.name} </a>
+                <a href={`/demo/company/${data.id}`}>{data.name} </a>
               </div>
               <div className="vendor-industry">{industryString}</div>
               <br />
