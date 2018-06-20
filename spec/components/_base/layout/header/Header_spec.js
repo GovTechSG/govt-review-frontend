@@ -27,7 +27,7 @@ describe('Header', () => {
 
     it('has anchor to home page', () => {
       const anchor = logo.find('a');
-      chai.expect(anchor.prop('href')).to.equal('/portal');
+      chai.expect(anchor.prop('href')).to.equal('/demo');
     });
 
     it('has grp logo main image', () => {
