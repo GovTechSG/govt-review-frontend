@@ -17,7 +17,7 @@ export class CompanyPage extends Component {
         <Row>
           <Col xs={12} sm={12}>
             <div className="back-to-vendors-list">
-              <a href="/portal">
+              <a href="/demo">
                 <FontAwesomeIcon icon={faAngleDoubleLeft} />
                 <span style={{ marginLeft: '15px' }}>
                   <FormattedMessage id="companypage.back" />
