@@ -95,7 +95,7 @@ export default class CompanyPage extends Component {
   render() {
     const { companyData } = this.props;
     const industryString = this.getIndustryString(companyData.industries);
-    const projectString = this.getProjectsString(companyData.projectIndustries);
+    const projectString = this.getProjectsString(companyData.project_industries);
     if (!this.state.grantData || !this.state.clientData) {
       return (
         <div className="page-load-spinner">
@@ -141,7 +141,7 @@ export default class CompanyPage extends Component {
             <Row className="companyinfo-has-done">
               <Col xs={9}>
                 <div className="companyinfo-has-done"><FormattedMessage id="companyinfo-has-done" /></div>
-                <div>{projectString}</div>
+                <div className="companyinfo-has-done-text">{projectString}</div>
               </Col>
             </Row>
           }
@@ -154,7 +154,7 @@ export default class CompanyPage extends Component {
               <div className="client-images">
                 {this.state.clientData.map((data, index) => {
                   if (index < 3) {
-                    return <span key={data.name}><a href={`/portal/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></a></span>;
+                    return <span key={data.name}><a href={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></a></span>;
                   }
                   return '';
                 })}
