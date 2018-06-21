@@ -4,6 +4,7 @@ import Footer from './footer/Footer';
 import Header from './header/Header';
 import './App.scss';
 import CompanyIndexPage from '../../company/CompanyIndexPage';
+import CompanyPage from '../../company/CompanyPage/CompanyPage';
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/demo" component={CompanyIndexPage} />
-            <Route exact path="/demo/companies" component={CompanyIndexPage} />
+            <Route path="/demo/company/:id" component={CompanyPage} />
           </Switch>
         </BrowserRouter>
         </div>
