@@ -114,7 +114,8 @@ export default class CompanyPage extends Component {
             </Col>
             <Col xs={8}>
               <span className="vendor-name">{companyData.name}</span>
-              <span className="vendor-uen"><FormattedMessage id="companyinfo.uen" />{companyData.uen}</span>
+              {companyData.uen &&
+              <span className="vendor-uen"><FormattedMessage id="companyinfo.uen" />{companyData.uen}</span>}
               <div className="vendor-industry">{industryString}</div>
             </Col>
           </Row>
