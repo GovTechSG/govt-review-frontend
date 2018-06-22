@@ -8,6 +8,8 @@ import './CompanyPage.scss';
 import API from '../../../_utilities/api';
 import { API_URL_PREFIX } from '../../../_utilities/api_url_prefix';
 import CompanyInfo from './CompanyInfo/CompanyInfo';
+import CompanyReviews from './CompanyReviews/CompanyReviews';
+import CompanyReviewables from './CompanyReviewables/CompanyReviewables';
 
 export class CompanyPage extends Component {
   render() {
@@ -15,7 +17,7 @@ export class CompanyPage extends Component {
     return (
       <div className="container">
         <Row>
-          <Col xs={12} sm={12}>
+          <Col sm={12}>
             <div className="back-to-vendors-list">
               <a href="/demo">
                 <FontAwesomeIcon icon={faAngleDoubleLeft} />
@@ -28,6 +30,12 @@ export class CompanyPage extends Component {
         </Row>
         <Row>
           <CompanyInfo companyData={companyData} />
+        </Row>
+        <Row>
+          <CompanyReviewables companyId={companyData.id} />
+        </Row>
+        <Row>
+          <CompanyReviews companyId={companyData.id} />
         </Row>
       </div>
     );
