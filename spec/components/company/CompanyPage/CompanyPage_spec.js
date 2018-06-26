@@ -3,7 +3,7 @@ import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import { mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
-import CompanyPage from '../../../../src/components/company/CompanyPage/CompanyPage';
+import { CompanyPage } from '../../../../src/components/company/CompanyPage/CompanyPage';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -51,11 +51,9 @@ describe('CompanyPage', () => {
 
   before(() => {
     render = mountWithIntl(<CompanyPage
+      companyData={companyMockData}
       match={mockMatch}
     />);
-    render.setState({
-      companyData: companyMockData
-    });
   });
 
   it('renders back to vendor listings', () => {
