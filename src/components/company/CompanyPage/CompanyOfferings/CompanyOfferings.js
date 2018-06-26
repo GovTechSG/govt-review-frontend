@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-bootstrap';
 import API from '../../../../_utilities/api';
 import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
 import PageLoadSpinner from '../../../animation/PageLoadSpinner';
-import './CompanyReviews.scss';
+import './CompanyOfferings.scss';
 
-export default class CompanyReviews extends Component {
+export default class CompanyOfferings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewData: null,
+      offeringData: null,
     };
   }
 
   componentDidMount() {
-    const id = this.props.companyId;
-    const url = `${API_URL_PREFIX}/api/v1/companies/${id}/reviews`;
+    const id = this.props.companyDataId;
+    const url = `${API_URL_PREFIX}/api/v1/companies/${id}/offerings`;
     this._asyncRequest = API.get({
       url,
-      data: {}
-    }).then(reviewData => {
-      this.setState({ reviewData });
+      data: {
+        sort_by: 'aggregate_score',
+        desc: 'true',
+        page: 1,
+        per_page: 3
+      }
+    }).then(offeringData => {
+      this.setState({ offeringData });
     }).fail(() => {
-      const reviewData = 'Fail';
-      this.setState({ reviewData });
+      const offeringData = 'Fail';
+      this.setState({ offeringData });
     });
   }
 
@@ -35,19 +40,14 @@ export default class CompanyReviews extends Component {
   }
 
   render() {
-    // <ProgressBar>
-    //   <ProgressBar bsStyle="success" max={data.reviews_count} now={data.positive} key={1} />
-    //   <ProgressBar bsStyle="warning" max={data.reviews_count} now={data.neutral} key={2} />
-    //   <ProgressBar bsStyle="danger" max={data.reviews_count} now={data.negative} key={3} />
-    // </ProgressBar>
-    if (!this.state.reviewData) {
+    if (!this.state.offeringData) {
       return (
         <div className="page-load-spinner">
           <PageLoadSpinner />
         </div>
       );
     }
-    if (this.state.reviewData === 'Fail') {
+    if (this.state.offeringData === 'Fail') {
       return (
         <div />
       );
@@ -55,6 +55,9 @@ export default class CompanyReviews extends Component {
     return (
       <div className="vendor-card">
         <Col xs={12}>
+          <Row className="reviews-header">
+            <FormattedMessage id="companyofferings-lising" values={{ companyName: this.props.companyName }} />
+          </Row>
           <Row className="vendor-item">
 
           </Row>
@@ -63,3 +66,4 @@ export default class CompanyReviews extends Component {
     );
   }
 }
+
