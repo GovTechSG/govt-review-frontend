@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, ProgressBar } from 'react-bootstrap';
+// import { resolve } from 'react-resolver';
 import { FormattedMessage } from 'react-intl';
 import API from '../../../_utilities/api';
 import './VendorListingBox.scss';
@@ -137,6 +138,22 @@ export default class VendorListingBox extends Component {
             </Col>
             <Col xs={3}>
               <div className="rating-box">
+                <div className="positivity">
+                  <div className="aggregate_score">{ data.reviews_count !== 0 && Math.round(data.ratings) }</div>
+                    { data.reviews_count === 0 ?
+                      <FormattedMessage id="vendorlisting.no.reviews" /> :
+                      <FormattedMessage id="vendorlisting.percent.positive" />
+                    }
+                </div>
+                <br />
+                <ProgressBar>
+                  <ProgressBar bsStyle="success" max={data.reviews_count} now={data.positive} key={1} />
+                  <ProgressBar bsStyle="warning" max={data.reviews_count} now={data.neutral} key={2} />
+                  <ProgressBar bsStyle="danger" max={data.reviews_count} now={data.negative} key={3} />
+                </ProgressBar>
+                <div className="aggregate-count">
+                  <FormattedMessage id="vendorlisting.aggregate.count" values={{ reviews_count: data.reviews_count }} />
+                </div>
               </div>
             </Col>
           </Row>
