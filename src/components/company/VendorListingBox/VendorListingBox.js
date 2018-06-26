@@ -113,7 +113,7 @@ export default class VendorListingBox extends Component {
       .then((vendorData, textStatus, response) => { //eslint-disable-line
         this._asyncRequest = null;
         this.setState({ vendorData });
-        this.props.updatePagination(response.getResponseHeader('total'));
+        this.props.updatePagination(parseInt(response.getResponseHeader('total'), 10));
       });
   }
 
