@@ -153,14 +153,14 @@ export default class CompanyPage extends Component {
     }
     return (
       <div className="vendor-card">
-        <Col sm={12}>
+        <Col xs={12}>
           <Row className="vendor-item">
-            <Col sm={1} style={{ width: '75px', paddingRight: '0px' }}>
+            <Col xs={1} style={{ width: '75px', paddingRight: '0px' }}>
               <div className="companyinfo-logo-box">
                 <img src={companyData.image.thumb.url} alt={companyData.name} title={companyData.name} />
               </div>
             </Col>
-            <Col sm={8}>
+            <Col xs={8}>
               <span className="vendor-name">{companyData.name}</span>
               {companyData.uen &&
               <span className="vendor-uen"><FormattedMessage id="companyinfo.uen" />{companyData.uen}</span>}
@@ -168,14 +168,14 @@ export default class CompanyPage extends Component {
             </Col>
           </Row>
           <Row className="vendor-description">
-            <Col sm={9}>
+            <Col xs={9}>
               <div className="vendor-description-text">
                 {companyData.description}
               </div>
             </Col>
           </Row>
           <Row className="vendor-contact-details">
-            <Col sm={9}>
+            <Col xs={9}>
               <span className="vendor-website">
                 <FontAwesomeIcon icon={faGlobe} className="contact-icon" />
                 <a href={companyData.url} target="_blank">{companyData.url}</a>
@@ -188,7 +188,7 @@ export default class CompanyPage extends Component {
           </Row>
           {projectString !== '' &&
             <Row className="companyinfo-has-done">
-              <Col sm={9}>
+              <Col xs={9}>
                 <div className="companyinfo-has-done"><FormattedMessage id="companyinfo-has-done" /></div>
                 <div className="companyinfo-has-done-text">{projectString}</div>
               </Col>
