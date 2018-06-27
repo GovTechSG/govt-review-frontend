@@ -10,9 +10,27 @@
 
 .reviews-header {
   color: $color-grey-5;
-  margin: 7px;
+  margin: 7px 0px;
   padding-bottom: 15px;
   border-bottom: 1px solid #dddddd;
   font-size: $regular-plus;
   font-weight: $text-semibold;
+}
+
+.offerings {
+  padding: 10px 17px;
+}
+
+.offering-name {
+  font-weight: 900;
+}
+
+.offering-desc {
+  padding: 5px 0px;
+  margin-bottom: 10px;
+}
+
+.offering-desc::before{
+  content: '-';
+  padding-right: 2px;
 }
