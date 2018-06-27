@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-bootstrap';
-import API from '../../../../_utilities/api';
-import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
+// import API from '../../../../_utilities/api';
+// import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
 import PageLoadSpinner from '../../../animation/PageLoadSpinner';
 import './CompanyOfferings.scss';
 
@@ -10,7 +10,7 @@ export default class CompanyOfferings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      offeringData: null,
+      offeringData: [],
     };
   }
 
@@ -62,7 +62,7 @@ export default class CompanyOfferings extends Component {
         </div>
       );
     }
-    if (this.state.offeringData === 'Fail') {
+    if (this.state.offeringData === 'Fail' || this.state.offeringData.length === 0) {
       return (
         <div />
       );
