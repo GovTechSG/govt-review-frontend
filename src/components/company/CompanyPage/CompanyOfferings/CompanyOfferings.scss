@@ -29,3 +29,8 @@
   padding: 5px 0px;
   margin-bottom: 10px;
 }
+
+.offering-desc::before{
+  content: '-';
+  padding-right: 2px;
+}

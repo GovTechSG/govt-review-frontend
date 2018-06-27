@@ -22,13 +22,13 @@ describe('CompanyInfo', () => {
       name: 'Offering 3',
       description: 'Description 3'
     }
-  ]
+  ];
 
 
   before(() => {
     render = mountWithIntl(<CompanyOfferings
-      companyId=''
-      companyName='Company'
+      companyId=""
+      companyName="Company"
     />);
     render.setState({
       offeringData: offeringMockData
@@ -43,8 +43,8 @@ describe('CompanyInfo', () => {
 
     it('renders offering names', () => {
       const list = render.find('.offering-name');
-      const map = list.map(list => {
-        return list.text();
+      const map = list.map(listItem => {
+        return listItem.text();
       });
       chai.expect(list).to.have.length(3);
       chai.expect(map).to.deep.equal([
@@ -56,8 +56,8 @@ describe('CompanyInfo', () => {
 
     it('renders offering descriptions', () => {
       const list = render.find('.offering-desc');
-      const map = list.map(list => {
-        return list.text();
+      const map = list.map(listItem => {
+        return listItem.text();
       });
       chai.expect(list).to.have.length(3);
       chai.expect(map).to.deep.equal([
