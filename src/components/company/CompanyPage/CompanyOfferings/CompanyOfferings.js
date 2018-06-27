@@ -15,7 +15,7 @@ export default class CompanyOfferings extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.companyDataId;
+    const id = this.props.companyId;
     const url = `${API_URL_PREFIX}/api/v1/companies/${id}/offerings`;
     this._asyncRequest = API.get({
       url,
@@ -39,6 +39,21 @@ export default class CompanyOfferings extends Component {
     }
   }
 
+  generateOfferings(offeringData) {
+    return (
+      <div className="offerings">
+        {offeringData.map((data) => {
+          return (
+            <Row key={data.name}>
+              <div className="offering-name">{data.name}</div>
+              <div className="offering-desc">{data.description}</div>
+            </Row>
+          );
+        })}
+      </div>
+    );
+  }
+
   render() {
     if (!this.state.offeringData) {
       return (
@@ -56,11 +71,9 @@ export default class CompanyOfferings extends Component {
       <div className="vendor-card">
         <Col xs={12}>
           <Row className="reviews-header">
-            <FormattedMessage id="companyofferings-lising" values={{ companyName: this.props.companyName }} />
+            <FormattedMessage id="companyofferings.listing" values={{ companyName: this.props.companyName }} />
           </Row>
-          <Row className="vendor-item">
-
-          </Row>
+          {this.generateOfferings(this.state.offeringData)}
         </Col>
       </div>
     );
