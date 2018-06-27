@@ -1,0 +1,32 @@
+@import '../../../../assets/scss/baseStyles.scss';
+
+.vendor-card {
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 1px 2px #aaa;
+  margin: 10px 20px;
+}
+
+/*
+.progress {
+  height: 5px;
+  border-radius: 1px;
+}
+
+.progress-bar {
+  box-shadow: none;
+}
+
+.progress-bar-warning {
+  background-color: #f4f3f4;
+}
+
+.progress-bar-success {
+  background-color: #37b296;
+}
+
+.progress-bar-danger {
+  background-color: #fc5b65;
+}
+*/
