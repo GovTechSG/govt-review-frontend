@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-bootstrap';
-// import API from '../../../../_utilities/api';
-// import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
+import API from '../../../../_utilities/api';
+import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
 import PageLoadSpinner from '../../../animation/PageLoadSpinner';
 import './CompanyOfferings.scss';
 
