@@ -98,6 +98,48 @@ export default class CompanyPage extends Component {
     return projectString;
   }
 
+  generatePrevClients(clientData) {
+    if (clientData !== 'Fail') {
+      return (
+        <Col sm={6}>
+          <div className="companyinfo-subheader">
+            <FormattedMessage id="companyinfo-previous-clients" />
+          </div>
+          <div className="client-images">
+            { clientData.map((data, index) => {
+              if (index < 3) {
+                return <span key={data.name}><a href={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></a></span>;
+              }
+              return '';
+            })}
+          </div>
+        </Col>
+      );
+    }
+    return <div />;
+  }
+
+  generateGrants(grantData) {
+    if (grantData !== 'Fail') {
+      return (
+        <Col sm={6}>
+          <div className="companyinfo-subheader">
+            <FormattedMessage id="companyinfo-grants-experience" />
+          </div>
+          <div className="grants-experience">
+            {grantData.map((data, index) => {
+              if (index < 3) {
+                return <li key={data.name}><span>{data.name}</span></li>;
+              }
+              return '';
+            })}
+          </div>
+        </Col>
+      );
+    }
+    return <div />;
+  }
+
   render() {
     const { companyData } = this.props;
     const industryString = this.getIndustryString(companyData.industries);
@@ -154,38 +196,8 @@ export default class CompanyPage extends Component {
           }
           <div className="companypage-border" />
           <Row>
-            <Col sm={6}>
-              { this.state.clientData !== 'Fail' &&
-                <div className="companyinfo-subheader">
-                  <FormattedMessage id="companyinfo-previous-clients" />
-                </div>
-              }
-              <div className="client-images">
-                { this.state.clientData !== 'Fail' &&
-                  this.state.clientData.map((data, index) => {
-                  if (index < 3) {
-                    return <span key={data.name}><a href={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></a></span>;
-                  }
-                  return '';
-                })}
-              </div>
-            </Col>
-            <Col sm={6}>
-            { this.state.grantData !== 'Fail' &&
-              <div className="companyinfo-subheader">
-                <FormattedMessage id="companyinfo-grants-experience" />
-              </div>
-            }
-              <div className="grants-experience">
-                { this.state.grantData !== 'Fail' &&
-                  this.state.grantData.map((data, index) => {
-                  if (index < 3) {
-                    return <li key={data.name}><span>{data.name}</span></li>;
-                  }
-                  return '';
-                })}
-              </div>
-            </Col>
+            {this.generatePrevClients(this.state.clientData)}
+            {this.generateGrants(this.state.grantData)}
           </Row>
         </Col>
       </div>
