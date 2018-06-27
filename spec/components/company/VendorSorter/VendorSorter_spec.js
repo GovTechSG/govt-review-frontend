@@ -41,7 +41,7 @@ describe('VendorSorter', () => {
     });
 
     it('has a default selected view of best ratings', () => {
-      chai.expect(render.state(['selectedView'])).to.equal('aggregate_score');
+      chai.expect(render.state(['selectedView'])).to.equal('best_ratings');
     });
 
     it('renders page info', () => {

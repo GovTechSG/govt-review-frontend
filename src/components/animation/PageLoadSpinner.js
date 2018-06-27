@@ -16,9 +16,7 @@ export default class PageLoadSpinner extends Component {
       if (pathx[0]) {
         window.requestAnimationFrame(stepCircleThreeLinX);
         for (let j = 0; pathxNumber > j; j++) {
-          if (pathx[j]) {
-            pathx[j].setAttribute('transform', `rotate(${n} 16 16)`);
-          }
+          pathx[j].setAttribute('transform', `rotate(${n} 16 16)`);
         }
       }
     }

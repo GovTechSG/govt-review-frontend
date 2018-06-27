@@ -14,7 +14,11 @@ describe('VendorListingBox', () => {
       id: 'AbC123',
       name: 'Pivotal Software',
       aggregate_score: 0.5,
+      ratings: 50,
       reviews_count: 50,
+      positive: 25,
+      neutral: 20,
+      negative: 5,
       image: {
         url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
         thumb: {
@@ -94,35 +98,35 @@ describe('VendorListingBox', () => {
       chai.expect(vendorIndustry).to.eql('Agriculture, Dgriculture');
     });
 
-    // it('renders aggregate score', () => {
-    //   const vendorIndustry = render.find('.vendor-item').first().find('.positivity').text();
-    //   chai.expect(vendorIndustry).to.eql('50% Positive');
-    // });
+    it('renders aggregate score', () => {
+      const vendorIndustry = render.find('.vendor-item').first().find('.positivity').text();
+      chai.expect(vendorIndustry).to.eql('50% Positive');
+    });
 
-    // it('renders "No Reviews" when there are no reviews', () => {
-    //   const vendorIndustry = render.find('.vendor-item').last().find('.positivity').text();
-    //   chai.expect(vendorIndustry).to.eql('No Reviews');
-    // });
-    // describe('review bar', () => {
-    //   it('renders review bar', () => {
-    //     const reviewBar = render.find('.vendor-item').first().find('.progress');
-    //     chai.expect(reviewBar).to.have.length(1);
-    //   });
+    it('renders "No Reviews" when there are no reviews', () => {
+      const vendorIndustry = render.find('.vendor-item').last().find('.positivity').text();
+      chai.expect(vendorIndustry).to.eql('No Reviews');
+    });
+    describe('review bar', () => {
+      it('renders review bar', () => {
+        const reviewBar = render.find('.vendor-item').first().find('.progress');
+        chai.expect(reviewBar).to.have.length(1);
+      });
 
-    //   it('renders positive reviews bar', () => {
-    //     const positive = render.find('.vendor-item').first().find('.progress-bar.progress-bar-success');
-    //     chai.expect(positive.prop('aria-valuenow')).to.eql(25);
-    //   });
+      it('renders positive reviews bar', () => {
+        const positive = render.find('.vendor-item').first().find('.progress-bar.progress-bar-success');
+        chai.expect(positive.prop('aria-valuenow')).to.eql(25);
+      });
 
-    //   it('renders neutral reviews bar', () => {
-    //     const neutral = render.find('.vendor-item').first().find('.progress-bar.progress-bar-warning');
-    //     chai.expect(neutral.prop('aria-valuenow')).to.eql(20);
-    //   });
+      it('renders neutral reviews bar', () => {
+        const neutral = render.find('.vendor-item').first().find('.progress-bar.progress-bar-warning');
+        chai.expect(neutral.prop('aria-valuenow')).to.eql(20);
+      });
 
-    //   it('renders negative reviews bar', () => {
-    //     const negative = render.find('.vendor-item').first().find('.progress-bar.progress-bar-danger');
-    //     chai.expect(negative.prop('aria-valuenow')).to.eql(5);
-    //   });
-    // });
+      it('renders negative reviews bar', () => {
+        const negative = render.find('.vendor-item').first().find('.progress-bar.progress-bar-danger');
+        chai.expect(negative.prop('aria-valuenow')).to.eql(5);
+      });
+    });
   });
 });
