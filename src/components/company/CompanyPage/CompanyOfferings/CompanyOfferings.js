@@ -70,7 +70,7 @@ export default class CompanyOfferings extends Component {
     return (
       <div className="vendor-card">
         <Col xs={12}>
-          <Row className="reviews-header">
+          <Row className="offerings-header">
             <FormattedMessage id="companyofferings.listing" values={{ companyName: this.props.companyName }} />
           </Row>
           {this.generateOfferings(this.state.offeringData)}

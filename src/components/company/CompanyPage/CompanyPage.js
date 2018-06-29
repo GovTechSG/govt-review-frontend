@@ -7,7 +7,7 @@ import './CompanyPage.scss';
 import API from '../../../_utilities/api';
 import { API_URL_PREFIX } from '../../../_utilities/api_url_prefix';
 import CompanyInfo from './CompanyInfo/CompanyInfo';
-import CompanyReviews from './CompanyReviews/CompanyReviews';
+import CompanyScoresReviews from './CompanyScoresReviews/CompanyScoresReviews';
 import CompanyOfferings from './CompanyOfferings/CompanyOfferings';
 import PageLoadSpinner from '../../animation/PageLoadSpinner';
 
@@ -56,7 +56,7 @@ export default class CompanyPage extends Component {
               <div className="back-to-vendors-list">
                 <a href="/demo">
                   <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                  <span style={{ marginLeft: '15px' }}>
+                  <span className="companypage-back">
                     <FormattedMessage id="companypage.back" />
                   </span>
                 </a>
@@ -76,7 +76,7 @@ export default class CompanyPage extends Component {
             <div className="back-to-vendors-list">
               <a href="/demo">
                 <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                <span style={{ marginLeft: '15px' }}>
+                <span className="companypage-back">
                   <FormattedMessage id="companypage.back" />
                 </span>
               </a>
@@ -90,7 +90,7 @@ export default class CompanyPage extends Component {
           <CompanyOfferings companyId={companyData.id} companyName={companyData.name} />
         </Row>
         <Row>
-          <CompanyReviews companyId={companyData.id} />
+          <CompanyScoresReviews companyId={companyData.id} />
         </Row>
       </div>
     );

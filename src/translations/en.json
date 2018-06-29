@@ -21,9 +21,20 @@
 
   "companyofferings.listing": "{companyName}'s Product/Service Listing",
 
-  "companyreviews.positive": "Positive",
-  "companyreviews.neutral": "Neutral",
-  "companyreviews.negative": "Negative",
+  "companyscores.reviews": "Reviews",
+  "companyscores.review.count": "{count} Reviews",
+  "companyscores.positive": "Positive",
+  "companyscores.neutral": "Neutral",
+  "companyscores.negative": "Negative",
+  "companyscores.aspects": "Rated Positively for:",
+
+  "companyreviews.all": "All ({count})",
+  "companyreviews.positive": "Positive ({count})",
+  "companyreviews.neutral": "Neutral ({count})",
+  "companyreviews.negative": "Negative ({count})",
+  "companyreviews.experience": "{rating} Experience",
+  "companyreviews.offerings.engaged": "Product/Services Engaged:",
+  "companyreviews.load.more": "Load more reviews",
 
   "header.govt.feedback": "Contact Us/Feedback",
   "header.govt.aboutus": "About Us",
