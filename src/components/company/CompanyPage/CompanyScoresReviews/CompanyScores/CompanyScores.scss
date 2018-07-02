@@ -27,16 +27,50 @@
 
 .review-bar {
   padding-right: 0px;
+  padding-left: 7px;
+  width: 50%;
 }
 
 .col-bottom-padding-10 {
   padding-bottom: 10px;
 }
 
-.font-13 {
+.score-col {
   font-size: 13px;
+  padding-left: 0px;
+  padding-right: 5px;
 }
 
-.col-border-left {
-  border-left: '1px solid #dddddd';
+.aspects-col {
+  padding-left: 15px;
+  padding-right: 0px;
+  border-left: 2px solid #dddddd;
+}
+
+.total-aspects {
+  margin-top: 10px;
+}
+
+.aspect-box {
+  padding: 3px 12px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 6px;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.aspect-count {
+  padding-right: 6px;
+  margin-right: 6px;
+  border-right: 2px solid #dcebf5;
+  color: #549fd1;
+  font-weight: $text-semibold;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }

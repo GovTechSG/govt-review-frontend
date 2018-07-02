@@ -167,13 +167,23 @@ describe('CompanyReviews', () => {
         chai.expect(rating).to.eq('Neutral Experience');
       });
 
+      it('generates positive aspect heading', () => {
+        const aspects = reviews.last().find('.aspect-heading').find('span').text();
+        chai.expect(aspects).to.eq('Areas done well:');
+      });
+
+      it('generates negative aspect heading', () => {
+        const aspects = review.find('.aspect-heading').find('span').last().text();
+        chai.expect(aspects).to.eq('Areas to be improved:');
+      });
+
       it('generates review aspects', () => {
         const aspects = review.find('#review-aspects').find('span').last().text();
         chai.expect(aspects).to.eq('Reliability');
       });
 
       it('generates offering heading', () => {
-        const heading = review.find('.offerings-engaged').text();
+        const heading = review.find('.offerings-engaged').last().text();
         chai.expect(heading).to.eq('Product/Services Engaged:');
       });
 

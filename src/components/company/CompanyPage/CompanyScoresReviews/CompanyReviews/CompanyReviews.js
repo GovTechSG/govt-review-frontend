@@ -60,6 +60,17 @@ export default class CompanyReviews extends Component {
     );
   }
 
+  generateAspectHeading(score) {
+    if (score === 3) {
+      return (
+        <FormattedMessage id="companyreviews.positive.aspect.heading" />
+      );
+    }
+    return (
+      <FormattedMessage id="companyreviews.negative.aspect.heading" />
+    );
+  }
+
   renderChild(data, index) {
     const options = { day: '2-digit', month: 'short', year: 'numeric' };
     const date = (new Date(data.created_at)).toLocaleDateString('en-GB', options);
@@ -83,6 +94,9 @@ export default class CompanyReviews extends Component {
               {this.generateRating(data.score)}
             </Row>
             <Row id="review-aspects">
+              <div className="aspect-heading">
+                {this.generateAspectHeading(data.score)}
+              </div>
               {this.generateAspects(data.aspects)}
             </Row>
             <Row>
@@ -120,18 +134,18 @@ export default class CompanyReviews extends Component {
       <div>
         <Row className="padding-top-15">
           <Nav className="reviews-nav-sorter" pullLeft bsStyle="tabs" activeKey={this.state.selectedView} onSelect={(k, event) => this.handleSelect(k, event)}>
-            <NavItem eventKey="ALL">
+            <NavItem eventKey="ALL" id="all-filter">
               <FormattedMessage id="companyreviews.all" values={{ count: reviewCount }} />
             </NavItem>
-            <NavItem eventKey="POSITIVE">
+            <NavItem eventKey="POSITIVE" id="positive-filter">
               <FontAwesomeIcon icon={faSmile} className="companyreviews-sorter-face" />
               <FormattedMessage id="companyreviews.positive" values={{ count: reviewData.positive_count }} />
             </NavItem>
-            <NavItem eventKey="NEUTRAL">
+            <NavItem eventKey="NEUTRAL" id="neutral-filter">
               <FontAwesomeIcon icon={faMeh} className="companyreviews-sorter-face" />
               <FormattedMessage id="companyreviews.neutral" values={{ count: reviewData.neutral_count }} />
             </NavItem>
-            <NavItem eventKey="NEGATIVE">
+            <NavItem eventKey="NEGATIVE" id="negative-filter">
               <FontAwesomeIcon icon={faFrown} className="companyreviews-sorter-face" />
               <FormattedMessage id="companyreviews.negative" values={{ count: reviewData.negative_count }} />
             </NavItem>
