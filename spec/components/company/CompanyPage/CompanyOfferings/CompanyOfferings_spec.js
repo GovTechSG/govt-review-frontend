@@ -7,7 +7,7 @@ import CompanyOfferings from '../../../../../src/components/company/CompanyPage/
 
 enzyme.configure({ adapter: new Adapter() });
 
-describe('CompanyInfo', () => {
+describe('CompanyOfferings', () => {
   let render;
   const offeringMockData = [
     {
@@ -37,7 +37,7 @@ describe('CompanyInfo', () => {
 
   describe('renders company offerings', () => {
     it('renders title', () => {
-      const title = render.find('.reviews-header').find('span').text();
+      const title = render.find('.offerings-header').find('span').text();
       chai.expect(title).to.eq('Company\'s Product/Service Listing');
     });
 

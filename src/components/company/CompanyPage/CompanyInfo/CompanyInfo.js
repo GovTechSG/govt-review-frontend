@@ -106,12 +106,9 @@ export default class CompanyPage extends Component {
             <FormattedMessage id="companyinfo-previous-clients" />
           </div>
           <div className="client-images">
-            { clientData.map((data, index) => {
-              if (index < 3) {
-                return <span key={data.name}><a href={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></a></span>;
-              }
-              return '';
-            })}
+          { clientData.map((data) => {
+            return <span key={data.name}><a href={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></a></span>;
+           })}
           </div>
         </Col>
       );
@@ -127,11 +124,8 @@ export default class CompanyPage extends Component {
             <FormattedMessage id="companyinfo-grants-experience" />
           </div>
           <div className="grants-experience">
-            {grantData.map((data, index) => {
-              if (index < 3) {
-                return <li key={data.name}><span>{data.name}</span></li>;
-              }
-              return '';
+          {grantData.map((data) => {
+            return <li key={data.name}><span>{data.name}</span></li>;
             })}
           </div>
         </Col>
@@ -155,10 +149,8 @@ export default class CompanyPage extends Component {
       <div className="vendor-card">
         <Col xs={12}>
           <Row className="vendor-item">
-            <Col xs={1} style={{ width: '75px', paddingRight: '0px' }}>
-              <div className="companyinfo-logo-box">
-                <img src={companyData.image.thumb.url} alt={companyData.name} title={companyData.name} />
-              </div>
+            <Col xs={1} className="companyinfo-logo-box">
+              <img src={companyData.image.thumb.url} alt={companyData.name} title={companyData.name} />
             </Col>
             <Col xs={8}>
               <span className="vendor-name">{companyData.name}</span>

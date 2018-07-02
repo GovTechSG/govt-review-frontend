@@ -1,0 +1,42 @@
+@import '../../../../../assets/scss/baseStyles.scss';
+
+.reviews-header {
+  color: $color-grey-5;
+  margin: 7px 0px;
+  padding-bottom: 5px;
+  font-size: $regular-big;
+  font-weight: $text-semibold;
+}
+
+.review-count {
+  color: $color-grey-5;
+  font-weight: $text-semibold;
+  font-size: 14px;
+}
+
+.progress {
+  height: 15px;
+  margin-top: 3px;
+  margin-bottom: 15px;
+  border-radius: 0px;
+}
+
+.progress-bar {
+  background-color: #549fd1;
+}
+
+.review-bar {
+  padding-right: 0px;
+}
+
+.col-bottom-padding-10 {
+  padding-bottom: 10px;
+}
+
+.font-13 {
+  font-size: 13px;
+}
+
+.col-border-left {
+  border-left: '1px solid #dddddd';
+}
