@@ -81,13 +81,6 @@
   margin-top: 10px;
 }
 
-.review-aspects>span {
-  padding: 1px 10px;
-  margin-right: 10px;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-}
-
 .offerings-engaged {
   margin-top: 15px;
   color: $color-grey-5;  
@@ -182,4 +175,14 @@
 .load-more-button:focus:hover {
   background-color: #e6e6e6;
   outline: 0;
+}
+
+.review-aspect-box {
+  padding: 1px 10px;
+  margin-right: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 6px;  
+  white-space: nowrap;
 }

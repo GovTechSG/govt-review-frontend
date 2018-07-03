@@ -51,10 +51,11 @@ export default class CompanyReviews extends Component {
     if (aspects.length === 0) {
       return '';
     }
+
     return (
       <div className="review-aspects">
         {aspects.map((data) => {
-          return <span key={data.id}>{data.name}</span>;
+          return <div className="review-aspect-box" key={data.id}>{data.name}</div>;
         })}
       </div>
     );
@@ -95,7 +96,7 @@ export default class CompanyReviews extends Component {
             </Row>
             <Row id="review-aspects">
               <div className="aspect-heading">
-                {this.generateAspectHeading(data.score)}
+                {data.aspects && this.generateAspectHeading(data.score)}
               </div>
               {this.generateAspects(data.aspects)}
             </Row>

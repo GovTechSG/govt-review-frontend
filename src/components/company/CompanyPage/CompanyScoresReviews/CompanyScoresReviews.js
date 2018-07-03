@@ -64,7 +64,8 @@ export default class CompanyScoresReviews extends Component {
       data: {
         count: true,
         sort_by: 'aspects_count',
-        filter_by_score: 'POSITIVE'
+        filter_by_score: 'POSITIVE',
+        per_page: 5
       }
     }).then(aspectsData => {
       this.setState({ aspectsData });
