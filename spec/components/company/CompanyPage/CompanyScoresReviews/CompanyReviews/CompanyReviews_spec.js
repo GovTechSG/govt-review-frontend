@@ -178,7 +178,7 @@ describe('CompanyReviews', () => {
       });
 
       it('generates review aspects', () => {
-        const aspects = review.find('#review-aspects').find('span').last().text();
+        const aspects = review.find('#review-aspects').find('div').last().text();
         chai.expect(aspects).to.eq('Reliability');
       });
 
