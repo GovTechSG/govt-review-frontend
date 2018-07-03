@@ -38,7 +38,7 @@ describe('CompanyOfferings', () => {
   describe('renders company offerings', () => {
     it('renders title', () => {
       const title = render.find('.offerings-header').find('span').text();
-      chai.expect(title).to.eq('Company\'s Product/Service Listing');
+      chai.expect(title).to.eq('Company\'s Product/Service/Project Listing');
     });
 
     it('renders offering names', () => {

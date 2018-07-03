@@ -160,7 +160,7 @@ export default class CompanyPage extends Component {
             </Col>
           </Row>
           <Row className="vendor-description">
-            <Col xs={9}>
+            <Col xs={10}>
               <div className="vendor-description-text">
                 {companyData.description}
               </div>

@@ -103,12 +103,52 @@ describe('CompanyScoresReviews', () => {
     neutral_count: 1,
     negative_count: 0
   };
+  const aspectsMockData = [
+    {
+      aspect: {
+        id: 'asd1',
+        name: 'aspect 1',
+      },
+      count: '30'
+    },
+    {
+      aspect: {
+        id: 'asd2',
+        name: 'aspect 2',
+      },
+      count: '20'
+    },
+    {
+      aspect: {
+        id: 'asd3',
+        name: 'aspect 3',
+      },
+      count: '10'
+    },
+    {
+      aspect: {
+        id: 'asd4',
+        name: 'aspect 4',
+      },
+      count: '10'
+    },
+    {
+      aspect: {
+        id: 'asd5',
+        name: 'aspect 5',
+      },
+      count: '10'
+    }
+  ];
 
   before(() => {
     render = mountWithIntl(<CompanyScoresReviews
       companyId=""
     />);
-    render.setState({ reviewData: reviewMockData });
+    render.setState({
+      reviewData: reviewMockData,
+      aspectsData: aspectsMockData
+    });
   });
 
   describe('renders company reviews', () => {

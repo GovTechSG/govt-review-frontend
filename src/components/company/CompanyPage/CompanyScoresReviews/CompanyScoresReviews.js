@@ -16,6 +16,7 @@ export default class CompanyScoresReviews extends Component {
     super(props);
     this.state = {
       reviewData: null,
+      aspectsData: null,
       filter: 'ALL',
       per_page: reviewsPerPage
     };
@@ -24,7 +25,8 @@ export default class CompanyScoresReviews extends Component {
   }
 
   componentDidMount() {
-    this._asyncRequest = this._loadAsyncData();
+    this._asyncRequest = this._loadAsyncReviewData();
+    this._asyncRequest = this._loadAsyncAspectData();
   }
 
   componentWillUnmount() {
@@ -33,7 +35,7 @@ export default class CompanyScoresReviews extends Component {
     }
   }
 
-  _loadAsyncData() {
+  _loadAsyncReviewData() {
     const id = this.props.companyId;
     const url = `${API_URL_PREFIX}/api/v1/companies/${id}/reviews`;
     return API.get({
@@ -54,12 +56,30 @@ export default class CompanyScoresReviews extends Component {
     });
   }
 
+  _loadAsyncAspectData() {
+    const id = this.props.companyId;
+    const url = `${API_URL_PREFIX}/api/v1/companies/${id}/aspects`;
+    return API.get({
+      url,
+      data: {
+        count: true,
+        sort_by: 'aspects_count',
+        filter_by_score: 'POSITIVE'
+      }
+    }).then(aspectsData => {
+      this.setState({ aspectsData });
+    }).fail(() => {
+      const aspectsData = 'Fail';
+      this.setState({ aspectsData });
+    });
+  }
+
   handleChangeFilter(key) {
     this.setState({
       filter: key,
       per_page: reviewsPerPage
     }, () => {
-      this._asyncRequest = this._loadAsyncData();
+      this._asyncRequest = this._loadAsyncReviewData();
     });
   }
 
@@ -67,7 +87,7 @@ export default class CompanyScoresReviews extends Component {
     this.setState({
       per_page: this.state.per_page + reviewsPerPage
     }, () => {
-      this._asyncRequest = this._loadAsyncData();
+      this._asyncRequest = this._loadAsyncReviewData();
     });
   }
 
@@ -83,7 +103,7 @@ export default class CompanyScoresReviews extends Component {
   }
 
   render() {
-    if (!this.state.reviewData) {
+    if (!this.state.reviewData || !this.state.aspectsData) {
       return (
         <div className="page-load-spinner">
           <PageLoadSpinner />
@@ -95,18 +115,21 @@ export default class CompanyScoresReviews extends Component {
         <div />
       );
     }
-    const { reviewData } = this.state;
-    const toLoadMore = this.toLoadMore(reviewData);
+    const toLoadMore = this.toLoadMore(this.state.reviewData);
     return (
       <div className="vendor-card">
         <Col xs={12}>
           <Row className="reviews-header">
             <FormattedMessage id="companyscores.reviews" />
           </Row>
-          <CompanyScores reviewData={reviewData} reviewCount={reviewCount} />
+          <CompanyScores
+            reviewData={this.state.reviewData}
+            reviewCount={reviewCount}
+            aspectsData={this.state.aspectsData}
+          />
           <CompanyReviews
             reviewCount={reviewCount}
-            reviewData={reviewData}
+            reviewData={this.state.reviewData}
             handleChangeFilter={this.handleChangeFilter}
             handleLoadMore={this.handleLoadMore}
             toLoadMore={toLoadMore}
