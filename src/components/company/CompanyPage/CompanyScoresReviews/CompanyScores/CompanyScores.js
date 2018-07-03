@@ -30,11 +30,15 @@ export default class CompanyScores extends Component {
           <Row>
             <Col xs={12} className="col-bottom-padding-10">
               <div className="review-count">
-                <FormattedMessage id="companyscores.review.count" values={{ count: this.props.reviewCount }} />
+                {
+                  this.props.reviewCount === 1 ?
+                  <FormattedMessage id="companyscores.review.single.count" /> :
+                  <FormattedMessage id="companyscores.review.count" values={{ count: this.props.reviewCount }} />
+                }
               </div>
             </Col>
           </Row>
-          {reviewData.positive_count &&
+          {reviewData.positive_count !== 0 &&
           <Row id="positive-row">
             <Col xs={3} id="heading">
               <FormattedMessage id="companyscores.positive" />
@@ -46,7 +50,7 @@ export default class CompanyScores extends Component {
               {Math.round(reviewData.positive_count / this.props.reviewCount * 100)}%
             </Col>
           </Row>}
-          {reviewData.neutral_count &&
+          {reviewData.neutral_count !== 0 &&
           <Row id="neutral-row">
             <Col xs={3} id="heading">
               <FormattedMessage id="companyscores.neutral" />
@@ -58,7 +62,7 @@ export default class CompanyScores extends Component {
               {Math.round(reviewData.neutral_count / this.props.reviewCount * 100)}%
             </Col>
           </Row>}
-          {reviewData.negative_count &&
+          {reviewData.negative_count !== 0 &&
           <Row id="negative-row">
             <Col xs={3} id="heading">
               <FormattedMessage id="companyscores.negative" />
