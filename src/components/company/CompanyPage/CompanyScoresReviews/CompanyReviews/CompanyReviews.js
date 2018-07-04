@@ -96,7 +96,7 @@ export default class CompanyReviews extends Component {
             </Row>
             <Row id="review-aspects">
               <div className="aspect-heading">
-                {data.aspects && this.generateAspectHeading(data.score)}
+                {data.aspects.length !== 0 && this.generateAspectHeading(data.score)}
               </div>
               {this.generateAspects(data.aspects)}
             </Row>
