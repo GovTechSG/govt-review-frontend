@@ -169,16 +169,16 @@ export default class CompanyPage extends Component {
           <Row className="vendor-contact-details">
             <Col xs={9}>
               {companyData.url &&
-                <span className="vendor-website">
-                  <FontAwesomeIcon icon={faGlobe} className="contact-icon" />
-                  <a href={companyData.url} target="_blank">{companyData.url}</a>
-                </span>
+              <span className="vendor-website">
+                <FontAwesomeIcon icon={faGlobe} className="contact-icon" />
+                <a href={companyData.url} target="_blank">{companyData.url}</a>
+              </span>
               }
               {companyData.phone_number &&
-                <span className="vendor-phone">
-                  <FontAwesomeIcon icon={faPhone} className="contact-icon" />
-                  {companyData.phone_number}
-                </span>
+              <span className="vendor-phone">
+                <FontAwesomeIcon icon={faPhone} className="contact-icon" />
+                {companyData.phone_number}
+              </span>
               }
             </Col>
           </Row>
