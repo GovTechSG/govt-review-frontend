@@ -152,7 +152,7 @@ export default class CompanyPage extends Component {
             <Col xs={1} className="companyinfo-logo-box">
               <img src={companyData.image.thumb.url} alt={companyData.name} title={companyData.name} />
             </Col>
-            <Col xs={8}>
+            <Col xs={11}>
               <span className="vendor-name">{companyData.name}</span>
               {companyData.uen &&
               <span className="vendor-uen"><FormattedMessage id="companyinfo.uen" />{companyData.uen}</span>}
@@ -168,14 +168,18 @@ export default class CompanyPage extends Component {
           </Row>
           <Row className="vendor-contact-details">
             <Col xs={9}>
-              <span className="vendor-website">
-                <FontAwesomeIcon icon={faGlobe} className="contact-icon" />
-                <a href={companyData.url} target="_blank">{companyData.url}</a>
-              </span>
-              <span className="vendor-phone">
-                <FontAwesomeIcon icon={faPhone} className="contact-icon" />
-                {companyData.phone_number}
-              </span>
+              {companyData.url &&
+                <span className="vendor-website">
+                  <FontAwesomeIcon icon={faGlobe} className="contact-icon" />
+                  <a href={companyData.url} target="_blank">{companyData.url}</a>
+                </span>
+              }
+              {companyData.phone_number &&
+                <span className="vendor-phone">
+                  <FontAwesomeIcon icon={faPhone} className="contact-icon" />
+                  {companyData.phone_number}
+                </span>
+              }
             </Col>
           </Row>
           {projectString !== '' &&

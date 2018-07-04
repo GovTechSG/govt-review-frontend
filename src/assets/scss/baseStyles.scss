@@ -27,6 +27,7 @@
   min-width: $container-min-width;
   width: inherit;
   height: 100%;
+  box-shadow: 0 0 30px #b9b9b9;
 }
 
 hr {
@@ -56,12 +57,13 @@ hr {
   overflow-x: hidden;
   overflow-y: hidden;
   flex: 1 0 auto;
+  background-color: #fbfbfb;
 }
 
 // Responsive Margins
 @media only screen and (min-width: $narrow-breakpoint) {
   .common-main {
-    padding: 10px 0;
+    padding: 0px 0px 10px 0px;
   }
 }
 
