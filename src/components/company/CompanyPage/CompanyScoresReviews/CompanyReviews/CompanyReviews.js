@@ -96,7 +96,7 @@ export default class CompanyReviews extends Component {
             </Row>
             <Row id="review-aspects">
               <div className="aspect-heading">
-                {data.aspects && this.generateAspectHeading(data.score)}
+                {data.aspects.length !== 0 && this.generateAspectHeading(data.score)}
               </div>
               {this.generateAspects(data.aspects)}
             </Row>
@@ -154,7 +154,11 @@ export default class CompanyReviews extends Component {
         </Row>
         <div className="companyreview-border" />
         <Row className="margin-0">
-          {reviews.map((data, index) => {
+          { reviews.length === 0 ?
+            <div>
+              <FormattedMessage id="companyreviews.no.reviews" />
+            </div> :
+            reviews.map((data, index) => {
             return this.renderChild(data, index);
           })}
         </Row>
