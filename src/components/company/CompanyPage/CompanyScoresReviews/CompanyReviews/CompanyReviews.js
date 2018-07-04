@@ -154,7 +154,11 @@ export default class CompanyReviews extends Component {
         </Row>
         <div className="companyreview-border" />
         <Row className="margin-0">
-          {reviews.map((data, index) => {
+          { reviews.length === 0 ?
+            <div>
+              <FormattedMessage id="companyreviews.no.reviews" />
+            </div> :
+            reviews.map((data, index) => {
             return this.renderChild(data, index);
           })}
         </Row>
