@@ -50,7 +50,7 @@ export default class CompanyPage extends Component {
 
     if (companyData === 'Fail') {
       return (
-        <div className="container">
+        <div>
           <Row>
             <Col sm={12}>
               <div className="back-to-vendors-list">
@@ -70,7 +70,7 @@ export default class CompanyPage extends Component {
       );
     }
     return (
-      <div className="container">
+      <div className="company-container">
         <Row>
           <Col sm={12}>
             <div className="back-to-vendors-list">

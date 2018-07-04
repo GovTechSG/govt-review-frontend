@@ -134,6 +134,25 @@ export default class CompanyPage extends Component {
     return <div />;
   }
 
+  generateContactDetails(url, phoneNumber) {
+    return (
+      <Col xs={12}>
+        {url &&
+        <span className="vendor-website">
+          <FontAwesomeIcon icon={faGlobe} className="contact-icon" />
+          <a href={url} target="_blank">{url}</a>
+        </span>
+        }
+        {phoneNumber &&
+        <span className="vendor-phone">
+          <FontAwesomeIcon icon={faPhone} className="contact-icon" />
+          {phoneNumber}
+        </span>
+        }
+      </Col>
+    );
+  }
+
   render() {
     const { companyData } = this.props;
     const industryString = this.getIndustryString(companyData.industries);
@@ -152,7 +171,7 @@ export default class CompanyPage extends Component {
             <Col xs={1} className="companyinfo-logo-box">
               <img src={companyData.image.thumb.url} alt={companyData.name} title={companyData.name} />
             </Col>
-            <Col xs={8}>
+            <Col xs={11}>
               <span className="vendor-name">{companyData.name}</span>
               {companyData.uen &&
               <span className="vendor-uen"><FormattedMessage id="companyinfo.uen" />{companyData.uen}</span>}
@@ -167,16 +186,7 @@ export default class CompanyPage extends Component {
             </Col>
           </Row>
           <Row className="vendor-contact-details">
-            <Col xs={9}>
-              <span className="vendor-website">
-                <FontAwesomeIcon icon={faGlobe} className="contact-icon" />
-                <a href={companyData.url} target="_blank">{companyData.url}</a>
-              </span>
-              <span className="vendor-phone">
-                <FontAwesomeIcon icon={faPhone} className="contact-icon" />
-                {companyData.phone_number}
-              </span>
-            </Col>
+            {this.generateContactDetails(companyData.url, companyData.phone_number)}
           </Row>
           {projectString !== '' &&
             <Row className="companyinfo-has-done">
