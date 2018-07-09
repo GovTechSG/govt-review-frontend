@@ -7,5 +7,5 @@ token=$(curl \
   jq -r '.access_token')
 echo "REACT_APP_AUTH_TOKEN=\"Bearer ${token}\"" > .env.local
 echo "REACT_APP_BACKEND_ENV=development" > .env.local
-echo "HOST=$(getent hosts veracity_backend | awk '{ print $1 }'):3000" >> .env.local
+echo "HOST=$(getent hosts veracity_backend | awk '{ print $1 }')" >> .env.local
 npm start
