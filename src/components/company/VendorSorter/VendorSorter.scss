@@ -9,13 +9,13 @@
   margin: 10px 5px;
 }
 
-.form-control {
+#company-search-bar {
   border-right: 0;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
 
-.form-control:focus {
+#company-search-bar:focus {
   border: 1px solid #66afe9;
 }
 
@@ -25,7 +25,7 @@
   border-left: 0;
 }
 
-.control-label {
+.search-control-label {
   color: #2d89c9;
   font-size: 25px;
   font-weight: bold;

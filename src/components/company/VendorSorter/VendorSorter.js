@@ -18,7 +18,6 @@ export default class VendorSorter extends Component {
       searchText: '',
       filterUrl: this.props.filterUrl
     };
-    this.searchText = React.createRef();
     this.renderPagination = this.renderPagination.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.updatePagination = this.updatePagination.bind(this);
@@ -86,6 +85,10 @@ export default class VendorSorter extends Component {
     this.renderPagination();
   }
 
+  componentDidMount() {
+    this.renderPagination();
+  }
+
   getStartCount() {
     return this.state.itemsCountPerPage * (this.state.activePage - 1) + 1;
   }
@@ -114,7 +117,7 @@ export default class VendorSorter extends Component {
           <div className="col-xs-12">
             <form onSubmit={this.searchCompany}>
               <FormGroup validationState={null}>
-                <ControlLabel>
+                <ControlLabel className="search-control-label">
                   <FormattedMessage id="vendorsorter.find.consultants" />
                 </ControlLabel>
                 <InputGroup>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faAngleDoubleLeft from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft';
 import './CompanyPage.scss';
@@ -32,12 +33,6 @@ export default class CompanyPage extends Component {
     });
   }
 
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
   render() {
     const { companyData } = this.state;
     if (!companyData) {
@@ -54,12 +49,12 @@ export default class CompanyPage extends Component {
           <Row>
             <Col sm={12}>
               <div className="back-to-vendors-list">
-                <a href="/demo">
+                <Link to="/demo">
                   <FontAwesomeIcon icon={faAngleDoubleLeft} />
                   <span className="companypage-back">
                     <FormattedMessage id="companypage.back" />
                   </span>
-                </a>
+                </Link>
               </div>
             </Col>
           </Row>
@@ -74,12 +69,12 @@ export default class CompanyPage extends Component {
         <Row>
           <Col sm={12}>
             <div className="back-to-vendors-list">
-              <a href="/demo">
+              <Link to="/demo">
                 <FontAwesomeIcon icon={faAngleDoubleLeft} />
                 <span className="companypage-back">
                   <FormattedMessage id="companypage.back" />
                 </span>
-              </a>
+              </Link>
             </div>
           </Col>
         </Row>

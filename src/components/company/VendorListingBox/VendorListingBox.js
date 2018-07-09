@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import API from '../../../_utilities/api';
 import './VendorListingBox.scss';
@@ -91,12 +92,6 @@ export default class VendorListingBox extends Component {
     };
   }
 
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
   _loadAsyncData() {
     const url = `${API_URL_PREFIX}/api/v1/companies`;
     return API.get({
@@ -130,7 +125,7 @@ export default class VendorListingBox extends Component {
             </Col>
             <Col xs={7}>
               <div className="vendor-name">
-                <a href={`/demo/company/${data.id}`}>{data.name} </a>
+                <Link to={`/demo/company/${data.id}`}>{data.name}</Link>
               </div>
               <div className="vendor-industry">{industryString}</div>
               <br />

@@ -2,8 +2,10 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
+import { FormattedMessage } from 'react-intl';
+import { FormControl, InputGroup, ControlLabel } from 'react-bootstrap';
 import VendorSorter from '../../../../src/components/company/VendorSorter/VendorSorter';
-import { mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
+import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -12,24 +14,26 @@ describe('VendorSorter', () => {
   const filterUrl = '';
 
   before(() => {
-    render = mountWithIntl(<VendorSorter filterUrl={filterUrl} />);
+    render = shallowWithIntl(<VendorSorter filterUrl={filterUrl} />, { disableLifecycleMethods: true });
   });
 
   describe('renders', () => {
     it('renders search label', () => {
-      const label = render.find('.control-label').text();
+      const label = render.find(ControlLabel).find(FormattedMessage).dive().text();
 
       chai.expect(label).to.eq('FIND CONSULTANTS AND VENDORS');
     });
 
     it('renders search bar', () => {
-      const searchBar = render.find('#company-search-bar').hostNodes();
+      const searchBar = render.find(InputGroup);
 
       chai.expect(searchBar).to.have.length(1);
     });
 
     it('renders text in search bar', () => {
-      const searchBar = render.find('#company-search-bar').hostNodes();
+      const searchBar = render.find(InputGroup).dive()
+        .find(FormattedMessage).dive()
+        .find(FormControl);
 
       chai.expect(searchBar.prop('placeholder')).to.equal('Search for a company\'s name');
     });

@@ -1,9 +1,13 @@
 import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import Adapter from 'enzyme-adapter-react-16';
-import { mountWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
+import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import CompanyInfo from '../../../../../src/components/company/CompanyPage/CompanyInfo/CompanyInfo';
+
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -87,9 +91,7 @@ describe('CompanyInfo', () => {
   ];
 
   before(() => {
-    render = mountWithIntl(<CompanyInfo
-      companyData={companyMockData}
-    />);
+    render = shallowWithIntl(<CompanyInfo companyData={companyMockData} />);
     render.setState({
       grantData: grantMockData,
       clientData: clientMockData
@@ -108,7 +110,7 @@ describe('CompanyInfo', () => {
     });
 
     it('renders vendor uen', () => {
-      const vendorUen = render.find('.vendor-uen').text();
+      const vendorUen = render.find('.vendor-uen').find(FormattedMessage).dive().text();
       chai.expect(vendorUen).to.eql('UEN No: 984208873');
     });
 
@@ -123,7 +125,7 @@ describe('CompanyInfo', () => {
     });
 
     it('renders fontawesome globe icon', () => {
-      const image = render.find('.vendor-website').find('svg');
+      const image = render.find('.vendor-website').find(FontAwesomeIcon);
       chai.expect(image).to.have.length(1);
     });
 
@@ -134,13 +136,13 @@ describe('CompanyInfo', () => {
     });
 
     it('renders fontawesome phone icon', () => {
-      const image = render.find('.vendor-phone').find('svg');
+      const image = render.find('.vendor-phone').find(FontAwesomeIcon);
       chai.expect(image).to.have.length(1);
     });
 
     it('renders vendor phone number', () => {
       const vendorUrl = render.find('.vendor-phone').text();
-      chai.expect(vendorUrl).to.eql('6123 4567');
+      chai.expect(vendorUrl).to.eql('<FontAwesomeIcon />6123 4567');
     });
 
     it('renders project string', () => {
@@ -180,7 +182,7 @@ describe('CompanyInfo', () => {
 
     it('renders image hyperlinks', () => {
       const map = clients.map(client => {
-        return client.find('a').prop('href');
+        return client.find(Link).prop('to');
       });
       chai.expect(map).to.deep.equal([
         '/demo/company/abc1',

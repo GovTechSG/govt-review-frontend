@@ -2,7 +2,9 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import CompanyPage from '../../../../src/components/company/CompanyPage/CompanyPage';
 
 enzyme.configure({ adapter: new Adapter() });
@@ -50,9 +52,7 @@ describe('CompanyPage', () => {
   };
 
   before(() => {
-    render = mountWithIntl(<CompanyPage
-      match={mockMatch}
-    />);
+    render = shallowWithIntl(<CompanyPage match={mockMatch} />);
     render.setState({
       companyData: companyMockData
     });
@@ -64,12 +64,12 @@ describe('CompanyPage', () => {
   });
 
   it('renders back to vendor listings text', () => {
-    const link = render.find('.back-to-vendors-list');
+    const link = render.find('.companypage-back').find(FormattedMessage).dive();
     chai.expect(link.text()).to.eql('Back to Consultants and Vendors List');
   });
 
   it('renders back to vendor listings link', () => {
-    const link = render.find('.back-to-vendors-list');
-    chai.expect(link.find('a').prop('href')).to.eql('/demo');
+    const link = render.find('.back-to-vendors-list').find(Link);
+    chai.expect(link.prop('to')).to.eql('/demo');
   });
 });

@@ -29,12 +29,6 @@ export default class CompanyScoresReviews extends Component {
     this._asyncRequest = this._loadAsyncAspectData();
   }
 
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
   _loadAsyncReviewData() {
     const id = this.props.companyId;
     const url = `${API_URL_PREFIX}/api/v1/companies/${id}/reviews`;

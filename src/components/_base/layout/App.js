@@ -1,25 +1,68 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Footer from './footer/Footer';
-import Header from './header/Header';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
-import CompanyIndexPage from '../../company/CompanyIndexPage';
-import CompanyPage from '../../company/CompanyPage/CompanyPage';
+import DemoPage from './demo/DemoPage';
+import Login from '../../auth/Login';
+
+const ProtectedRoute = ({ isAllowed, ...props }) => {
+  if (isAllowed) {
+    return <Route {...props} />;
+  }
+  return <Redirect to="/demo/login" />;
+};
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuth: false,
+      authFailed: false
+    };
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  login(inputUser, inputPass) {
+    if (inputUser === process.env.REACT_APP_USERNAME && inputPass === process.env.REACT_APP_PASSWORD) {
+      this.setState({
+        isAuth: true,
+        authFailed: false
+      });
+    } else {
+      this.setState({
+        isAuth: false,
+        authFailed: true
+      });
+    }
+  }
+
+  logout() {
+    this.setState({
+      isAuth: false,
+      authFailed: false
+    });
+  }
+
+  renderLogin() {
+    if (!this.state.isAuth) {
+      return (<Route
+        path="/demo/login"
+        render={() => <Login authenticate={this.login} authFailed={this.state.authFailed} />}
+      />);
+    }
+    return <Redirect to="/demo" />;
+  }
+
   render() {
     return (
-      <div className="base-container">
-        <Header />
-        <div className="common-main">
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/demo" component={CompanyIndexPage} />
-            <Route path="/demo/company/:id" component={CompanyPage} />
-          </Switch>
-        </BrowserRouter>
-        </div>
-        <Footer />
+      <div>
+          <BrowserRouter>
+            <Switch>
+              <ProtectedRoute isAllowed={this.state.isAuth} exact path="/demo" render={() => <DemoPage logout={this.logout} />} />
+              <ProtectedRoute isAllowed={this.state.isAuth} path="/demo/company/:id" render={() => <DemoPage logout={this.logout} />} />
+              {this.renderLogin()}
+            </Switch>
+          </BrowserRouter>
       </div>
     );
   }

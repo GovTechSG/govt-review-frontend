@@ -33,12 +33,6 @@ export default class CompanyOfferings extends Component {
     });
   }
 
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
   generateOfferings(offeringData) {
     return (
       <div className="offerings">

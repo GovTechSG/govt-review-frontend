@@ -2,7 +2,8 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { mountWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
+import { FormattedMessage } from 'react-intl';
+import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import CompanyScoresReviews from '../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScoresReviews';
 
 enzyme.configure({ adapter: new Adapter() });
@@ -142,7 +143,7 @@ describe('CompanyScoresReviews', () => {
   ];
 
   before(() => {
-    render = mountWithIntl(<CompanyScoresReviews
+    render = shallowWithIntl(<CompanyScoresReviews
       companyId=""
     />);
     render.setState({
@@ -158,7 +159,7 @@ describe('CompanyScoresReviews', () => {
     });
 
     it('renders title', () => {
-      const title = render.find('.reviews-header').find('span').text();
+      const title = render.find('.reviews-header').find(FormattedMessage).dive().text();
       chai.expect(title).to.eq('Reviews');
     });
   });
