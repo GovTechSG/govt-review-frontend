@@ -60,7 +60,6 @@
     "test": "NODE_ENV=test karma start --single-run",
     "test-watch": "NODE_ENV=test karma start"
   },
-  "proxy": "http://localhost:3000",
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
