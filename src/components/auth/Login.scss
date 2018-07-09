@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import '../../assets/scss/baseStyles.scss';
+
+.login-container {
+  margin: 0 auto;
+  text-align: left;
+  max-width: $container-max-width;
+  min-width: $container-min-width;
+  width: inherit;
+  height: 100%;
+}
+
+.login-form-label {
+  font-size: 20px;
+}

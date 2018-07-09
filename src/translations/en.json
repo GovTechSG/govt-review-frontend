@@ -14,7 +14,7 @@
   "vendorsorter.newly.added": "Newly Added",
 
   "companypage.back": "Back to Consultants and Vendors List",
-  "companyinfo.uen": "UEN No: ",
+  "companyinfo.uen": "UEN No: {uen}",
   "companyinfo-previous-clients": "Previous clients",
   "companyinfo-grants-experience": "Has prior experience with these grants:",
   "companyinfo-has-done": "Deals with projects in:",
@@ -56,5 +56,10 @@
   "footer.privacy": "Privacy Statement",
   "footer.termsofuse": "Terms of Use",
   "footer.copyright": "\u00A9 {year} Copyright Government of Singapore",
-  "footer.browsersupport": "Government Review Platform is best viewed with Chrome, Firefox, Safari and Internet Explorer 10 and above"
+  "footer.browsersupport": "Government Review Platform is best viewed with Chrome, Firefox, Safari and Internet Explorer 10 and above",
+
+  "login.auth.failed": "Authentication Failed!",
+  "login.header": "Login to GovReview",
+  "login.username": "Username",
+  "login.password": "Password"
 }
