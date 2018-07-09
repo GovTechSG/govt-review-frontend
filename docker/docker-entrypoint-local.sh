@@ -7,5 +7,4 @@ token=$(curl \
   jq -r '.access_token')
 echo "REACT_APP_AUTH_TOKEN=\"Bearer ${token}\"" > .env.local
 echo "REACT_APP_BACKEND_ENV=development" > .env.local
-echo "HOST=localhost" >> .env.local
 npm start
