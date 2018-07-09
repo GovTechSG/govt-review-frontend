@@ -49,8 +49,8 @@ export default class VendorSorter extends Component {
 
   renderPagination() {
     if (currentItemsCount === 0) {
-      ReactDOM.render(<div> </div>, document.getElementById('pagination'));
-      ReactDOM.render(<div> </div>, document.getElementById('total-items'));
+      ReactDOM.render(<div />, document.getElementById('pagination'));
+      ReactDOM.render(<div />, document.getElementById('total-items'));
     } else {
       const element = (<ReactPaginate
         pageCount={Math.ceil(currentItemsCount / this.state.itemsCountPerPage)}
