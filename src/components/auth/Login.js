@@ -28,7 +28,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login-container" style={{ padding: '20px' }}>
-        <div style={{ fontSize: '30px' }}>
+        <div style={{ fontSize: '30px' }} id="login-header">
           <FormattedMessage id="login.header" />
         </div>
         <Form horizontal onSubmit={this.handleSubmit}>
@@ -52,13 +52,13 @@ export default class Login extends Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button type="submit">Sign in</Button>
+              <Button type="submit"><FormattedMessage id="login.signin" /></Button>
             </Col>
           </FormGroup>
         </Form>
         {
           this.props.authFailed &&
-          <div style={{ color: 'red' }}>
+          <div style={{ color: 'red' }} id="login-failed">
             <FormattedMessage id="login.auth.failed" />
           </div>
         }

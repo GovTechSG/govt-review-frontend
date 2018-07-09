@@ -61,5 +61,6 @@
   "login.auth.failed": "Authentication Failed!",
   "login.header": "Login to GovReview",
   "login.username": "Username",
+  "login.signin": "Sign in",
   "login.password": "Password"
 }
