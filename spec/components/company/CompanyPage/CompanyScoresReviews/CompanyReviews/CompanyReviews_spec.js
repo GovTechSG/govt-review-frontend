@@ -2,7 +2,9 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { mountWithIntl } from '../../../../../helpers/intl-enzyme-test-helper';
+import { FormattedMessage } from 'react-intl';
+import { Nav } from 'react-bootstrap';
+import { shallowWithIntl } from '../../../../../helpers/intl-enzyme-test-helper';
 import CompanyReviews from '../../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyReviews/CompanyReviews';
 
 enzyme.configure({ adapter: new Adapter() });
@@ -106,7 +108,7 @@ describe('CompanyReviews', () => {
   };
 
   before(() => {
-    render = mountWithIntl(<CompanyReviews
+    render = shallowWithIntl(<CompanyReviews
       reviewCount={reviewMockCount}
       reviewData={reviewMockData}
       handleChangeFilter={() => {}}
@@ -117,9 +119,9 @@ describe('CompanyReviews', () => {
 
   describe('renders company reviews', () => {
     it('renders sorter', () => {
-      const tabs = render.find('.reviews-nav-sorter').find('li');
+      const tabs = render.find(Nav).find(FormattedMessage);
       const map = tabs.map(tabItem => {
-        return tabItem.text();
+        return tabItem.dive().text();
       });
       chai.expect(map).to.have.length(4);
       chai.expect(map).to.deep.equal([
@@ -163,17 +165,21 @@ describe('CompanyReviews', () => {
       });
 
       it('generates review rating', () => {
-        const rating = review.find('#review-rating').find('span').last().text();
+        const rating = review.find('#review-rating').find('span').last().find(FormattedMessage)
+          .dive()
+          .text();
         chai.expect(rating).to.eq('Neutral Experience');
       });
 
       it('generates positive aspect heading', () => {
-        const aspects = reviews.last().find('.aspect-heading').find('span').text();
+        const aspects = reviews.last().find('.aspect-heading').find(FormattedMessage).dive()
+          .text();
         chai.expect(aspects).to.eq('Areas done well:');
       });
 
       it('generates negative aspect heading', () => {
-        const aspects = review.find('.aspect-heading').find('span').last().text();
+        const aspects = review.find('.aspect-heading').find(FormattedMessage).dive()
+          .text();
         chai.expect(aspects).to.eq('Areas to be improved:');
       });
 
@@ -183,7 +189,8 @@ describe('CompanyReviews', () => {
       });
 
       it('generates offering heading', () => {
-        const heading = review.find('.offerings-engaged').last().text();
+        const heading = review.find('.offerings-engaged').last().find(FormattedMessage).dive()
+          .text();
         chai.expect(heading).to.eq('Product/Services Engaged:');
       });
 

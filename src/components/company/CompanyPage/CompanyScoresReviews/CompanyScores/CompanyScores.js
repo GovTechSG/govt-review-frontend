@@ -46,7 +46,7 @@ export default class CompanyScores extends Component {
               <ProgressBar max={this.props.reviewCount} now={reviewData.positive_count} key={1} />
             </Col>
             <Col xs={2} id="percentage">
-              {Math.round(reviewData.positive_count / this.props.reviewCount * 100)}%
+              <span>{Math.round(reviewData.positive_count / this.props.reviewCount * 100)}%</span>
             </Col>
           </Row>
           <Row id="neutral-row">
@@ -57,7 +57,7 @@ export default class CompanyScores extends Component {
               <ProgressBar max={this.props.reviewCount} now={reviewData.neutral_count} key={1} />
             </Col>
             <Col xs={2} id="percentage">
-              {Math.round(reviewData.neutral_count / this.props.reviewCount * 100)}%
+              <span>{Math.round(reviewData.neutral_count / this.props.reviewCount * 100)}%</span>
             </Col>
           </Row>
           <Row id="negative-row">
@@ -68,7 +68,7 @@ export default class CompanyScores extends Component {
               <ProgressBar max={this.props.reviewCount} now={reviewData.negative_count} key={1} />
             </Col>
             <Col xs={2} id="percentage">
-              {Math.round(reviewData.negative_count / this.props.reviewCount * 100)}%
+              <span>{Math.round(reviewData.negative_count / this.props.reviewCount * 100)}%</span>
             </Col>
           </Row>
         </Col>

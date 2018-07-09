@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-bootstrap';
-// import { resolve } from 'react-resolver';
+import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faGlobe from '@fortawesome/fontawesome-free-solid/faGlobe';
 import faPhone from '@fortawesome/fontawesome-free-solid/faPhone';
@@ -55,12 +55,6 @@ export default class CompanyPage extends Component {
     });
   }
 
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
   getIndustryString(industriesArray) {
     const len = industriesArray.length;
 
@@ -107,7 +101,7 @@ export default class CompanyPage extends Component {
           </div>
           <div className="client-images">
           { clientData.map((data) => {
-            return <span key={data.name}><a href={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></a></span>;
+            return <span key={data.name}><Link to={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></Link></span>;
            })}
           </div>
         </Col>
@@ -174,7 +168,7 @@ export default class CompanyPage extends Component {
             <Col xs={11}>
               <span className="vendor-name">{companyData.name}</span>
               {companyData.uen &&
-              <span className="vendor-uen"><FormattedMessage id="companyinfo.uen" />{companyData.uen}</span>}
+              <span className="vendor-uen"><FormattedMessage id="companyinfo.uen" values={{ uen: companyData.uen }} /></span>}
               <div className="vendor-industry">{industryString}</div>
             </Col>
           </Row>

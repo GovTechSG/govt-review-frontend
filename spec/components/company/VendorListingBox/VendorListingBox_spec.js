@@ -2,7 +2,7 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { mountWithIntl } from '../../../helpers/intl-enzyme-test-helper';
+import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import VendorListingBox from '../../../../src/components/company/VendorListingBox/VendorListingBox';
 
 enzyme.configure({ adapter: new Adapter() });
@@ -72,15 +72,13 @@ describe('VendorListingBox', () => {
   ];
 
   before(() => {
-    render = mountWithIntl(<VendorListingBox
-      updatePagination={() => {}}
-    />);
+    render = shallowWithIntl(<VendorListingBox updatePagination={() => {}} />);
     render.setState({ vendorData: vendorMockData });
   });
 
   describe('renders', () => {
     it('renders a row for each item', () => {
-      const rows = render.find('.vendor-item').hostNodes();
+      const rows = render.find('.vendor-item');
       chai.expect(rows).to.have.length(2);
     });
 
