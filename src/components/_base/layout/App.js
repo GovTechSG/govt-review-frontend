@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
 import DemoPage from './demo/DemoPage';
 import Login from '../../auth/Login';
@@ -56,13 +56,13 @@ class App extends Component {
   render() {
     return (
       <div>
-          <BrowserRouter>
+          <HashRouter basename="/">
             <Switch>
               <ProtectedRoute isAllowed={this.state.isAuth} exact path="/demo" render={() => <DemoPage logout={this.logout} />} />
               <ProtectedRoute isAllowed={this.state.isAuth} path="/demo/company/:id" render={() => <DemoPage logout={this.logout} />} />
               {this.renderLogin()}
             </Switch>
-          </BrowserRouter>
+          </HashRouter>
       </div>
     );
   }

@@ -100,9 +100,9 @@ export default class CompanyPage extends Component {
             <FormattedMessage id="companyinfo-previous-clients" />
           </div>
           <div className="client-images">
-          { clientData.map((data) => {
-            return <span key={data.name}><Link to={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></Link></span>;
-           })}
+            { clientData.map((data) => {
+              return <span key={data.name}><Link to={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></Link></span>;
+            })}
           </div>
         </Col>
       );
@@ -200,4 +200,3 @@ export default class CompanyPage extends Component {
     );
   }
 }
-
