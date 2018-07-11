@@ -13,8 +13,8 @@ export default class DemoPage extends Component {
           <Header logout={this.props.logout} />
           <div className="common-main">
             <Switch>
-              <Route exact path="/demo" component={CompanyIndexPage} />
-              <Route path="/demo/company/:id" component={CompanyPageRouter} />
+              <Route exact path="/" component={CompanyIndexPage} />
+              <Route path="/company/:id" component={CompanyPageRouter} />
             </Switch>
           </div>
         <Footer />

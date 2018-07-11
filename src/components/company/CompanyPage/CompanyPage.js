@@ -49,7 +49,7 @@ export default class CompanyPage extends Component {
           <Row>
             <Col sm={12}>
               <div className="back-to-vendors-list">
-                <Link to="/demo">
+                <Link to="/">
                   <FontAwesomeIcon icon={faAngleDoubleLeft} />
                   <span className="companypage-back">
                     <FormattedMessage id="companypage.back" />
@@ -69,7 +69,7 @@ export default class CompanyPage extends Component {
         <Row>
           <Col sm={12}>
             <div className="back-to-vendors-list">
-              <Link to="/demo">
+              <Link to="/">
                 <FontAwesomeIcon icon={faAngleDoubleLeft} />
                 <span className="companypage-back">
                   <FormattedMessage id="companypage.back" />

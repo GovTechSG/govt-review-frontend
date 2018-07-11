@@ -70,6 +70,6 @@ describe('CompanyPage', () => {
 
   it('renders back to vendor listings link', () => {
     const link = render.find('.back-to-vendors-list').find(Link);
-    chai.expect(link.prop('to')).to.eql('/demo');
+    chai.expect(link.prop('to')).to.eql('/');
   });
 });
