@@ -13,7 +13,7 @@ describe('Login', () => {
   let render;
 
   before(() => {
-    render = shallowWithIntl(<Login authFailed authenticate={() => {}}/>);
+    render = shallowWithIntl(<Login authFailed authenticate={() => {}} />);
   });
 
   describe('renders username', () => {
@@ -35,7 +35,7 @@ describe('Login', () => {
 
     it('updates username state on change', () => {
       const usernameInput = usernameForm.find(FormControl).dive();
-      usernameInput.simulate('change', {target: {id: 'username', value: 'testUserName'}});
+      usernameInput.simulate('change', { target: { id: 'username', value: 'testUserName' } });
       chai.expect(render.state('username')).to.eq('testUserName');
     });
   });
@@ -59,7 +59,7 @@ describe('Login', () => {
 
     it('updates password state on change', () => {
       const passwordInput = passwordForm.find(FormControl).dive();
-      passwordInput.simulate('change', {target: {id: 'password', value: 'testPassword'}});
+      passwordInput.simulate('change', { target: { id: 'password', value: 'testPassword' } });
       chai.expect(render.state('password')).to.eq('testPassword');
     });
   });
