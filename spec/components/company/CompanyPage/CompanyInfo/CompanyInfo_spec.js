@@ -185,9 +185,9 @@ describe('CompanyInfo', () => {
         return client.find(Link).prop('to');
       });
       chai.expect(map).to.deep.equal([
-        '/demo/company/abc1',
-        '/demo/company/abc2',
-        '/demo/company/abc3'
+        '/company/abc1',
+        '/company/abc2',
+        '/company/abc3'
       ]);
     });
 

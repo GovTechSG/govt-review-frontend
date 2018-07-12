@@ -1,20 +1,27 @@
 import 'jquery';
+import { API_URL_PREFIX } from './api_url_prefix';
 
 function ajaxCall(args) {
   return $.ajax({
     beforeSend(xhr) {
       !args.hasOwnProperty('skipHeader') &&
       xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) &&
-      xhr.setRequestHeader('Authorization', process.env.REACT_APP_AUTH_TOKEN);
+      xhr.setRequestHeader('Authorization', sessionStorage.getItem('authToken'));
     },
     ...args
   }).fail(result => {
     switch (result.status) {
       case 401:
-        window.location.href = '/logged_out';
+        sessionStorage.removeItem('authToken');
+        if (args.url !== `${API_URL_PREFIX}/api/v1/oauth/token`) {
+          window.location.href = '/demo/login';
+        }
         break;
       case 403:
-        window.location.href = '/unauthorized/403';
+        sessionStorage.removeItem('authToken');
+        if (args.url !== `${API_URL_PREFIX}/api/v1/oauth/token`) {
+          window.location.href = '/demo/login';
+        }
         break;
       default:
     }

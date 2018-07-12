@@ -23,7 +23,7 @@ export default class Header extends Component {
       <div className={classNames('header', { sticky: this.props.sticky })}>
         <div className="grp-masthead hidden-xs hidden-sm">
           <div className="grp-header-logo-container" id="grp-header-logo">
-            <Link to="/demo">
+            <Link to="/">
               <img className="grp-header-logo" src={grpLogoMain} alt="G Review Portal" />
             </Link>
           </div>

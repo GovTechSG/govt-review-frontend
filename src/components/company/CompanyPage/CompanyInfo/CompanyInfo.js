@@ -101,7 +101,7 @@ export default class CompanyPage extends Component {
           </div>
           <div className="client-images">
             { clientData.map((data) => {
-              return <span key={data.name}><Link to={`/demo/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></Link></span>;
+              return <span key={data.name}><Link to={`/company/${data.id}`}><img src={data.image.thumb.url} alt={data.name} title={data.name} /></Link></span>;
             })}
           </div>
         </Col>
