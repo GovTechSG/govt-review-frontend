@@ -55,11 +55,6 @@ class App extends Component {
           authFailed: true
         });
       });
-
-    // this.setState({
-    //   isAuth: true,
-    //   authFailed: false
-    // });
   }
 
   logout() {
@@ -68,6 +63,7 @@ class App extends Component {
       authFailed: false
     });
     this.revokeToken();
+    sessionStorage.removeItem('authToken');
   }
 
   revokeToken() {
@@ -77,10 +73,7 @@ class App extends Component {
       data: {
         token: sessionStorage.getItem('authToken').split(' ')[1]
       }
-    })
-      .then(() => {
-        sessionStorage.removeItem('authToken');
-      });
+    });
   }
 
   renderLogin() {
@@ -95,16 +88,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <BrowserRouter basename="/demo">
-          <Switch>
-            <ProtectedRoute isAllowed={this.state.isAuth} exact path="/" render={() => <DemoPage logout={this.logout} />} />
-            <ProtectedRoute isAllowed={this.state.isAuth} path="/company/:id" render={() => <DemoPage logout={this.logout} />} />
-            {this.renderLogin()}
-            <ProtectedRoute isAllowed={this.state.isAuth} path="*" render={() => <Redirect to="/" />} />
-          </Switch>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter basename="/demo">
+        <Switch>
+          <ProtectedRoute isAllowed={this.state.isAuth} exact path="/" render={() => <DemoPage logout={this.logout} />} />
+          <ProtectedRoute isAllowed={this.state.isAuth} path="/company/:id" render={() => <DemoPage logout={this.logout} />} />
+          {this.renderLogin()}
+          <ProtectedRoute isAllowed={this.state.isAuth} path="*" render={() => <Redirect to="/" />} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
