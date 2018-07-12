@@ -52,7 +52,7 @@ export default class Login extends Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button type="submit"><FormattedMessage id="login.signin" /></Button>
+              <Button type="submit" id="signin"><FormattedMessage id="login.signin" /></Button>
             </Col>
           </FormGroup>
         </Form>
