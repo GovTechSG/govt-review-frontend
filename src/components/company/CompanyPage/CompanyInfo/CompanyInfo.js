@@ -56,20 +56,13 @@ export default class CompanyPage extends Component {
   }
 
   getIndustryString(industriesArray) {
-    const len = industriesArray.length;
-
-    if (len === 0) {
+    if (!industriesArray) {
       return '';
     }
 
-    let industryString = industriesArray[0].name;
-    if (len > 1) {
-      let i = 1;
-      for (i, len; i < len; i++) {
-        industryString += `, ${industriesArray[i].name}`;
-      }
-    }
-    return industryString;
+    let industriesString = '';
+    for (const data of industriesArray) industriesString += `${data.name}, `;
+    return industriesString.substring(0, industriesString.length - 2);
   }
 
   getProjectsString(projectsArray) {
@@ -77,25 +70,15 @@ export default class CompanyPage extends Component {
       return '';
     }
 
-    const len = projectsArray.length;
-    if (len === 0) {
-      return '';
-    }
-
-    let projectString = projectsArray[0].name;
-    if (len > 1) {
-      let i = 1;
-      for (i, len; i < len; i++) {
-        projectString += `, ${projectsArray[i].name}`;
-      }
-    }
-    return projectString;
+    let projectString = '';
+    for (const data of projectsArray) projectString += `${data.name}, `;
+    return projectString.substring(0, projectString.length - 2);
   }
 
   generatePrevClients(clientData) {
-    if (clientData !== 'Fail') {
+    if (clientData !== 'Fail' && clientData.length !== 0) {
       return (
-        <Col sm={6}>
+        <Col sm={6} id="previous-clients">
           <div className="companyinfo-subheader">
             <FormattedMessage id="companyinfo-previous-clients" />
           </div>
@@ -111,9 +94,9 @@ export default class CompanyPage extends Component {
   }
 
   generateGrants(grantData) {
-    if (grantData !== 'Fail') {
+    if (grantData !== 'Fail' && grantData.length !== 0) {
       return (
-        <Col sm={6}>
+        <Col sm={6} id="grants">
           <div className="companyinfo-subheader">
             <FormattedMessage id="companyinfo-grants-experience" />
           </div>

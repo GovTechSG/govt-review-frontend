@@ -84,7 +84,7 @@ export default class Header extends Component {
                 </li>
 
                 <li className="log-button">
-                  <Button className="login" id="login-button" onClick={() => this.props.logout()} to="/demo/login" >
+                  <Button className="login" id="logout-button" onClick={() => this.props.logout()} to="/demo/login" >
                     <FormattedMessage id="header.nav.logout" />
                   </Button>
                 </li>
