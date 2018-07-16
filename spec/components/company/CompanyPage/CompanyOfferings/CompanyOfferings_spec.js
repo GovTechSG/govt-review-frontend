@@ -31,12 +31,37 @@ describe('CompanyOfferings', () => {
       companyId=""
       companyName="Company"
     />);
+  });
+
+  it('loads page spinner when offering data is null', () => {
     render.setState({
-      offeringData: offeringMockData
+      offeringData: null
     });
+    const spinner = render.find('.page-load-spinner');
+    chai.expect(spinner).to.have.length(1);
+  });
+
+  it('returns empty div when failed to get offering data', () => {
+    render.setState({
+      offeringData: 'Fail'
+    });
+    chai.expect(render.children()).to.have.length(0);
+  });
+
+  it('returns empty div when offering data is empty', () => {
+    render.setState({
+      offeringData: []
+    });
+    chai.expect(render.children()).to.have.length(0);
   });
 
   describe('renders company offerings', () => {
+    before(() => {
+      render.setState({
+        offeringData: offeringMockData
+      });
+    });
+
     it('renders title', () => {
       const title = render.find('.offerings-header').find(FormattedMessage).dive().text();
       chai.expect(title).to.eq('Company\'s Product/Service/Project Listing');

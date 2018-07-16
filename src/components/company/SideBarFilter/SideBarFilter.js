@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-// import API from '../../_utility/Api';
 import './SideBarFilter.scss';
 import IndustryFilter from './IndustryFilter/IndustryFilter';
 import GrantFilter from './GrantFilter/GrantFilter';

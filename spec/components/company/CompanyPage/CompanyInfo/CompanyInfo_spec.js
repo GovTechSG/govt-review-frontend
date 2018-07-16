@@ -98,7 +98,43 @@ describe('CompanyInfo', () => {
     });
   });
 
+  describe('loads page spinner', () => {
+    it('loads page spinner when both null', () => {
+      render.setState({
+        grantData: null,
+        clientData: null
+      });
+      const spinner = render.find('.page-load-spinner');
+      chai.expect(spinner).to.have.length(1);
+    });
+
+    it('loads page spinner when clientData is null', () => {
+      render.setState({
+        grantData: grantMockData,
+        clientData: null
+      });
+      const spinner = render.find('.page-load-spinner');
+      chai.expect(spinner).to.have.length(1);
+    });
+
+    it('loads page spinner when grantData is null', () => {
+      render.setState({
+        grantData: null,
+        clientData: clientMockData
+      });
+      const spinner = render.find('.page-load-spinner');
+      chai.expect(spinner).to.have.length(1);
+    });
+  });
+
   describe('renders vendor information', () => {
+    before(() => {
+      render.setState({
+        grantData: grantMockData,
+        clientData: clientMockData
+      });
+    });
+
     it('renders image', () => {
       const image = render.find('.companyinfo-logo-box').find('img');
       chai.expect(image.prop('src')).to.eql('http://dogtowndogtraining.com/wp-content/uploads/2012/06/300x300-02.jpg');
@@ -114,9 +150,36 @@ describe('CompanyInfo', () => {
       chai.expect(vendorUen).to.eql('UEN No: 984208873');
     });
 
+    it('does not render vendor uen if empty', () => {
+      const testCompanyMockData = Object.assign({}, companyMockData, { uen: null });
+      render.setProps({
+        companyData: testCompanyMockData
+      });
+      const vendorUen = render.find('.vendor-uen');
+      chai.expect(vendorUen).to.have.length(0);
+    });
+
     it('renders industry string', () => {
       const vendorIndustry = render.find('.vendor-industry').text();
       chai.expect(vendorIndustry).to.eql('Agriculture, Dogiculture');
+    });
+
+    it('does not render industry string if empty', () => {
+      const testCompanyMockData = Object.assign({}, companyMockData, { industries: [] });
+      render.setProps({
+        companyData: testCompanyMockData
+      });
+      const vendorIndustry = render.find('.vendor-industry').text();
+      chai.expect(vendorIndustry).to.eql('');
+    });
+
+    it('does not render industry string if null', () => {
+      const testCompanyMockData = Object.assign({}, companyMockData, { industries: null });
+      render.setProps({
+        companyData: testCompanyMockData
+      });
+      const vendorIndustry = render.find('.vendor-industry').text();
+      chai.expect(vendorIndustry).to.eql('');
     });
 
     it('renders vendor description', () => {
@@ -141,13 +204,47 @@ describe('CompanyInfo', () => {
     });
 
     it('renders vendor phone number', () => {
-      const vendorUrl = render.find('.vendor-phone').text();
-      chai.expect(vendorUrl).to.eql('<FontAwesomeIcon />6123 4567');
+      const vendorPhone = render.find('.vendor-phone').text();
+      chai.expect(vendorPhone).to.eql('<FontAwesomeIcon />6123 4567');
+    });
+
+    it('does not render url when no url', () => {
+      const testCompanyMockData = Object.assign({}, companyMockData, { url: null });
+      render.setProps({
+        companyData: testCompanyMockData
+      });
+      chai.expect(render.find('.vendor-website')).to.have.length(0);
+    });
+
+    it('does not render url when no url', () => {
+      const testCompanyMockData = Object.assign({}, companyMockData, { phone_number: null });
+      render.setProps({
+        companyData: testCompanyMockData
+      });
+      chai.expect(render.find('.vendor-phone')).to.have.length(0);
     });
 
     it('renders project string', () => {
       const vendorIndustry = render.find('.companyinfo-has-done-text').text();
       chai.expect(vendorIndustry).to.eql('Agriculture, Dgriculture');
+    });
+
+    it('does not render project string if empty', () => {
+      const testCompanyMockData = Object.assign({}, companyMockData, { project_industries: [] });
+      render.setProps({
+        companyData: testCompanyMockData
+      });
+      const vendorIndustry = render.find('.companyinfo-has-done');
+      chai.expect(vendorIndustry).to.have.length(0);
+    });
+
+    it('does not render project string if null', () => {
+      const testCompanyMockData = Object.assign({}, companyMockData, { project_industries: null });
+      render.setProps({
+        companyData: testCompanyMockData
+      });
+      const vendorIndustry = render.find('.companyinfo-has-done');
+      chai.expect(vendorIndustry).to.have.length(0);
     });
   });
 
@@ -189,6 +286,20 @@ describe('CompanyInfo', () => {
         '/company/abc2',
         '/company/abc3'
       ]);
+
+      it('does not render when failed to get client data', () => {
+        render.setState({
+          clientData: 'Fail'
+        });
+        chai.expect(render.find('#previous-clients')).to.have.length(0);
+      });
+
+      it('does not render when client data is empty', () => {
+        render.setState({
+          clientData: []
+        });
+        chai.expect(render.find('#previous-clients')).to.have.length(0);
+      });
     });
 
     describe('renders grant experience', () => {
@@ -211,6 +322,20 @@ describe('CompanyInfo', () => {
           'Grant 2',
           'Grant 3'
         ]);
+      });
+
+      it('does not render when failed to get grant data', () => {
+        render.setState({
+          grantData: 'Fail'
+        });
+        chai.expect(render.find('#grants')).to.have.length(0);
+      });
+
+      it('does not render when grant data is empty', () => {
+        render.setState({
+          grantData: []
+        });
+        chai.expect(render.find('#grants')).to.have.length(0);
       });
     });
   });

@@ -58,8 +58,8 @@ export default class CompanyPage extends Component {
               </div>
             </Col>
           </Row>
-          <div>
-            Company Not Found!
+          <div id="company-not-found">
+            <FormattedMessage id="companypage.not.found" />
           </div>
         </div>
       );

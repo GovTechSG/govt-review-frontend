@@ -6,6 +6,9 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import CompanyPage from '../../../../src/components/company/CompanyPage/CompanyPage';
+import CompanyInfo from '../../../../src/components/company/CompanyPage/CompanyInfo/CompanyInfo';
+import CompanyOfferings from '../../../../src/components/company/CompanyPage/CompanyOfferings/CompanyOfferings';
+import CompanyScoresReviews from '../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScoresReviews';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -58,18 +61,78 @@ describe('CompanyPage', () => {
     });
   });
 
-  it('renders back to vendor listings', () => {
-    const link = render.find('.back-to-vendors-list');
-    chai.expect(link).to.have.length(1);
+  describe('when companyData loads correctly', () => {
+    it('renders back to vendor listings', () => {
+      const link = render.find('.back-to-vendors-list');
+      chai.expect(link).to.have.length(1);
+    });
+
+    it('renders back to vendor listings text', () => {
+      const link = render.find('.companypage-back').find(FormattedMessage).dive();
+      chai.expect(link.text()).to.eql('Back to Consultants and Vendors List');
+    });
+
+    it('renders back to vendor listings link', () => {
+      const link = render.find('.back-to-vendors-list').find(Link);
+      chai.expect(link.prop('to')).to.eql('/');
+    });
+
+    it('renders CompanyInfo', () => {
+      const component = render.find(CompanyInfo);
+      chai.expect(component).to.have.length(1);
+    });
+
+    it('renders CompanyOfferings', () => {
+      const component = render.find(CompanyOfferings);
+      chai.expect(component).to.have.length(1);
+    });
+
+    it('renders CompanyScoresReviews', () => {
+      const component = render.find(CompanyScoresReviews);
+      chai.expect(component).to.have.length(1);
+    });
   });
 
-  it('renders back to vendor listings text', () => {
-    const link = render.find('.companypage-back').find(FormattedMessage).dive();
-    chai.expect(link.text()).to.eql('Back to Consultants and Vendors List');
-  });
+  describe('when companyData fails to loads', () => {
+    before(() => {
+      render.setState({
+        companyData: 'Fail'
+      });
+    });
 
-  it('renders back to vendor listings link', () => {
-    const link = render.find('.back-to-vendors-list').find(Link);
-    chai.expect(link.prop('to')).to.eql('/');
+    it('renders back to vendor listings', () => {
+      const link = render.find('.back-to-vendors-list');
+      chai.expect(link).to.have.length(1);
+    });
+
+    it('renders back to vendor listings text', () => {
+      const link = render.find('.companypage-back').find(FormattedMessage).dive();
+      chai.expect(link.text()).to.eql('Back to Consultants and Vendors List');
+    });
+
+    it('renders back to vendor listings link', () => {
+      const link = render.find('.back-to-vendors-list').find(Link);
+      chai.expect(link.prop('to')).to.eql('/');
+    });
+
+    it('renders CompanyInfo', () => {
+      const component = render.find(CompanyInfo);
+      chai.expect(component).to.have.length(0);
+    });
+
+    it('renders CompanyOfferings', () => {
+      const component = render.find(CompanyOfferings);
+      chai.expect(component).to.have.length(0);
+    });
+
+    it('renders CompanyScoresReviews', () => {
+      const component = render.find(CompanyScoresReviews);
+      chai.expect(component).to.have.length(0);
+    });
+
+    it('renders Company Not Found Text', () => {
+      const text = render.find('#company-not-found').find(FormattedMessage).dive().text();
+      chai.expect(text).to.eq('Company Not Found!');
+    });
   });
 });
