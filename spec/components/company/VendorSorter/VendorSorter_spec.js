@@ -3,9 +3,10 @@ import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import { FormattedMessage } from 'react-intl';
-import { FormControl, InputGroup, ControlLabel } from 'react-bootstrap';
+import { FormControl, InputGroup, ControlLabel, NavItem } from 'react-bootstrap';
 import VendorSorter from '../../../../src/components/company/VendorSorter/VendorSorter';
 import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
+import VendorListingBox from '../../../../src/components/company/VendorListingBox/VendorListingBox';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -26,7 +27,6 @@ describe('VendorSorter', () => {
 
     it('renders search bar', () => {
       const searchBar = render.find(InputGroup);
-
       chai.expect(searchBar).to.have.length(1);
     });
 
@@ -48,14 +48,54 @@ describe('VendorSorter', () => {
       chai.expect(render.state(['selectedView'])).to.equal('aggregate_score');
     });
 
-    it('renders page info', () => {
-      chai.expect(render.find('.total-items').text()).to.equal('');
+    it('renders sorter text', () => {
+      const labels = render.find(NavItem).map(data => {
+        return data.find(FormattedMessage).dive().text();
+      });
+      chai.expect(labels).to.deep.eq(['Best Ratings', 'Newly Added']);
     });
 
-    it('renders Pagination', () => {
-      const pagination = render.find('#pagination');
+    it('updates state on sort change', () => {
+      render.instance().handleSelect('newly_added', { preventDefault: () => {} });
+      chai.expect(render.state('selectedView')).to.eq('newly_added');
+      chai.expect(render.state('activePage')).to.eq(1);
+    });
 
-      chai.expect(pagination).to.have.length(1);
+    it('renders vendor listing box', () => {
+      chai.expect(render.find(VendorListingBox)).to.have.length(1);
+    });
+
+    it('does not render Pagination when count is 0', () => {
+      chai.expect(render.find('#pagination')).to.have.length(0);
+      chai.expect(render.find('#total-items')).to.have.length(0);
+    });
+
+    it('does render pagination when count is more than 0', () => {
+      render.setState({
+        currentItemsCount: 10,
+        itemsCountPerPage: 5,
+        activePage: 1
+      });
+      chai.expect(render.find('#pagination')).to.have.length(1);
+      chai.expect(render.find('#total-items')).to.have.length(1);
+      chai.expect(render.find('#total-items').find(FormattedMessage).dive().text()).to.eq('1 - 5 of 10 results');
+    });
+
+    it('does does change page info on page change', () => {
+      render.setState({
+        currentItemsCount: 10,
+        itemsCountPerPage: 5,
+        activePage: 2
+      });
+      chai.expect(render.find('#total-items').find(FormattedMessage).dive().text()).to.eq('6 - 10 of 10 results');
+    });
+
+    it('updates state on page change', () => {
+      render.setState({
+        activePage: 1
+      });
+      render.instance().handlePageChange({ selected: 1 });
+      chai.expect(render.state('activePage')).to.eq(2);
     });
   });
 });

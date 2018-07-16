@@ -5,6 +5,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import { FormattedMessage } from 'react-intl';
 import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import CompanyScoresReviews from '../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScoresReviews';
+import CompanyReviews from '../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyReviews/CompanyReviews';
+import CompanyScores from '../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScores/CompanyScores';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -146,13 +148,45 @@ describe('CompanyScoresReviews', () => {
     render = shallowWithIntl(<CompanyScoresReviews
       companyId=""
     />);
-    render.setState({
-      reviewData: reviewMockData,
-      aspectsData: aspectsMockData
+  });
+
+  describe('loads page spinner', () => {
+    it('loads page spinner when both null', () => {
+      render.setState({
+        reviewData: null,
+        aspectsData: null
+      });
+      const spinner = render.find('.page-load-spinner');
+      chai.expect(spinner).to.have.length(1);
+    });
+
+    it('loads page spinner when clientData is null', () => {
+      render.setState({
+        reviewData: reviewMockData,
+        aspectsData: null
+      });
+      const spinner = render.find('.page-load-spinner');
+      chai.expect(spinner).to.have.length(1);
+    });
+
+    it('loads page spinner when grantData is null', () => {
+      render.setState({
+        reviewData: null,
+        aspectsMockData
+      });
+      const spinner = render.find('.page-load-spinner');
+      chai.expect(spinner).to.have.length(1);
     });
   });
 
   describe('renders company reviews', () => {
+    before(() => {
+      render.setState({
+        reviewData: reviewMockData,
+        aspectsData: aspectsMockData
+      });
+    });
+
     it('renders card', () => {
       const item = render.find('.vendor-card');
       chai.expect(item).to.have.length(1);
@@ -162,5 +196,23 @@ describe('CompanyScoresReviews', () => {
       const title = render.find('.reviews-header').find(FormattedMessage).dive().text();
       chai.expect(title).to.eq('Reviews');
     });
+
+    it('renders CompanyScores', () => {
+      const component = render.find(CompanyScores);
+      chai.expect(component).to.have.length(1);
+    });
+
+    it('renders CompanyReviews', () => {
+      const component = render.find(CompanyReviews);
+      chai.expect(component).to.have.length(1);
+    });
+  });
+
+  it('does not render of failed to get review data', () => {
+    render.setState({
+      reviewData: 'Fail',
+      aspectsData: aspectsMockData
+    });
+    chai.expect(render.children()).to.have.length(0);
   });
 });
