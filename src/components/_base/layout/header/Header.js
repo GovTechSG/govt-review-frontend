@@ -78,7 +78,7 @@ export default class Header extends Component {
                 </li>
 
                 <li>
-                  <a href="#">
+                  <a href="mailto:?Subject=CRP%20Feedback/Enquiry">
                     <FormattedMessage id="header.nav.contactus" />
                   </a>
                 </li>

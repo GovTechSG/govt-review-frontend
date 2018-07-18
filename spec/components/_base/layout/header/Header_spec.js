@@ -116,7 +116,7 @@ describe('Header', () => {
       const map = listItems.map(li => {
         return li.find('a').prop('href');
       });
-      chai.expect(map).to.deep.equal([`${API_URL_PREFIX}/api/docs`, '#']);
+      chai.expect(map).to.deep.equal([`${API_URL_PREFIX}/api/docs`, 'mailto:?Subject=CRP%20Feedback/Enquiry']);
     });
   });
 
