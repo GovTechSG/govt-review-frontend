@@ -24,7 +24,7 @@ export default class Header extends Component {
         <div className="grp-masthead hidden-xs hidden-sm">
           <div className="grp-header-logo-container" id="grp-header-logo">
             <Link to="/">
-              <img className="grp-header-logo" src={grpLogoMain} alt="G Review Portal" />
+              <img className="grp-header-logo" src={grpLogoMain} alt="GovReview" />
             </Link>
           </div>
 
@@ -51,7 +51,7 @@ export default class Header extends Component {
         <div id="nav" className={classNames({ sticky: this.state.sticky })}>
           <div className="navbar navbar-default grp-topnavi-wrapper">
             <div className="grp-nav-logo" id="grp-nav-logo">
-              <a href="/"><img src={grpLogoAffix} alt="Home" /></a>
+              <Link to="/"><img src={grpLogoAffix} alt="GovReview" /></Link>
             </div>
 
             <button

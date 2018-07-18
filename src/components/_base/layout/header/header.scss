@@ -2,7 +2,7 @@
 
 // = = = topnav styling
 @mixin navlogo {
-  background: $grp-brand-color;
+  background: #2a2d34;
   width: 290px;
 }
 
@@ -76,7 +76,6 @@
   float: left;
   height: 50px;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -317,7 +316,7 @@
 
 @media (max-width: $narrow-breakpoint - 1) {
   .navbar-default {
-    background: $grp-brand-color;
+    background: #2a2d34;
     color: #fff;
   }
 

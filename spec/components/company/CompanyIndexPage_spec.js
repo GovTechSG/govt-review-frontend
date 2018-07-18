@@ -8,7 +8,7 @@ enzyme.configure({ adapter: new Adapter() });
 
 describe('CompanyIndexPage', () => {
   let render;
-  const title = 'Government Review Platform';
+  const title = 'GovReview';
 
   before(() => {
     render = enzyme.shallow(<CompanyIndexPage />); //eslint-disable-line
