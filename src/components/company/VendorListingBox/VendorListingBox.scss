@@ -51,7 +51,6 @@ $outline-blue: color($color-brand-friendly tint(20%));
 }
 
 .vendor-has-done.row {
-  margin: 0 0;
   font-size: 14px;
 }
 
@@ -74,16 +73,34 @@ $outline-blue: color($color-brand-friendly tint(20%));
   font-weight: $text-normal;
 }
 
-.aggregate-count {
-  color: $color-grey-3;
-  font-size: $regular;
-  display: block;
-  font-weight: $text-lighter;
-}
+.ratings {
+  text-align: center;
 
-.rating-box {
-  hr {
-    border-top: 3px solid #008000;
+  .rating-box {
+    width: 90px;
+    height: 90px;
+    border: 1px #f1f1f1 solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  
+    .score {
+      font-size: 36px;
+      font-weight: 900;
+      text-align: center;
+      padding-top: 10%;
+      color: #2d89c9;
+    }
+    
+    .score-total {
+      text-align: center;
+      color: $color-grey-4;
+    }
+  }
+
+  .aggregate-count {
+    color: $color-grey-5;
+    font-size: $regular;
+    font-weight: $text-semibold;
   }
 }
 

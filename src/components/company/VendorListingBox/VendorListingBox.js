@@ -30,6 +30,7 @@ export default class VendorListingBox extends Component {
   renderChild(data, index) {
     const industryString = this.getIndustryString(data.industries);
     const projectString = this.getProjectsString(data.project_industries);
+    const aggregateScore = data.aggregate_score === '0.0' ? 0 : parseFloat(data.aggregate_score).toFixed(1);
     return (
       <div className="vendor-card" key={`$vendor-box-${index}`}>
         <Col xs={12}>
@@ -39,25 +40,50 @@ export default class VendorListingBox extends Component {
                 <img src={data.image.thumb.url} alt={data.name} />
               </div>
             </Col>
-            <Col xs={7}>
+            <Col xs={8}>
               <div className="vendor-name">
                 <Link to={`/company/${data.id}`}>{data.name}</Link>
               </div>
               <div className="vendor-industry">{industryString}</div>
               <br />
             </Col>
-            <Col xs={3}>
-              <div className="rating-box">
+            <Col xs={2}>
+              <div className="ratings">
+                <div className="rating-box">
+                  <div className="score" id="aggregate-score">
+                    {
+                      aggregateScore === 0 ?
+                      '-' :
+                      aggregateScore
+                    }
+                  </div>
+                  <div className="score-total">
+                    <FormattedMessage id="vendorlisting.out.of.10" />
+                  </div>
+                </div>
               </div>
             </Col>
           </Row>
           <Row className="vendor-has-done">
-            { data.project_industries.length !== 0 &&
-              <div className="vendor-has-done-title">
-                <FormattedMessage id="vendorlisting.vendor.has.done" />
+            <Col xs={10}>
+              { data.project_industries.length !== 0 &&
+                <div className="vendor-has-done-title">
+                  <FormattedMessage id="vendorlisting.vendor.has.done" />
+                </div>
+              }
+              <div className="vendor-has-done-text">{projectString}</div>
+            </Col>
+            <Col xs={2}>
+              <div className="ratings" style={{ width: '90px' }}>
+                <div className="aggregate-count">
+                  {
+                    data.reviews_count === 1 ?
+                    <FormattedMessage id="vendorlisting.aggregate.count.one" /> :
+                    <FormattedMessage id="vendorlisting.aggregate.count" values={{ reviewsCount: data.reviews_count }} />
+                  }
+                </div>
               </div>
-            }
-            <div className="vendor-has-done-text">{projectString}</div>
+            </Col>
           </Row>
         </Col>
       </div>

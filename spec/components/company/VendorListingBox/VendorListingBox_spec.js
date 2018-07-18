@@ -15,7 +15,7 @@ describe('VendorListingBox', () => {
     {
       id: 'AbC123',
       name: 'Pivotal Software',
-      aggregate_score: 0.5,
+      aggregate_score: '9.5',
       reviews_count: 50,
       image: {
         url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
@@ -47,11 +47,67 @@ describe('VendorListingBox', () => {
     {
       id: 'AbC123',
       name: 'Software Divotal',
-      aggregate_score: 0,
+      aggregate_score: '8.5',
+      reviews_count: 1,
+      image: {
+        url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
+        thumb: {
+          url: 'http://dogtowndogtraining.com/wp-content/uploads/2012/06/300x300-07.jpg'
+        }
+      },
+      industries: [
+        {
+          id: 'AbC123',
+          name: 'Agriculture'
+        }
+      ],
+      project_industries: [
+        {
+          id: 'AbC123',
+          name: 'Agriculture'
+        }
+      ]
+    }
+  ];
+
+  const vendorMockDataZeroScore = [
+    {
+      id: 'AbC123',
+      name: 'Pivotal Software',
+      aggregate_score: '0.0',
       reviews_count: 0,
-      positive: 0,
-      neutral: 0,
-      negative: 0,
+      image: {
+        url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
+        thumb: {
+          url: 'http://dogtowndogtraining.com/wp-content/uploads/2012/06/300x300-02.jpg'
+        }
+      },
+      industries: [
+        {
+          id: 'AbC123',
+          name: 'Agriculture'
+        },
+        {
+          id: 'DeF123',
+          name: 'Dogiculture'
+        }
+      ],
+      project_industries: [
+        {
+          id: 'AbC123',
+          name: 'Agriculture'
+        },
+        {
+          id: 'AbC123',
+          name: 'Dgriculture'
+        }
+      ]
+    },
+    {
+      id: 'AbC123',
+      name: 'Software Divotal',
+      aggregate_score: '0.0',
+      reviews_count: 0,
       image: {
         url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
         thumb: {
@@ -102,9 +158,6 @@ describe('VendorListingBox', () => {
       name: 'Software Divotal',
       aggregate_score: 0,
       reviews_count: 0,
-      positive: 0,
-      neutral: 0,
-      negative: 0,
       image: {
         url: 'https://review-api.gds-gov.tech/uploads/company/image/24/pivotal20180402-93182-7x7gd.gif',
         thumb: {
@@ -171,6 +224,45 @@ describe('VendorListingBox', () => {
       chai.expect(names).to.deep.eq(['Pivotal Software', 'Software Divotal']);
     });
 
+    it('renders aggregate score when 0', () => {
+      render.setProps({
+        vendorData: vendorMockDataZeroScore
+      });
+      const ratings = render.find('.rating-box').find('.score').map(data => {
+        return data.text();
+      });
+      chai.expect(ratings).to.deep.eq(['-', '-']);
+    });
+
+    it('renders aggregate score when not 0', () => {
+      render.setProps({
+        vendorData: vendorMockData
+      });
+      const ratings = render.find('.rating-box').find('.score').map(data => {
+        return data.text();
+      });
+      chai.expect(ratings).to.deep.eq(['9.5', '8.5']);
+    });
+
+    it('renders out of 10', () => {
+      const text = render.find('.rating-box').find('.score-total').map(data => {
+        return data.find('FormattedMessage').dive().text();
+      });
+      chai.expect(text).to.deep.eq(['out of 10', 'out of 10']);
+    });
+
+    it('renders review count when 1', () => {
+      const text = render.find('.aggregate-count').last().find('FormattedMessage').dive()
+        .text();
+      chai.expect(text).to.equal('1 review');
+    });
+
+    it('renders review count when not 1', () => {
+      const text = render.find('.aggregate-count').first().find('FormattedMessage').dive()
+        .text();
+      chai.expect(text).to.equal('50 reviews');
+    });
+
     it('renders industry string', () => {
       const vendorIndustries = render.find('.vendor-item').map(data => {
         return data.find('.vendor-industry').text();
@@ -203,36 +295,5 @@ describe('VendorListingBox', () => {
       const headings = render.find('.vendor-has-done-title');
       chai.expect(headings).to.have.length(0);
     });
-
-    // it('renders aggregate score', () => {
-    //   const vendorIndustry = render.find('.vendor-item').first().find('.positivity').text();
-    //   chai.expect(vendorIndustry).to.eql('50% Positive');
-    // });
-
-    // it('renders "No Reviews" when there are no reviews', () => {
-    //   const vendorIndustry = render.find('.vendor-item').last().find('.positivity').text();
-    //   chai.expect(vendorIndustry).to.eql('No Reviews');
-    // });
-    // describe('review bar', () => {
-    //   it('renders review bar', () => {
-    //     const reviewBar = render.find('.vendor-item').first().find('.progress');
-    //     chai.expect(reviewBar).to.have.length(1);
-    //   });
-
-    //   it('renders positive reviews bar', () => {
-    //     const positive = render.find('.vendor-item').first().find('.progress-bar.progress-bar-success');
-    //     chai.expect(positive.prop('aria-valuenow')).to.eql(25);
-    //   });
-
-    //   it('renders neutral reviews bar', () => {
-    //     const neutral = render.find('.vendor-item').first().find('.progress-bar.progress-bar-warning');
-    //     chai.expect(neutral.prop('aria-valuenow')).to.eql(20);
-    //   });
-
-    //   it('renders negative reviews bar', () => {
-    //     const negative = render.find('.vendor-item').first().find('.progress-bar.progress-bar-danger');
-    //     chai.expect(negative.prop('aria-valuenow')).to.eql(5);
-    //   });
-    // });
   });
 });

@@ -75,3 +75,23 @@
   display: -ms-flexbox;
   display:         flex;
 }
+
+.company-rating-box {
+  width: 120px;
+  height: 120px;
+  border: 1px #f1f1f1 solid;
+  border-radius: 5px;
+
+  .score {
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+    padding-top: 12%;
+    color: #2d89c9;
+  }
+  
+  .score-total {
+    text-align: center;
+    color: $color-grey-4;
+  }
+}

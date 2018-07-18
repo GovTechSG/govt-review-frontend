@@ -2,8 +2,6 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { FormattedMessage } from 'react-intl';
-import { ProgressBar, Col } from 'react-bootstrap';
 import { shallowWithIntl } from '../../../../../helpers/intl-enzyme-test-helper';
 import CompanyScores from '../../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScores/CompanyScores';
 
@@ -62,20 +60,40 @@ describe('CompanyScores', () => {
   });
 
   describe('renders company scores', () => {
-    it('renders review count', () => {
+    it('renders aggregate score when 0', () => {
+      render.setProps({
+        aggregateScore: 0
+      });
+      chai.expect(render.find('.company-rating-box').find('.score').text()).to.eq('-');
+    });
+
+    it('renders aggregate score when not 0', () => {
+      render.setProps({
+        aggregateScore: 9.5
+      });
+      chai.expect(render.find('.company-rating-box').find('.score').text()).to.eq('9.5');
+    });
+
+    it('renders out of 10', () => {
+      const text = render.find('.company-rating-box').find('.score-total').find('FormattedMessage').dive()
+        .text();
+      chai.expect(text).to.eq('out of 10');
+    });
+
+    it('renders review count when 1', () => {
       render.setProps({
         reviewCount: 1
       });
-      const text = render.find('.review-count').first().find(FormattedMessage).dive()
+      const text = render.find('.review-count').first().find('FormattedMessage').dive()
         .text();
       chai.expect(text).to.equal('1 Review');
     });
 
-    it('renders review count', () => {
+    it('renders review count when not 1', () => {
       render.setProps({
         reviewCount: 10
       });
-      const text = render.find('.review-count').first().find(FormattedMessage).dive()
+      const text = render.find('.review-count').first().find('FormattedMessage').dive()
         .text();
       chai.expect(text).to.equal('10 Reviews');
     });
@@ -92,51 +110,51 @@ describe('CompanyScores', () => {
       });
 
       it('renders positive heading', () => {
-        const text = positive.find(FormattedMessage).dive().text();
+        const text = positive.find('FormattedMessage').dive().text();
         chai.expect(text).to.eq('Positive');
       });
 
       it('renders neutral heading', () => {
-        const text = neutral.find(FormattedMessage).dive().text();
+        const text = neutral.find('FormattedMessage').dive().text();
         chai.expect(text).to.eq('Neutral');
       });
 
       it('renders negative heading', () => {
-        const text = negative.find(FormattedMessage).dive().text();
+        const text = negative.find('FormattedMessage').dive().text();
         chai.expect(text).to.eq('Negative');
       });
 
       it('renders positive bar', () => {
-        const bar = positive.find(ProgressBar);
+        const bar = positive.find('ProgressBar');
         chai.expect(bar.prop('now')).to.eq(7);
       });
 
       it('renders neutral bar', () => {
-        const bar = neutral.find(ProgressBar);
+        const bar = neutral.find('ProgressBar');
         chai.expect(bar.prop('now')).to.eq(2);
       });
 
       it('renders negative bar', () => {
-        const bar = negative.find(ProgressBar);
+        const bar = negative.find('ProgressBar');
         chai.expect(bar.prop('now')).to.eq(1);
       });
 
       it('renders positive percentage', () => {
-        const percentage = positive.find(Col).filterWhere((a) => {
+        const percentage = positive.find('Col').filterWhere((a) => {
           return a.prop('id') === 'percentage';
         });
         chai.expect(percentage.find('span').text()).to.eq('70%');
       });
 
       it('renders neutral percentage', () => {
-        const percentage = neutral.find(Col).filterWhere((a) => {
+        const percentage = neutral.find('Col').filterWhere((a) => {
           return a.prop('id') === 'percentage';
         });
         chai.expect(percentage.find('span').text()).to.eq('20%');
       });
 
       it('renders negative percentage', () => {
-        const percentage = negative.find(Col).filterWhere((a) => {
+        const percentage = negative.find('Col').filterWhere((a) => {
           return a.prop('id') === 'percentage';
         });
         chai.expect(percentage.find('span').text()).to.eq('10%');
@@ -144,7 +162,7 @@ describe('CompanyScores', () => {
 
       it('renders aspect heading', () => {
         const heading = render.find('.aspects-col').find('.review-count')
-          .find(FormattedMessage).dive()
+          .find('FormattedMessage').dive()
           .text();
         chai.expect(heading).to.eq('Rated Positively for:');
       });

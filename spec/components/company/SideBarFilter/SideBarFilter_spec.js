@@ -2,7 +2,6 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { FormattedMessage } from 'react-intl';
 import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import SideBarFilter from '../../../../src/components/company/SideBarFilter/SideBarFilter';
 import IndustryFilter from '../../../../src/components/company/SideBarFilter/IndustryFilter/IndustryFilter';
@@ -18,7 +17,7 @@ describe('Side Bar Filter', () => {
   });
 
   it('renders industry title', () => {
-    const text = render.find('.industry-group-title').find(FormattedMessage).dive().text();
+    const text = render.find('.industry-group-title').find('FormattedMessage').dive().text();
     chai.expect(text).to.eq('Filter by Your Industry');
   });
 
@@ -28,7 +27,7 @@ describe('Side Bar Filter', () => {
   });
 
   it('renders grant title', () => {
-    const text = render.find('.grant-group-title').find(FormattedMessage).dive().text();
+    const text = render.find('.grant-group-title').find('FormattedMessage').dive().text();
     chai.expect(text).to.eq('Filter by Your Grant');
   });
 

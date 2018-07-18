@@ -2,9 +2,6 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { Button } from 'react-bootstrap';
-import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
 import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import Header from '../../../../../src/components/_base/layout/header/Header';
 import grpLogoMain from '../../../../../src/components/_base/layout/header/grp-logo.svg';
@@ -29,7 +26,7 @@ describe('Header', () => {
     });
 
     it('has anchor to home page', () => {
-      const anchor = logo.find(Link);
+      const anchor = logo.find('Link');
       chai.expect(anchor.prop('to')).to.equal('/');
     });
 
@@ -66,14 +63,14 @@ describe('Header', () => {
       const anchor = logo.find('a').filterWhere((a) => {
         return a.prop('href') === '/feedback';
       });
-      chai.expect(anchor.find(FormattedMessage).dive().text()).to.equal('Contact Us/Feedback');
+      chai.expect(anchor.find('FormattedMessage').dive().text()).to.equal('Contact Us/Feedback');
     });
 
     it('has anchor to about us page', () => {
       const anchor = logo.find('a').filterWhere((a) => {
         return a.prop('href') === '/about_us';
       });
-      chai.expect(anchor.find(FormattedMessage).dive().text()).to.equal('About Us');
+      chai.expect(anchor.find('FormattedMessage').dive().text()).to.equal('About Us');
     });
   });
 
@@ -85,7 +82,7 @@ describe('Header', () => {
     });
 
     it('has anchor to home page', () => {
-      const anchor = logo.find(Link);
+      const anchor = logo.find('Link');
       chai.expect(anchor.prop('to')).to.equal('/');
     });
 
@@ -110,7 +107,7 @@ describe('Header', () => {
 
     it('renders api, contact us', () => {
       const map = listItems.map(li => {
-        return li.find(FormattedMessage).dive().text();
+        return li.find('FormattedMessage').dive().text();
       });
       chai.expect(map).to.deep.equal(['API', 'Contact Us']);
     });
@@ -124,9 +121,9 @@ describe('Header', () => {
   });
 
   it('renders log out', () => {
-    const button = render.find(Button);
+    const button = render.find('Button');
     chai.expect(button).to.have.length(1);
-    const message = button.find(FormattedMessage).dive();
+    const message = button.find('FormattedMessage').dive();
     chai.expect(message.text()).to.eq('LOG OUT');
   });
 });

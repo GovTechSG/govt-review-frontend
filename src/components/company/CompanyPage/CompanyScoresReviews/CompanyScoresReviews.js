@@ -121,6 +121,7 @@ export default class CompanyScoresReviews extends Component {
             reviewData={this.state.reviewData}
             reviewCount={reviewCount}
             aspectsData={this.state.aspectsData}
+            aggregateScore={this.props.aggregateScore}
           />
           <CompanyReviews
             reviewCount={reviewCount}
