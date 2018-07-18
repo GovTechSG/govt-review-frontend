@@ -37,7 +37,7 @@ describe('Header', () => {
       const img = logo.find('img');
 
       chai.expect(img.prop('src')).to.equal(grpLogoMain);
-      chai.expect(img.prop('alt')).to.equal('G Review Portal');
+      chai.expect(img.prop('alt')).to.equal('GovReview');
     });
   });
 
@@ -85,15 +85,15 @@ describe('Header', () => {
     });
 
     it('has anchor to home page', () => {
-      const anchor = logo.find('a');
-      chai.expect(anchor.prop('href')).to.equal('/');
+      const anchor = logo.find(Link);
+      chai.expect(anchor.prop('to')).to.equal('/');
     });
 
     it('has grp sticky logo', () => {
       const img = logo.find('img');
 
       chai.expect(img.prop('src')).to.equal(grpLogoAffix);
-      chai.expect(img.prop('alt')).to.equal('Home');
+      chai.expect(img.prop('alt')).to.equal('GovReview');
     });
   });
 

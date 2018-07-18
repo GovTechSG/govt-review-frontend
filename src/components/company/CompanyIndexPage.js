@@ -9,7 +9,7 @@ export default class CompanyIndexPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'Government Review Platform',
+      title: 'GovReview',
       industryFilter: new Set(),
       grantFilter: new Set()
     };
