@@ -2,6 +2,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import '../../../../jquery';
 import grpLogoMain from './grp-logo.svg';
@@ -21,9 +23,9 @@ export default class Header extends Component {
       <div className={classNames('header', { sticky: this.props.sticky })}>
         <div className="grp-masthead hidden-xs hidden-sm">
           <div className="grp-header-logo-container" id="grp-header-logo">
-            <a href="/demo">
-              <img className="grp-header-logo" src={grpLogoMain} alt="G Review Portal" />
-            </a>
+            <Link to="/">
+              <img className="grp-header-logo" src={grpLogoMain} alt="GovReview" />
+            </Link>
           </div>
 
           <div className="pull-right">
@@ -49,7 +51,7 @@ export default class Header extends Component {
         <div id="nav" className={classNames({ sticky: this.state.sticky })}>
           <div className="navbar navbar-default grp-topnavi-wrapper">
             <div className="grp-nav-logo" id="grp-nav-logo">
-              <a href="/"><img src={grpLogoAffix} alt="Home" /></a>
+              <Link to="/"><img src={grpLogoAffix} alt="GovReview" /></Link>
             </div>
 
             <button
@@ -82,9 +84,9 @@ export default class Header extends Component {
                 </li>
 
                 <li className="log-button">
-                  <a className="login" id="login-button" onClick={(this.logout)}>
+                  <Button className="login" id="logout-button" onClick={() => this.props.logout()} to="/demo/login" >
                     <FormattedMessage id="header.nav.logout" />
-                  </a>
+                  </Button>
                 </li>
               </ul>
             </div>
@@ -92,15 +94,6 @@ export default class Header extends Component {
         </div>
       </div>
     );
-  }
-
-  login() {
-    window.location = '/saml/sso';
-  }
-
-  logout() {
-    window.localStorage.setItem('grp-logged-out', Date.now());
-    window.location = API_URL_PREFIX;
   }
 }
 

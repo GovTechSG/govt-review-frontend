@@ -2,7 +2,8 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { mountWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
+import { Checkbox } from 'react-bootstrap';
+import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import { IndustryFilter } from '../../../../../src/components/company/SideBarFilter/IndustryFilter/IndustryFilter';
 
 enzyme.configure({ adapter: new Adapter() });
@@ -21,19 +22,19 @@ describe('Industry Filter', () => {
   ];
 
   before(() => {
-    render = mountWithIntl(<IndustryFilter
+    render = shallowWithIntl(<IndustryFilter
       industryData={industryData}
     />);
   });
 
   it('renders filter checkboxes', () => {
-    const checkboxes = render.find('li').find('.checkbox');
+    const checkboxes = render.find(Checkbox);
     chai.expect(checkboxes).to.have.length(2);
   });
 
   it('renders industry names', () => {
-    const map = render.find('li').map(a => {
-      return a.text();
+    const map = render.find(Checkbox).map(a => {
+      return a.dive().text();
     });
     chai.expect(map).to.deep.equal(['Industry 1', 'Industry 2']);
   });

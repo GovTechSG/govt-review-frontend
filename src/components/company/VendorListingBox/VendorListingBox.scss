@@ -34,7 +34,7 @@ $outline-blue: color($color-brand-friendly tint(20%));
   padding: 20px 0 0 20px;
 }
 
-.vendor-name {
+.vendor-name a {
   color: $color-grey-5;
   display: block;
   font-size: $regular-biggest;
@@ -50,12 +50,12 @@ $outline-blue: color($color-brand-friendly tint(20%));
   font-weight: $text-lighter;
 }
 
-.vendor-has-done-row.row {
+.vendor-has-done.row {
   margin: 0 0;
   font-size: 14px;
 }
 
-.vendor-has-done {
+.vendor-has-done-text {
   color: $color-grey-3;
   display: block;
   font-weight: $text-lighter;

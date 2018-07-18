@@ -7,11 +7,43 @@
   "vendorlisting.no.reviews": "No Reviews",
   "vendorlisting.aggregate.count": "{reviews_count} reviews",
   "vendorlisting.no.results.found": "No results found",
+  "vendorlisting.error": "An error has occured",
 
   "vendorsorter.find.consultants": "FIND CONSULTANTS AND VENDORS",
   "vendorsorter.search.company": "Search for a company's name",
   "vendorsorter.best.ratings": "Best Ratings",
   "vendorsorter.newly.added": "Newly Added",
+  "vendorsorter.pageinfo": "{startCount} - {endCount} of {totalCount} results",
+
+  "companypage.back": "Back to Consultants and Vendors List",
+  "companypage.not.found": "Company Not Found!",
+
+
+  "companyinfo.uen": "UEN No: {uen}",
+  "companyinfo-previous-clients": "Previous clients",
+  "companyinfo-grants-experience": "Has prior experience with these grants:",
+  "companyinfo-has-done": "Deals with projects in:",
+
+  "companyofferings.listing": "{companyName}'s Product/Service/Project Listing",
+
+  "companyscores.reviews": "Reviews",
+  "companyscores.review.count": "{count} Reviews",
+  "companyscores.review.single.count": "1 Review",
+  "companyscores.positive": "Positive",
+  "companyscores.neutral": "Neutral",
+  "companyscores.negative": "Negative",
+  "companyscores.aspects": "Rated Positively for:",
+
+  "companyreviews.all": "All ({count})",
+  "companyreviews.positive": "Positive ({count})",
+  "companyreviews.neutral": "Neutral ({count})",
+  "companyreviews.negative": "Negative ({count})",
+  "companyreviews.experience": "{rating} Experience",
+  "companyreviews.offerings.engaged": "Product/Services Engaged:",
+  "companyreviews.load.more": "Load more reviews",
+  "companyreviews.positive.aspect.heading": "Areas done well:",
+  "companyreviews.negative.aspect.heading": "Areas to be improved:",
+  "companyreviews.no.reviews": "No Reviews Found",
 
   "header.govt.feedback": "Contact Us/Feedback",
   "header.govt.aboutus": "About Us",
@@ -29,5 +61,11 @@
   "footer.privacy": "Privacy Statement",
   "footer.termsofuse": "Terms of Use",
   "footer.copyright": "\u00A9 {year} Copyright Government of Singapore",
-  "footer.browsersupport": "Government Review Platform is best viewed with Chrome, Firefox, Safari and Internet Explorer 10 and above"
+  "footer.browsersupport": "Government Review Platform is best viewed with Chrome, Firefox, Safari and Internet Explorer 10 and above",
+
+  "login.auth.failed": "Authentication Failed!",
+  "login.header": "Login to GovReview",
+  "login.username": "Username",
+  "login.signin": "Sign in",
+  "login.password": "Password"
 }

@@ -1,0 +1,36 @@
+@import '../../../../assets/scss/baseStyles.scss';
+
+.vendor-card {
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 1px 2px #aaa;
+  margin: 10px 20px;
+}
+
+.offerings-header {
+  color: $color-grey-5;
+  margin: 7px 0px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dddddd;
+  font-size: $regular-plus;
+  font-weight: $text-semibold;
+}
+
+.offerings {
+  padding: 10px 17px;
+}
+
+.offering-name {
+  font-weight: 900;
+}
+
+.offering-desc {
+  padding: 5px 0px;
+  margin-bottom: 10px;
+}
+
+.offering-desc::before{
+  content: '-';
+  padding-right: 2px;
+}

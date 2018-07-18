@@ -55,6 +55,14 @@ Welcome! This document details the setting up of a development environment. The 
 		# Example value, you have to get your own key with the steps above
 		# Remember to include Bearer infront of the token
 		REACT_APP_AUTH_TOKEN="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwcm9kdWN0X3Jldmlld19wbGF0Zm9ybSIsImlhdCI6MTUyNTc2NDA5MSwianRpIjoiYjE1M2ExOTgtZDI3YS00NDAyLTk1MTktNjA5ZTZkYjNlMjNmIiwiYXBwIjp7ImlkIjoxLCJuYW1lIjoiYmdwIn19._Hv7ER8Kakex2WQYw9X24B4F8Ywc1tSxjJaoqfT663k"
+
+  - Add your own username and password to use in your local environment into the .env.local file.
+		
+		#Add it below the REACT_APP_AUTH_TOKEN
+		#This will be used to login to the login page
+		REACT_APP_AUTH_TOKEN="Bearer ..."
+		REACT_APP_USERNAME=user
+		REACT_APP_PASSWORD=pass123
   
 1. Test run
 

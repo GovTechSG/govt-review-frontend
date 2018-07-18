@@ -1,0 +1,116 @@
+@import '../../../../assets/scss/baseStyles.scss';
+
+.vendor-name {
+  color: $color-grey-5;
+  display: inline;
+  font-size: $regular-biggest;
+  font-weight: $text-semibold;
+  padding-bottom: 6px;
+  line-height: 1.2;
+}
+
+.vendor-has-done-title {
+  color: $color-grey-5;
+  display: block;
+  font-weight: $text-normal;
+}
+
+.vendor-uen {
+  margin-left: 15px;
+  color: $color-grey-5;
+  display: inline;
+  font-weight: $text-normal;
+}
+
+.vendor-card {
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 1px 2px #aaa;
+  margin: 10px 20px;
+}
+
+.vendor-description {
+  color: $color-grey-5;
+  font-size: 14px;
+  display: block;
+  font-weight: $text-normal;
+  padding: 5px 0px;
+}
+
+.vendor-contact-details {
+  padding: 10px 0px;
+}
+
+.companyinfo-logo-box {
+  width: 75px;
+  padding-right: 0px;
+
+  img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ddd;
+  }
+}
+
+.vendor-contact-details {
+  color: $color-grey-5;
+  font-size: 14px;
+  font-weight: $text-normal;
+}
+
+.vendor-website a {
+  margin-right: 20px;
+  color: $color-grey-5;
+}
+
+.contact-icon {  
+  margin-right: 7px;
+  color: #51a2d1;
+}
+
+.companypage-border {
+  border-bottom: 1px solid #dddddd;
+  margin: 20px 0px;
+}
+
+.client-images img {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.companyinfo-subheader {
+  color: $color-grey-5;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.grants-experience span{
+  color: $color-grey-5;
+  font-size: 14px;
+  font-weight: $text-normal;
+  padding: 4px 0px;
+  vertical-align: text-bottom;
+}
+
+.grants-experience li {
+  color: $color-grey-5;
+  font-size: 20px;
+  font-weight: $text-normal;
+}
+
+.companyinfo-has-done span{
+  color: $color-grey-5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.companyinfo-has-done {
+  color: $color-grey-5;
+  font-size: 14px;
+  font-weight: $text-normal;
+  padding: 5px 0px;
+}

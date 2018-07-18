@@ -2,7 +2,10 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { mountWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
+import { Button } from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import Header from '../../../../../src/components/_base/layout/header/Header';
 import grpLogoMain from '../../../../../src/components/_base/layout/header/grp-logo.svg';
 import govtLogo from '../../../../../src/components/_base/layout/header/govt-logo.svg';
@@ -15,7 +18,7 @@ describe('Header', () => {
   let render;
 
   before(() => {
-    render = mountWithIntl(<Header />);
+    render = shallowWithIntl(<Header />);
   });
 
   describe('grp logo', () => {
@@ -26,15 +29,15 @@ describe('Header', () => {
     });
 
     it('has anchor to home page', () => {
-      const anchor = logo.find('a');
-      chai.expect(anchor.prop('href')).to.equal('/demo');
+      const anchor = logo.find(Link);
+      chai.expect(anchor.prop('to')).to.equal('/');
     });
 
     it('has grp logo main image', () => {
       const img = logo.find('img');
 
       chai.expect(img.prop('src')).to.equal(grpLogoMain);
-      chai.expect(img.prop('alt')).to.equal('G Review Portal');
+      chai.expect(img.prop('alt')).to.equal('GovReview');
     });
   });
 
@@ -63,14 +66,14 @@ describe('Header', () => {
       const anchor = logo.find('a').filterWhere((a) => {
         return a.prop('href') === '/feedback';
       });
-      chai.expect(anchor.text()).to.equal('Contact Us/Feedback');
+      chai.expect(anchor.find(FormattedMessage).dive().text()).to.equal('Contact Us/Feedback');
     });
 
     it('has anchor to about us page', () => {
       const anchor = logo.find('a').filterWhere((a) => {
         return a.prop('href') === '/about_us';
       });
-      chai.expect(anchor.text()).to.equal('About Us');
+      chai.expect(anchor.find(FormattedMessage).dive().text()).to.equal('About Us');
     });
   });
 
@@ -82,46 +85,48 @@ describe('Header', () => {
     });
 
     it('has anchor to home page', () => {
-      const anchor = logo.find('a');
-      chai.expect(anchor.prop('href')).to.equal('/');
+      const anchor = logo.find(Link);
+      chai.expect(anchor.prop('to')).to.equal('/');
     });
 
     it('has grp sticky logo', () => {
       const img = logo.find('img');
 
       chai.expect(img.prop('src')).to.equal(grpLogoAffix);
-      chai.expect(img.prop('alt')).to.equal('Home');
+      chai.expect(img.prop('alt')).to.equal('GovReview');
     });
   });
 
-  describe('API, Contact Us, login links', () => {
+  describe('API, Contact Us', () => {
     let listItems;
 
     before(() => {
       listItems = render
         .find('#grp-navbar-collapse')
         .find('ul')
-        .find('li');
+        .find('li')
+        .find('a');
     });
 
-    it('renders api, contact us, log out', () => {
+    it('renders api, contact us', () => {
       const map = listItems.map(li => {
-        if (li.getElement().props.children.type === 'a') {
-          return li.find('a').text();
-        }
-        return undefined;
+        return li.find(FormattedMessage).dive().text();
       });
-      chai.expect(map).to.deep.equal(['API', 'Contact Us', 'LOG OUT']);
+      chai.expect(map).to.deep.equal(['API', 'Contact Us']);
     });
 
-    it('links news, How it works, faq, login', () => {
+    it('links api, contact us', () => {
       const map = listItems.map(li => {
-        if (li.getElement().props.children.type === 'a') {
-          return li.find('a').prop('href');
-        }
-        return undefined;
+        return li.find('a').prop('href');
       });
-      chai.expect(map).to.deep.equal([`${API_URL_PREFIX}/api/docs`, '#', undefined]);
+      chai.expect(map).to.deep.equal([`${API_URL_PREFIX}/api/docs`, '#']);
     });
+  });
+
+  it('renders log out', () => {
+    const button = render.find(Button);
+    chai.expect(button).to.have.length(1);
+    const message = button.find(FormattedMessage).dive();
+    chai.expect(message.text()).to.eq('LOG OUT');
   });
 });

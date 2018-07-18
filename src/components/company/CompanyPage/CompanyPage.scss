@@ -1,0 +1,26 @@
+@import '../../../assets/scss/baseStyles.scss';
+@import url("https://use.fontawesome.com/releases/v5.0.13/css/all.css"); 
+
+
+.back-to-vendors-list {
+  float: left;
+  color: #5e97c8;
+  font-size: 17px;
+  margin: 10px 0px;
+  padding-left: 3px;
+}
+
+.companypage-back {
+  margin-left: 15px;
+}
+
+.company-container {
+  padding: 12px;
+}
+
+@media only screen and (min-width: $narrow-breakpoint) {
+  .company-index {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
