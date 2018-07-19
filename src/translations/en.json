@@ -5,9 +5,11 @@
   "vendorlisting.vendor.has.done": "Has done project for:",
   "vendorlisting.percent.positive": "% Positive",
   "vendorlisting.no.reviews": "No Reviews",
-  "vendorlisting.aggregate.count": "{reviews_count} reviews",
+  "vendorlisting.aggregate.count": "{reviewsCount} reviews",
+  "vendorlisting.aggregate.count.one": "1 review",
   "vendorlisting.no.results.found": "No results found",
   "vendorlisting.error": "An error has occured",
+  "vendorlisting.out.of.10": "out of 10",
 
   "vendorsorter.find.consultants": "FIND CONSULTANTS AND VENDORS",
   "vendorsorter.search.company": "Search for a company's name",
@@ -33,6 +35,7 @@
   "companyscores.neutral": "Neutral",
   "companyscores.negative": "Negative",
   "companyscores.aspects": "Rated Positively for:",
+  "companyscores.out.of.10": "out of 10",
 
   "companyreviews.all": "All ({count})",
   "companyreviews.positive": "Positive ({count})",

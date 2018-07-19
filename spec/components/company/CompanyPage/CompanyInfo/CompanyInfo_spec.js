@@ -1,8 +1,6 @@
 import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
-import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
@@ -146,7 +144,7 @@ describe('CompanyInfo', () => {
     });
 
     it('renders vendor uen', () => {
-      const vendorUen = render.find('.vendor-uen').find(FormattedMessage).dive().text();
+      const vendorUen = render.find('.vendor-uen').find('FormattedMessage').dive().text();
       chai.expect(vendorUen).to.eql('UEN No: 984208873');
     });
 
@@ -279,7 +277,7 @@ describe('CompanyInfo', () => {
 
     it('renders image hyperlinks', () => {
       const map = clients.map(client => {
-        return client.find(Link).prop('to');
+        return client.find('Link').prop('to');
       });
       chai.expect(map).to.deep.equal([
         '/company/abc1',

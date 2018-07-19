@@ -20,10 +20,16 @@ export default class CompanyScores extends Component {
     return (
       <Row className="vendor-item row-eq-height">
         <Col xs={2} >
-          <div className="rating-box">
-            {/* <svg width="118px" height="118px">
-              <rect width="129px" height="129px" />
-            </svg> */}
+          <div className="company-rating-box">
+            <div className="score">
+              {this.props.aggregateScore === 0 ?
+                '-' :
+                this.props.aggregateScore
+              }
+            </div>
+            <div className="score-total">
+              <FormattedMessage id="companyscores.out.of.10" />
+            </div>
           </div>
         </Col>
         <Col xs={3} className="score-col">

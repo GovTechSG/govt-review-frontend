@@ -2,8 +2,6 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { FormattedMessage } from 'react-intl';
-import { Nav } from 'react-bootstrap';
 import { shallowWithIntl } from '../../../../../helpers/intl-enzyme-test-helper';
 import CompanyReviews from '../../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyReviews/CompanyReviews';
 
@@ -200,7 +198,7 @@ describe('CompanyReviews', () => {
 
   describe('renders company reviews', () => {
     it('renders sorter', () => {
-      const tabs = render.find(Nav).find(FormattedMessage);
+      const tabs = render.find('Nav').find('FormattedMessage');
       const map = tabs.map(tabItem => {
         return tabItem.dive().text();
       });
@@ -270,7 +268,7 @@ describe('CompanyReviews', () => {
       });
 
       it('generates positive review rating', () => {
-        const rating = positiveReview.find('#review-rating').find('span').last().find(FormattedMessage)
+        const rating = positiveReview.find('#review-rating').find('span').last().find('FormattedMessage')
           .dive()
           .text();
         chai.expect(rating).to.eq('Positive Experience');
@@ -280,7 +278,7 @@ describe('CompanyReviews', () => {
       });
 
       it('generates positive review rating', () => {
-        const rating = neutralReview.find('#review-rating').find('span').last().find(FormattedMessage)
+        const rating = neutralReview.find('#review-rating').find('span').last().find('FormattedMessage')
           .dive()
           .text();
         chai.expect(rating).to.eq('Neutral Experience');
@@ -290,7 +288,7 @@ describe('CompanyReviews', () => {
       });
 
       it('generates positive review rating', () => {
-        const rating = negativeReview.find('#review-rating').find('span').last().find(FormattedMessage)
+        const rating = negativeReview.find('#review-rating').find('span').last().find('FormattedMessage')
           .dive()
           .text();
         chai.expect(rating).to.eq('Negative Experience');
@@ -300,19 +298,19 @@ describe('CompanyReviews', () => {
       });
 
       it('generates positive aspect heading', () => {
-        const aspects = positiveReview.find('.aspect-heading').find(FormattedMessage).dive()
+        const aspects = positiveReview.find('.aspect-heading').find('FormattedMessage').dive()
           .text();
         chai.expect(aspects).to.eq('Areas done well:');
       });
 
       it('generates neutral aspect heading', () => {
-        const aspects = neutralReview.find('.aspect-heading').find(FormattedMessage).dive()
+        const aspects = neutralReview.find('.aspect-heading').find('FormattedMessage').dive()
           .text();
         chai.expect(aspects).to.eq('Areas to be improved:');
       });
 
       it('generates negative aspect heading', () => {
-        const aspects = negativeReview.find('.aspect-heading').find(FormattedMessage).dive()
+        const aspects = negativeReview.find('.aspect-heading').find('FormattedMessage').dive()
           .text();
         chai.expect(aspects).to.eq('Areas to be improved:');
       });
@@ -349,7 +347,7 @@ describe('CompanyReviews', () => {
       });
 
       it('generates offering heading', () => {
-        const heading = positiveReview.find('.offerings-engaged').last().find(FormattedMessage).dive()
+        const heading = positiveReview.find('.offerings-engaged').last().find('FormattedMessage').dive()
           .text();
         chai.expect(heading).to.eq('Product/Services Engaged:');
       });
@@ -376,7 +374,7 @@ describe('CompanyReviews', () => {
       });
 
       it('renders text in load more button', () => {
-        chai.expect(button.find(FormattedMessage).dive().text()).to.eq('Load more reviews');
+        chai.expect(button.find('FormattedMessage').dive().text()).to.eq('Load more reviews');
       });
 
       it('renders load more when loadmore is true', () => {
