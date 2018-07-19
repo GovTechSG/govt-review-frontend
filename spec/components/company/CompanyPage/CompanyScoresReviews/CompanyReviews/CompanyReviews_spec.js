@@ -187,12 +187,12 @@ describe('CompanyReviews', () => {
   };
 
   before(() => {
-    render = shallowWithIntl(<CompanyReviews 
+    render = shallowWithIntl(<CompanyReviews
       reviewCount={0}
     />);
   });
 
-  it('returns empty div when review count is 0', () => {
+  it('returns empty when review count is 0', () => {
     chai.expect(render.children()).to.have.length(0);
   });
 

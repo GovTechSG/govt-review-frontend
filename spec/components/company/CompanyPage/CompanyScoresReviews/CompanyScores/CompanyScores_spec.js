@@ -172,7 +172,7 @@ describe('CompanyScores', () => {
       });
       chai.expect(percentage.find('span').text()).to.eq('10%');
     });
-    
+
     describe('renders percentages when review count is 0', () => {
       before(() => {
         render.setProps({
@@ -193,7 +193,7 @@ describe('CompanyScores', () => {
         });
         chai.expect(percentage.find('span').text()).to.eq('0%');
       });
-  
+
       it('renders negative percentage', () => {
         const percentage = render.find('#negative-row').find('Col').filterWhere((a) => {
           return a.prop('id') === 'percentage';
@@ -208,23 +208,24 @@ describe('CompanyScores', () => {
       render.setProps({
         reviewCount: 10
       });
-    })
+    });
+
     it('renders aspect heading', () => {
       const heading = render.find('.aspects-col').find('.review-count')
         .find('FormattedMessage').dive()
         .text();
       chai.expect(heading).to.eq('Rated Positively for:');
     });
-    
+
     it('renders aspects', () => {
       const aspects = render.find('.total-aspects');
       chai.expect(aspects).to.have.length(1);
     });
-  
+
     it('renders correct aspects', () => {
       const aspects = render.find('.total-aspects').find('.aspect-box');
       chai.expect(aspects).to.have.length(5);
-  
+
       const list = aspects.map(aspect => {
         return aspect.text();
       });
@@ -236,7 +237,7 @@ describe('CompanyScores', () => {
         '10aspect 5',
       ]);
     });
-  
+
     it('does not render if failed to get aspect data', () => {
       render.setProps({
         aspectsData: 'Fail'
@@ -244,7 +245,7 @@ describe('CompanyScores', () => {
       chai.expect(render.find('.total-aspects')).to.have.length(0);
       chai.expect(render.find('.aspects-col').find('.review-count')).to.have.length(0);
     });
-  
+
     it('does not render if no reviews', () => {
       render.setProps({
         reviewCount: 0
@@ -252,13 +253,13 @@ describe('CompanyScores', () => {
       chai.expect(render.find('.total-aspects')).to.have.length(0);
       chai.expect(render.find('.aspects-col').find('.review-count')).to.have.length(0);
     });
-  
+
     it('does not render if there are no positive reviews', () => {
       render.setProps({
         reviewData: Object.assign({}, reviewMockData, { positive_count: 0 })
       });
       chai.expect(render.find('.total-aspects')).to.have.length(0);
       chai.expect(render.find('.aspects-col').find('.review-count')).to.have.length(0);
-    });  
-  })
+    });
+  });
 });
