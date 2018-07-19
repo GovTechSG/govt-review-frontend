@@ -188,15 +188,25 @@ describe('CompanyReviews', () => {
 
   before(() => {
     render = shallowWithIntl(<CompanyReviews
-      reviewCount={reviewMockCount}
-      reviewData={reviewMockData}
-      handleChangeFilter={() => {}}
-      handleLoadMore={() => {}}
-      toLoadMore
+      reviewCount={0}
     />);
   });
 
+  it('returns empty when review count is 0', () => {
+    chai.expect(render.children()).to.have.length(0);
+  });
+
   describe('renders company reviews', () => {
+    before(() => {
+      render.setProps({
+        reviewCount: reviewMockCount,
+        reviewData: reviewMockData,
+        handleChangeFilter: () => {},
+        handleLoadMore: () => {},
+        toLoadMore: true
+      });
+    });
+
     it('renders sorter', () => {
       const tabs = render.find('Nav').find('FormattedMessage');
       const map = tabs.map(tabItem => {

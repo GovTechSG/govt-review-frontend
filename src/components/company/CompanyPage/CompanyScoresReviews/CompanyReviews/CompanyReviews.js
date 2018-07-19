@@ -129,6 +129,9 @@ export default class CompanyReviews extends Component {
 
   render() {
     const { reviewCount } = this.props;
+    if (reviewCount === 0) {
+      return <div />;
+    }
     const { reviewData } = this.props;
     const { reviews } = reviewData;
     return (
