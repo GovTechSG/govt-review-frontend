@@ -7,11 +7,20 @@ import './CompanyScores.scss';
 export default class CompanyScores extends Component {
   generateAspects(aspects) {
     return (
-      <div className="total-aspects">
-        {aspects.map((data) => {
-          return <div key={data.aspect.id} className="aspect-box"><span className="aspect-count">{data.count}</span>{data.aspect.name}</div>;
-        })}
-      </div>
+      <Col xs={7} className="aspects-col">
+        <Row>
+          <Col xs={12} className="col-bottom-padding-10">
+            <div className="review-count">
+              <FormattedMessage id="companyscores.aspects" />
+            </div>
+              <div className="total-aspects">
+                {aspects.map((data) => {
+                  return <div key={data.aspect.id} className="aspect-box"><span className="aspect-count">{data.count}</span>{data.aspect.name}</div>;
+                })}
+              </div>
+          </Col>
+        </Row>
+      </Col>
     );
   }
 
@@ -100,16 +109,7 @@ export default class CompanyScores extends Component {
         { this.props.aspectsData !== 'Fail' &&
           reviewData.positive_count !== 0 &&
           this.props.reviewCount !== 0 &&
-          <Col xs={7} className="aspects-col">
-            <Row>
-              <Col xs={12} className="col-bottom-padding-10">
-                <div className="review-count">
-                  <FormattedMessage id="companyscores.aspects" />
-                </div>
-                  {this.generateAspects(this.props.aspectsData)}
-              </Col>
-            </Row>
-          </Col>
+          this.generateAspects(this.props.aspectsData)
         }
       </Row>
     );
