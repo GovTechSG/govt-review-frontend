@@ -2,7 +2,6 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { FormattedMessage } from 'react-intl';
 import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import CompanyOfferings from '../../../../../src/components/company/CompanyPage/CompanyOfferings/CompanyOfferings';
 
@@ -63,7 +62,7 @@ describe('CompanyOfferings', () => {
     });
 
     it('renders title', () => {
-      const title = render.find('.offerings-header').find(FormattedMessage).dive().text();
+      const title = render.find('.offerings-header').find('FormattedMessage').dive().text();
       chai.expect(title).to.eq('Company\'s Product/Service/Project Listing');
     });
 

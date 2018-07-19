@@ -85,7 +85,10 @@ export default class CompanyPage extends Component {
           <CompanyOfferings companyId={companyData.id} companyName={companyData.name} />
         </Row>
         <Row>
-          <CompanyScoresReviews companyId={companyData.id} />
+          <CompanyScoresReviews
+            companyId={companyData.id}
+            aggregateScore={companyData.aggregate_score === '0.0' ? 0 : parseFloat(companyData.aggregate_score).toFixed(1)}
+          />
         </Row>
       </div>
     );
