@@ -30,6 +30,7 @@
 
   "companyscores.reviews": "Reviews",
   "companyscores.review.count": "{count} Reviews",
+  "companyscores.review.zero.count": "No reviews yet",
   "companyscores.review.single.count": "1 Review",
   "companyscores.positive": "Positive",
   "companyscores.neutral": "Neutral",
