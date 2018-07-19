@@ -40,10 +40,10 @@ export default class CompanyScores extends Component {
         <Col xs={2} >
           <div className="company-rating-box">
             <div className="score">
-              {this.props.aggregateScore === 0 ?
-                '-' :
-                this.props.aggregateScore
-              }
+            {this.props.aggregateScore === 0 ?
+              '-' :
+              this.props.aggregateScore
+            }
             </div>
             <div className="score-total">
               <FormattedMessage id="companyscores.out.of.10" />
@@ -54,9 +54,7 @@ export default class CompanyScores extends Component {
           <Row>
             <Col xs={12} className="col-bottom-padding-10">
               <div className="review-count">
-                {
-                  this.generateReviewCount(this.props.reviewCount)
-                }
+                {this.generateReviewCount(this.props.reviewCount)}
               </div>
             </Col>
           </Row>
@@ -68,11 +66,11 @@ export default class CompanyScores extends Component {
               <ProgressBar max={this.props.reviewCount} now={reviewData.positive_count} key={1} />
             </Col>
             <Col xs={2} id="percentage">
-              {
-                this.props.reviewCount === 0 ?
-                <span>0%</span> :
-                <span>{Math.round(reviewData.positive_count / this.props.reviewCount * 100)}%</span>
-              }
+            {
+              this.props.reviewCount === 0 ?
+              <span>0%</span> :
+              <span>{Math.round(reviewData.positive_count / this.props.reviewCount * 100)}%</span>
+            }
             </Col>
           </Row>
           <Row id="neutral-row">
@@ -83,11 +81,11 @@ export default class CompanyScores extends Component {
               <ProgressBar max={this.props.reviewCount} now={reviewData.neutral_count} key={1} />
             </Col>
             <Col xs={2} id="percentage">
-              {
-                this.props.reviewCount === 0 ?
-                <span>0%</span> :
-                <span>{Math.round(reviewData.neutral_count / this.props.reviewCount * 100)}%</span>
-              }
+            {
+              this.props.reviewCount === 0 ?
+              <span>0%</span> :
+              <span>{Math.round(reviewData.neutral_count / this.props.reviewCount * 100)}%</span>
+            }
             </Col>
           </Row>
           <Row id="negative-row">
@@ -98,11 +96,11 @@ export default class CompanyScores extends Component {
               <ProgressBar max={this.props.reviewCount} now={reviewData.negative_count} key={1} />
             </Col>
             <Col xs={2} id="percentage">
-              {
-                this.props.reviewCount === 0 ?
-                <span>0%</span> :
-                <span>{Math.round(reviewData.negative_count / this.props.reviewCount * 100)}%</span>
-              }
+            {
+              this.props.reviewCount === 0 ?
+              <span>0%</span> :
+              <span>{Math.round(reviewData.negative_count / this.props.reviewCount * 100)}%</span>
+            }
             </Col>
           </Row>
         </Col>
