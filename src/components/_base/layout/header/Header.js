@@ -11,6 +11,7 @@ import govtLogo from './govt-logo.svg';
 import grpLogoAffix from './grp-affix.svg';
 import './header.scss';
 import { API_URL_PREFIX } from '../../../../_utilities/api_url_prefix';
+import { CONTACT_US_EMAIL } from '../../../../_utilities/contact_us_email';
 
 export default class Header extends Component {
   constructor(props) {
@@ -78,7 +79,7 @@ export default class Header extends Component {
                 </li>
 
                 <li>
-                  <a href="mailto:?Subject=CRP%20Feedback/Enquiry">
+                  <a href={`mailto:${CONTACT_US_EMAIL}Subject=CRP%20Feedback/Enquiry`}>
                     <FormattedMessage id="header.nav.contactus" />
                   </a>
                 </li>
