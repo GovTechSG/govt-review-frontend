@@ -29,40 +29,6 @@ Welcome! This document details the setting up of a development environment. The 
 	run these commands on terminal: 
 
 		npm install
-		echo 'REACT_APP_AUTH_TOKEN=' > .env.local
-
-1. Get API key
-
-	In the project root directory of the [**backend**](https://github.com/GovTechSG/product-review-platform).. (View https://github.com/GovTechSG/product-review-platform if not set up yet)
-
-	- Test if the project is setup properly:
-		
-			rails s
-
-	- open http://localhost:3000/ on your browser. you should see a landing page.
-
-  - Navigate to http://localhost:3000/api/docs and expand the tab 'POST /api/v1/oauth/token'
-
-  - Click 'Try it out' and enter the values
-
-  			{
-			    "name": "bgp",
-			    "password": "test12"
-  			}
-
-  - Click execute and copy the return value of "access_token" into the .env.local file created in the step above
-			
-		# Example value, you have to get your own key with the steps above
-		# Remember to include Bearer infront of the token
-		REACT_APP_AUTH_TOKEN="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwcm9kdWN0X3Jldmlld19wbGF0Zm9ybSIsImlhdCI6MTUyNTc2NDA5MSwianRpIjoiYjE1M2ExOTgtZDI3YS00NDAyLTk1MTktNjA5ZTZkYjNlMjNmIiwiYXBwIjp7ImlkIjoxLCJuYW1lIjoiYmdwIn19._Hv7ER8Kakex2WQYw9X24B4F8Ywc1tSxjJaoqfT663k"
-
-  - Add your own username and password to use in your local environment into the .env.local file.
-		
-		#Add it below the REACT_APP_AUTH_TOKEN
-		#This will be used to login to the login page
-		REACT_APP_AUTH_TOKEN="Bearer ..."
-		REACT_APP_USERNAME=user
-		REACT_APP_PASSWORD=pass123
   
 1. Test run
 
@@ -73,6 +39,11 @@ Welcome! This document details the setting up of a development environment. The 
 			npm start
 
 	- open http://localhost:5000/ on your browser. you should see a landing page.
+
+	- Login with credentials:
+		
+			username: bgp
+			password: test12
 
 1. Sanity Check
 
