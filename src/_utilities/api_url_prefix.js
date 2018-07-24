@@ -1,4 +1,4 @@
-let prefix = 'https://review-api.gds-gov.tech';
+let prefix = 'https://govreview.gds-gov.tech';
 if (process.env.REACT_APP_BACKEND_ENV === 'production') {
   prefix = 'https://review-api.gds-gov.tech';
 }
