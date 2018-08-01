@@ -35,16 +35,12 @@
   font-size: 14px;
   display: block;
   font-weight: $text-normal;
-  padding: 5px 0px;
-}
-
-.vendor-contact-details {
-  padding: 10px 0px;
+  padding: 5px 0;
 }
 
 .companyinfo-logo-box {
   width: 75px;
-  padding-right: 0px;
+  padding-right: 0;
 
   img {
     width: 60px;
@@ -57,6 +53,7 @@
   color: $color-grey-5;
   font-size: 14px;
   font-weight: $text-normal;
+  padding: 10px 0;
 }
 
 .vendor-website a {
@@ -64,14 +61,14 @@
   color: $color-grey-5;
 }
 
-.contact-icon {  
+.contact-icon {
   margin-right: 7px;
   color: #51a2d1;
 }
 
 .companypage-border {
-  border-bottom: 1px solid #dddddd;
-  margin: 20px 0px;
+  border-bottom: 1px solid #ddd;
+  margin: 20px 0;
 }
 
 .client-images img {
@@ -88,11 +85,11 @@
   margin-bottom: 15px;
 }
 
-.grants-experience span{
+.grants-experience span {
   color: $color-grey-5;
   font-size: 14px;
   font-weight: $text-normal;
-  padding: 4px 0px;
+  padding: 4px 0;
   vertical-align: text-bottom;
 }
 
@@ -102,7 +99,7 @@
   font-weight: $text-normal;
 }
 
-.companyinfo-has-done span{
+.companyinfo-has-done span {
   color: $color-grey-5;
   font-size: 14px;
   font-weight: 700;
@@ -112,5 +109,5 @@
   color: $color-grey-5;
   font-size: 14px;
   font-weight: $text-normal;
-  padding: 5px 0px;
+  padding: 5px 0;
 }

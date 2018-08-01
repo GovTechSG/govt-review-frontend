@@ -2,7 +2,7 @@
 
 .reviews-header {
   color: $color-grey-5;
-  margin: 7px 0px;
+  margin: 7px 0;
   padding-bottom: 5px;
   font-size: $regular-big;
   font-weight: $text-semibold;
@@ -18,7 +18,7 @@
   height: 15px;
   margin-top: 3px;
   margin-bottom: 15px;
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .progress-bar {
@@ -26,7 +26,7 @@
 }
 
 .review-bar {
-  padding-right: 0px;
+  padding-right: 0;
   padding-left: 7px;
   width: 50%;
 }
@@ -37,14 +37,14 @@
 
 .score-col {
   font-size: 13px;
-  padding-left: 0px;
+  padding-left: 0;
   padding-right: 5px;
 }
 
 .aspects-col {
   padding-left: 15px;
-  padding-right: 0px;
-  border-left: 2px solid #dddddd;
+  padding-right: 0;
+  border-left: 2px solid #ddd;
 }
 
 .total-aspects {
@@ -56,7 +56,7 @@
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 6px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 12px;
   white-space: nowrap;
 }
@@ -73,7 +73,7 @@
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display:         flex;
+  display: flex;
 }
 
 .company-rating-box {
@@ -89,7 +89,7 @@
     padding-top: 12%;
     color: #2d89c9;
   }
-  
+
   .score-total {
     text-align: center;
     color: $color-grey-4;
