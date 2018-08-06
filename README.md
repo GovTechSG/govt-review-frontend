@@ -32,18 +32,21 @@ Welcome! This document details the setting up of a development environment. The 
   
 1. Test run
 
-	In the project root directory of the [**frontend**](https://github.com/GovTechSG/govt-review-frontend)..
+	Ensure that the [**backend**](https://github.com/GovTechSG/product-review-platform) is running first on http://localhost:3000/.
+
+	Then in the project root directory of the [**frontend**](https://github.com/GovTechSG/govt-review-frontend),
 
 	- Test if the project is setup properly:
 		
 			npm start
 
-	- open http://localhost:5000/ on your browser. you should see a landing page.
+	- open http://localhost:5000/ on your browser. you should see a login page.
 
 	- Login with credentials:
 		
 			username: bgp
 			password: test12
+	- If authentication fails, check that the [**backend**](https://github.com/GovTechSG/product-review-platform) is running and that the database has been seeded
 
 1. Sanity Check
 

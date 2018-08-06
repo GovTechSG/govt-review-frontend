@@ -9,11 +9,11 @@
 
 .reviews-nav-sorter>li>a {
   background-color: transparent;
-  border: 0px solid transparent;
-  padding-left: 0px;
+  border: 0 solid transparent;
+  padding-left: 0;
   padding-right: 1px;
   margin-right: 30px;
-  color: #666666;
+  color: #666;
   vertical-align: middle;
 }
 
@@ -23,28 +23,28 @@
 
 .reviews-nav-sorter>li>a:hover {
   background-color: transparent;
-  border: 0px solid transparent;
+  border: 0 solid transparent;
   border-bottom: 2px solid #2d89c9;
 }
 
 .reviews-nav-sorter>li.active>a {
   background-color: transparent;
-  border: 0px solid transparent;
+  border: 0 solid transparent;
   color: #2d89c9;
   border-bottom: 2px solid #2d89c9;
 }
 
 .reviews-nav-sorter>li.active>a:focus {
   background-color: transparent;
-  border: 0px solid transparent;
+  border: 0 solid transparent;
   color: #2d89c9;
   border-bottom: 2px solid #2d89c9;
 }
 
 .reviews-nav-sorter>li.active>a:hover {
   background-color: transparent;
-  border: 0px solid transparent;
-  padding-left: 0px;
+  border: 0 solid transparent;
+  padding-left: 0;
   padding-right: 1px;
   color: #2d89c9;
   border-bottom: 2px solid #2d89c9;
@@ -83,14 +83,14 @@
 
 .offerings-engaged {
   margin-top: 15px;
-  color: $color-grey-5;  
+  color: $color-grey-5;
   font-size: $small;
   font-weight: $text-heavy;
 }
 
 .aspect-heading {
   margin-top: 15px;
-  color: $color-grey-5;  
+  color: $color-grey-5;
   font-size: $small;
   font-weight: $text-heavy;
 }
@@ -102,27 +102,27 @@
 }
 
 .companyreview-border {
-  border-bottom: 1px solid #dddddd;
-  margin: 0px;
+  border-bottom: 1px solid #ddd;
+  margin: 0;
   margin-bottom: 20px;
 }
 
 .color-green {
-  color: green;
+  color: #008000;
 }
 
 .color-red {
-  color: red;
+  color: #f00;
 }
 
 .review-border {
-  border-bottom: 1px solid #dddddd;
-  margin: 12px 0px;
+  border-bottom: 1px solid #ddd;
+  margin: 12px 0;
 }
 
 .quote {
   width: 20px;
-  padding: 0px;
+  padding: 0;
   margin-top: -10px;
 }
 
@@ -146,7 +146,7 @@
 }
 
 .margin-0 {
-  margin: 0px;
+  margin: 0;
 }
 
 .load-more-button {
@@ -180,9 +180,9 @@
 .review-aspect-box {
   padding: 1px 10px;
   margin-right: 10px;
-  border: 1px solid lightgrey;
+  border: 1px solid #d3d3d3;
   border-radius: 10px;
   display: inline-block;
-  margin-bottom: 6px;  
+  margin-bottom: 6px;
   white-space: nowrap;
 }

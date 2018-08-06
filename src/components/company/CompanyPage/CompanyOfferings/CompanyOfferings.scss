@@ -10,9 +10,9 @@
 
 .offerings-header {
   color: $color-grey-5;
-  margin: 7px 0px;
+  margin: 7px 0;
   padding-bottom: 15px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
   font-size: $regular-plus;
   font-weight: $text-semibold;
 }
@@ -26,11 +26,11 @@
 }
 
 .offering-desc {
-  padding: 5px 0px;
+  padding: 5px 0;
   margin-bottom: 10px;
 }
 
-.offering-desc::before{
+.offering-desc::before {
   content: '-';
   padding-right: 2px;
 }
