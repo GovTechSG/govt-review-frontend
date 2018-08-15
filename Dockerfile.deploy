@@ -25,7 +25,7 @@ RUN apt-get update && apt-get -y install --only-upgrade \
     openssl \
     libidn11
 
-RUN apt-get update && remove -y mercurial
+RUN apt-get update && apt-get remove -y mercurial
 
 COPY package*.json ./
 RUN npm install
