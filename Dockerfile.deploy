@@ -20,11 +20,12 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
     rm -f /tmp/jq-linux64.asc && \
     rm -f /tmp/jq-linux64
 
-RUN apt-get remove mercurial
 
-RUN apt-get update && apt-get install --only-upgrade -y \
+RUN apt-get update && apt-get -y install --only-upgrade \
     openssl \
     libidn11
+
+RUN apt-get update && remove -y mercurial
 
 COPY package*.json ./
 RUN npm install
