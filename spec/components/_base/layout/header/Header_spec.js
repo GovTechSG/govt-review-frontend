@@ -1,6 +1,8 @@
 import React from 'react';
 import * as enzyme from 'enzyme';
+import { Button } from 'react-bootstrap';
 import * as chai from 'chai';
+import { Link } from 'react-router-dom';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import Header from '../../../../../src/components/_base/layout/header/Header';
@@ -26,7 +28,7 @@ describe('Header', () => {
     });
 
     it('has anchor to home page', () => {
-      const anchor = logo.find('Link');
+      const anchor = logo.find(Link);
       chai.expect(anchor.prop('to')).to.equal('/');
     });
 
@@ -82,7 +84,7 @@ describe('Header', () => {
     });
 
     it('has anchor to home page', () => {
-      const anchor = logo.find('Link');
+      const anchor = logo.find(Link);
       chai.expect(anchor.prop('to')).to.equal('/');
     });
 
@@ -121,7 +123,7 @@ describe('Header', () => {
   });
 
   it('renders log out', () => {
-    const button = render.find('Button');
+    const button = render.find(Button);
     chai.expect(button).to.have.length(1);
     const message = button.find('FormattedMessage').dive();
     chai.expect(message.text()).to.eq('LOG OUT');

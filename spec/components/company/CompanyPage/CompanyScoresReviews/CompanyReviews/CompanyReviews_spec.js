@@ -2,6 +2,7 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
+import { Nav } from 'react-bootstrap';
 import { shallowWithIntl } from '../../../../../helpers/intl-enzyme-test-helper';
 import CompanyReviews from '../../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyReviews/CompanyReviews';
 
@@ -208,7 +209,7 @@ describe('CompanyReviews', () => {
     });
 
     it('renders sorter', () => {
-      const tabs = render.find('Nav').find('FormattedMessage');
+      const tabs = render.find(Nav).find('FormattedMessage');
       const map = tabs.map(tabItem => {
         return tabItem.dive().text();
       });
