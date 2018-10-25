@@ -2,9 +2,12 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
+import { Link } from 'react-router-dom';
 import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 import CompanyPage from '../../../../src/components/company/CompanyPage/CompanyPage';
 import CompanyInfo from '../../../../src/components/company/CompanyPage/CompanyInfo/CompanyInfo';
+import CompanyOfferings from '../../../../src/components/company/CompanyPage/CompanyOfferings/CompanyOfferings';
+import CompanyScoresReviews from '../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScoresReviews';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -69,7 +72,7 @@ describe('CompanyPage', () => {
     });
 
     it('renders back to vendor listings link', () => {
-      const link = render.find('.back-to-vendors-list').find('Link');
+      const link = render.find('.back-to-vendors-list').find(Link);
       chai.expect(link.prop('to')).to.eql('/');
     });
 
@@ -79,12 +82,12 @@ describe('CompanyPage', () => {
     });
 
     it('renders CompanyOfferings', () => {
-      const component = render.find('CompanyOfferings');
+      const component = render.find(CompanyOfferings);
       chai.expect(component).to.have.length(1);
     });
 
     it('renders CompanyScoresReviews', () => {
-      const component = render.find('CompanyScoresReviews');
+      const component = render.find(CompanyScoresReviews);
       chai.expect(component).to.have.length(1);
     });
   });
@@ -107,7 +110,7 @@ describe('CompanyPage', () => {
     });
 
     it('renders back to vendor listings link', () => {
-      const link = render.find('.back-to-vendors-list').find('Link');
+      const link = render.find('.back-to-vendors-list').find(Link);
       chai.expect(link.prop('to')).to.eql('/');
     });
 

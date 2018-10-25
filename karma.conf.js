@@ -23,12 +23,21 @@ module.exports = function(config) {
       // add webpack as preprocessor
       './spec/test.entry.js': ['webpack']
     },
+    typescriptPreprocessor: {
+      options: {
+        sourceMap: true, // generate source maps
+        noResolve: false // enforce type resolution
+      },
+      transformPath: function(path) {
+        return path.replace(/\.ts$/, '.js');
+      }
+    },
 
     reporters: ['mocha'],
 
     webpack: {
       module: {
-          loaders: [
+          rules: [
               {
                 test: /\.js$/,
                 exclude: /node_modules/,

@@ -3,6 +3,7 @@ import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import Adapter from 'enzyme-adapter-react-16';
+import { Link } from 'react-router-dom';
 import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import CompanyInfo from '../../../../../src/components/company/CompanyPage/CompanyInfo/CompanyInfo';
 
@@ -277,7 +278,7 @@ describe('CompanyInfo', () => {
 
     it('renders image hyperlinks', () => {
       const map = clients.map(client => {
-        return client.find('Link').prop('to');
+        return client.find(Link).prop('to');
       });
       chai.expect(map).to.deep.equal([
         '/company/abc1',
