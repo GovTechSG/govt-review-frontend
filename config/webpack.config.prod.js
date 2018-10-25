@@ -3,6 +3,7 @@
 const autoprefixer = require('autoprefixer');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -182,95 +183,75 @@ module.exports = {
           // in the main CSS file.
           {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract(Object.assign(
+            use: [
+              MiniCssExtractPlugin.loader,
               {
-                fallback: {
-                  loader: require.resolve('style-loader'),
-                  options: {
-                    hmr: false,
-                  },
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  minimize: true,
+                  sourceMap: shouldUseSourceMap,
                 },
-                use: [
-                  {
-                    loader: require.resolve('css-loader'),
-                    options: {
-                      importLoaders: 1,
-                      minimize: true,
-                      sourceMap: shouldUseSourceMap,
-                    },
-                  },
-                  {
-                    loader: require.resolve('postcss-loader'),
-                    options: {
-                      // Necessary for external CSS imports to work
-                      // https://github.com/facebookincubator/create-react-app/issues/2677
-                      ident: 'postcss',
-                      plugins: () => [
-                        require('postcss-flexbugs-fixes'),
-                        autoprefixer({
-                          browsers: [
-                            '>1%',
-                            'last 4 versions',
-                            'Firefox ESR',
-                            'not ie < 9', // React doesn't support IE8 anyway
-                          ],
-                          flexbox: 'no-2009',
-                        }),
-                      ],
-                    },
-                  },
-                ],
               },
-              extractTextPluginOptions
-            )),
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9', // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009',
+                    }),
+                  ],
+                },
+              },
+            ],
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
           {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract(Object.assign(
+            use: [
+              MiniCssExtractPlugin.loader,
               {
-                fallback: {
-                  loader: require.resolve('style-loader'),
-                  options: {
-                    hmr: false,
-                  },
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  minimize: true,
+                  sourceMap: shouldUseSourceMap,
                 },
-                use: [
-                  {
-                    loader: require.resolve('css-loader'),
-                    options: {
-                      importLoaders: 1,
-                      minimize: true,
-                      sourceMap: shouldUseSourceMap,
-                    },
-                  },
-                  {
-                    loader: require.resolve('sass-loader'),
-                  },
-                  {
-                    loader: require.resolve('postcss-loader'),
-                    options: {
-                      // Necessary for external CSS imports to work
-                      // https://github.com/facebookincubator/create-react-app/issues/2677
-                      ident: 'postcss',
-                      plugins: () => [
-                        require('postcss-flexbugs-fixes'),
-                        autoprefixer({
-                          browsers: [
-                            '>1%',
-                            'last 4 versions',
-                            'Firefox ESR',
-                            'not ie < 9', // React doesn't support IE8 anyway
-                          ],
-                          flexbox: 'no-2009',
-                        }),
-                      ],
-                    },
-                  },
-                ],
               },
-              extractTextPluginOptions
-            )),
+              {
+                loader: require.resolve('sass-loader'),
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9', // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009',
+                    }),
+                  ],
+                },
+              },
+            ],
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
           // "file" loader makes sure assets end up in the `build` folder.
@@ -324,7 +305,7 @@ module.exports = {
     // Otherwise React will be compiled in the very slow development mode.
     new webpack.DefinePlugin(env.stringified),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: cssFilename,
     }),
     // Generate a manifest file which contains a mapping of all asset filenames
