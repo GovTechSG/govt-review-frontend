@@ -2,6 +2,7 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
+import { Col, ProgressBar } from 'react-bootstrap';
 import { shallowWithIntl } from '../../../../../helpers/intl-enzyme-test-helper';
 import CompanyScores from '../../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScores/CompanyScores';
 
@@ -138,36 +139,36 @@ describe('CompanyScores', () => {
     });
 
     it('renders positive bar', () => {
-      const bar = positive.find('ProgressBar');
+      const bar = positive.find(ProgressBar);
       chai.expect(bar.prop('now')).to.eq(7);
     });
 
     it('renders neutral bar', () => {
-      const bar = neutral.find('ProgressBar');
+      const bar = neutral.find(ProgressBar);
       chai.expect(bar.prop('now')).to.eq(2);
     });
 
     it('renders negative bar', () => {
-      const bar = negative.find('ProgressBar');
+      const bar = negative.find(ProgressBar);
       chai.expect(bar.prop('now')).to.eq(1);
     });
 
     it('renders positive percentage', () => {
-      const percentage = positive.find('Col').filterWhere((a) => {
+      const percentage = positive.find(Col).filterWhere((a) => {
         return a.prop('id') === 'percentage';
       });
       chai.expect(percentage.find('span').text()).to.eq('70%');
     });
 
     it('renders neutral percentage', () => {
-      const percentage = neutral.find('Col').filterWhere((a) => {
+      const percentage = neutral.find(Col).filterWhere((a) => {
         return a.prop('id') === 'percentage';
       });
       chai.expect(percentage.find('span').text()).to.eq('20%');
     });
 
     it('renders negative percentage', () => {
-      const percentage = negative.find('Col').filterWhere((a) => {
+      const percentage = negative.find(Col).filterWhere((a) => {
         return a.prop('id') === 'percentage';
       });
       chai.expect(percentage.find('span').text()).to.eq('10%');
@@ -181,21 +182,21 @@ describe('CompanyScores', () => {
       });
 
       it('renders positive percentage', () => {
-        const percentage = render.find('#positive-row').find('Col').filterWhere((a) => {
+        const percentage = render.find('#positive-row').find(Col).filterWhere((a) => {
           return a.prop('id') === 'percentage';
         });
         chai.expect(percentage.find('span').text()).to.eq('0%');
       });
 
       it('renders neutral percentage', () => {
-        const percentage = render.find('#neutral-row').find('Col').filterWhere((a) => {
+        const percentage = render.find('#neutral-row').find(Col).filterWhere((a) => {
           return a.prop('id') === 'percentage';
         });
         chai.expect(percentage.find('span').text()).to.eq('0%');
       });
 
       it('renders negative percentage', () => {
-        const percentage = render.find('#negative-row').find('Col').filterWhere((a) => {
+        const percentage = render.find('#negative-row').find(Col).filterWhere((a) => {
           return a.prop('id') === 'percentage';
         });
         chai.expect(percentage.find('span').text()).to.eq('0%');

@@ -4,6 +4,8 @@ import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallowWithIntl } from '../../../../helpers/intl-enzyme-test-helper';
 import CompanyScoresReviews from '../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScoresReviews';
+import CompanyReviews from '../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyReviews/CompanyReviews';
+import CompanyScores from '../../../../../src/components/company/CompanyPage/CompanyScoresReviews/CompanyScores/CompanyScores';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -195,12 +197,12 @@ describe('CompanyScoresReviews', () => {
     });
 
     it('renders CompanyScores', () => {
-      const component = render.find('CompanyScores');
+      const component = render.find(CompanyScores);
       chai.expect(component).to.have.length(1);
     });
 
     it('renders CompanyReviews', () => {
-      const component = render.find('CompanyReviews');
+      const component = render.find(CompanyReviews);
       chai.expect(component).to.have.length(1);
     });
   });

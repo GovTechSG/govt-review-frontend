@@ -2,7 +2,9 @@ import React from 'react';
 import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
+import { NavItem, ControlLabel, InputGroup, FormControl } from 'react-bootstrap';
 import VendorSorter from '../../../../src/components/company/VendorSorter/VendorSorter';
+import VendorListingBox from '../../../../src/components/company/VendorListingBox/VendorListingBox';
 import { shallowWithIntl } from '../../../helpers/intl-enzyme-test-helper';
 
 enzyme.configure({ adapter: new Adapter() });
@@ -17,20 +19,20 @@ describe('VendorSorter', () => {
 
   describe('renders', () => {
     it('renders search label', () => {
-      const label = render.find('ControlLabel').find('FormattedMessage').dive().text();
+      const label = render.find(ControlLabel).find('FormattedMessage').dive().text();
 
       chai.expect(label).to.eq('FIND CONSULTANTS AND VENDORS');
     });
 
     it('renders search bar', () => {
-      const searchBar = render.find('InputGroup');
+      const searchBar = render.find(InputGroup);
       chai.expect(searchBar).to.have.length(1);
     });
 
     it('renders text in search bar', () => {
-      const searchBar = render.find('InputGroup').dive()
+      const searchBar = render.find(InputGroup).dive()
         .find('FormattedMessage').dive()
-        .find('FormControl');
+        .find(FormControl);
 
       chai.expect(searchBar.prop('placeholder')).to.equal('Search for a company\'s name');
     });
@@ -40,7 +42,7 @@ describe('VendorSorter', () => {
     });
 
     it('renders sorter text', () => {
-      const labels = render.find('NavItem').map(data => {
+      const labels = render.find(NavItem).map(data => {
         return data.find('FormattedMessage').dive().text();
       });
       chai.expect(labels).to.deep.eq(['Best Ratings', 'Newly Added']);
@@ -53,7 +55,7 @@ describe('VendorSorter', () => {
     });
 
     it('renders vendor listing box', () => {
-      chai.expect(render.find('VendorListingBox')).to.have.length(1);
+      chai.expect(render.find(VendorListingBox)).to.have.length(1);
     });
 
     it('does not render Pagination when count is 0', () => {

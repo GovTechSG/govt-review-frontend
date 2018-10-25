@@ -3,6 +3,8 @@ import * as enzyme from 'enzyme';
 import * as chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import CompanyIndexPage from '../../../src/components/company/CompanyIndexPage';
+import SideBarFilter from '../../../src/components/company/SideBarFilter/SideBarFilter';
+import VendorSorter from '../../../src/components/company/VendorSorter/VendorSorter';
 
 enzyme.configure({ adapter: new Adapter() });
 
@@ -20,12 +22,12 @@ describe('CompanyIndexPage', () => {
 
   describe('renders', () => {
     it('renders VendorSorter', () => {
-      const vendorSorter = render.find('VendorSorter');
+      const vendorSorter = render.find(VendorSorter);
       chai.expect(vendorSorter).to.have.length(1);
     });
 
-    it('renders VendorSorter', () => {
-      const sideBarFilter = render.find('SideBarFilter');
+    it('renders Side bar filter', () => {
+      const sideBarFilter = render.find(SideBarFilter);
       chai.expect(sideBarFilter).to.have.length(1);
     });
 
