@@ -47,8 +47,10 @@ export default class CompanyIndexPage extends Component {
 
   generateFilterString() {
     let filterUrl = '';
+    /* eslint-disable no-unused-vars */
     for (const id of this.state.industryFilter) filterUrl += `industries:${id},`;
     for (const id of this.state.grantFilter) filterUrl += `grants:${id},`;
+    /* eslint-disable no-unused-vars */
     return filterUrl.substr(0, filterUrl.length - 1);
   }
 
