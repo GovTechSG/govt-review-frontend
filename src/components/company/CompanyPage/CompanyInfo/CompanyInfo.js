@@ -61,7 +61,9 @@ export default class CompanyPage extends Component {
     }
 
     let industriesString = '';
+    /* eslint-disable no-unused-vars */
     for (const data of industriesArray) industriesString += `${data.name}, `;
+    /* eslint-disable no-unused-vars */
     return industriesString.substring(0, industriesString.length - 2);
   }
 
@@ -71,7 +73,9 @@ export default class CompanyPage extends Component {
     }
 
     let projectString = '';
+    /* eslint-disable no-unused-vars */
     for (const data of projectsArray) projectString += `${data.name}, `;
+    /* eslint-disable no-unused-vars */
     return projectString.substring(0, projectString.length - 2);
   }
 
