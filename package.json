@@ -61,7 +61,7 @@
     "webpack-manifest-plugin": "^2.0.4",
     "whatwg-fetch": "^2.0.3",
     "ua-parser-js": "^0.7.18",
-    "node-forge": "^0.7.4"
+    "node-forge": "^0.10.0"
   },
   "scripts": {
     "eslint": "eslint .",
