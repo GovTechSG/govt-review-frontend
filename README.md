@@ -1,5 +1,7 @@
 # Product Review Platform
 
+**This project has been ported over to another repository for maintenance. As a result, this repo will be archived and made read-only.**
+
 <a href="https://teamcity.gahmen.tech/viewType.html?buildTypeId=ProductReviewPlatform_UnitTest&guest=1"> 
 <img src="https://teamcity.gahmen.tech/app/rest/builds/buildType(id:ProductReviewPlatform_UnitTest)/statusIcon"/>
 </a>
